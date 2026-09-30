@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { industries } from "@/lib/content";
+import { industryDetails } from "@/lib/media";
+import { CoverImage } from "@/components/ui/CoverImage";
 import { Reveal } from "@/components/effects/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
@@ -8,7 +11,7 @@ import { CursorReactiveField } from "@/components/effects/CursorReactiveField";
 export const metadata: Metadata = {
   title: "Industries",
   description:
-    "Robopilot AI delivers technology solutions across healthcare, retail, travel, manufacturing, finance, and professional services.",
+    "RoboPilot delivers AI agents, analytics, mobile products and consulting across ten industry verticals.",
 };
 
 export default function IndustriesPage() {
@@ -46,7 +49,19 @@ export default function IndustriesPage() {
           <div className="grid gap-5 lg:grid-cols-2">
             {industries.map((ind, i) => (
               <Reveal key={ind.slug} delay={i * 0.05}>
-                <article className="h-full rounded-3xl border border-white/10 bg-[var(--bg-elevated)] p-7 transition hover:border-[var(--accent)]/40">
+                <Link
+                  href={`/industries/${ind.slug}`}
+                  className="block h-full overflow-hidden rounded-3xl border border-white/10 bg-[var(--bg-elevated)] transition hover:border-[var(--brand)]/40"
+                >
+                  <div className="h-40">
+                    <CoverImage
+                      src={industryDetails[ind.slug]?.image || ""}
+                      alt={ind.title}
+                      className="h-full w-full"
+                      fallbackLabel={ind.title}
+                    />
+                  </div>
+                  <div className="p-7">
                   <h2 className="font-display text-2xl font-bold">{ind.title}</h2>
                   <p className="mt-3 text-[var(--muted)]">{ind.description}</p>
                   <ul className="mt-5 grid gap-2 sm:grid-cols-2">
@@ -56,7 +71,9 @@ export default function IndustriesPage() {
                       </li>
                     ))}
                   </ul>
-                </article>
+                  <span className="mt-5 inline-block text-sm font-bold text-[var(--brand)]">View industry →</span>
+                  </div>
+                </Link>
               </Reveal>
             ))}
           </div>

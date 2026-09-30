@@ -18,7 +18,7 @@ export function BrandLogo({ className, size = 40, withText = true, href = "/" }:
       >
         <Image
           src="/robopilot-logo.jpg"
-          alt="Robopilot AI"
+          alt="RoboPilot"
           width={size}
           height={size}
           className="h-full w-full object-cover"
@@ -27,11 +27,10 @@ export function BrandLogo({ className, size = 40, withText = true, href = "/" }:
       </span>
       {withText && (
         <span className="flex flex-col leading-none">
-          <span className="font-display text-[1.05rem] font-extrabold tracking-[-0.04em] text-white sm:text-[1.15rem]">
-            Robo
-            <span className="text-[var(--brand)]">Pilot</span>
+          <span className="font-display text-[1.05rem] font-bold tracking-[-0.04em] text-white sm:text-[1.2rem]">
+            Robo<span className="text-[var(--brand)]">Pilot</span>
           </span>
-          <span className="mt-0.5 text-[9px] font-bold uppercase tracking-[0.28em] text-white/45">
+          <span className="mt-1 text-[9px] font-semibold uppercase tracking-[0.28em] text-white/40">
             Intelligence
           </span>
         </span>

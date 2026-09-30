@@ -3,11 +3,12 @@ import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { Reveal } from "@/components/effects/Reveal";
 import { Button } from "@/components/ui/Button";
 import { CursorReactiveField } from "@/components/effects/CursorReactiveField";
+import { LeadForm } from "@/components/sections/LeadForm";
 
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "AI & automation, custom software, web & mobile, cloud & DevOps, ERP integration, and data consulting from Robopilot AI.",
+    "AI agent building, free AI agents, ML and data analytics, mobile app development, and AI consulting from RoboPilot.",
 };
 
 export default function ServicesPage() {
@@ -17,34 +18,33 @@ export default function ServicesPage() {
         <CursorReactiveField />
         <div className="container-x relative z-10 max-w-3xl">
           <Reveal>
-            <div className="mb-4 inline-flex items-center gap-2 text-[11px] font-extrabold uppercase tracking-[0.18em] text-[var(--accent-soft)]">
-              <span className="h-0.5 w-5 rounded bg-current" />
+            <p className="mb-4 text-[11px] font-extrabold uppercase tracking-[0.2em] text-[var(--brand)]">
               Services
-            </div>
-            <h1 className="font-display text-4xl font-extrabold tracking-tight md:text-6xl">
-              Full-stack capability.{" "}
-              <span className="text-gradient">Outcome-first delivery.</span>
+            </p>
+            <h1 className="font-display text-4xl font-bold tracking-tight md:text-6xl">
+              Full-stack AI and product capability.{" "}
+              <span className="italic-accent">Outcome-first delivery.</span>
             </h1>
             <p className="mt-5 text-lg text-[var(--muted)]">
-              Whether you need an AI pilot, a greenfield product, or a connected enterprise platform —
-              we assemble the right mix of strategy, design, and engineering.
+              Whether you need an agent, a data platform or a mobile product — we assemble the right mix
+              of strategy and engineering.
             </p>
           </Reveal>
         </div>
       </section>
       <ServicesGrid />
-      <section className="pb-24">
+      <section className="pb-10">
         <div className="container-x flex flex-col items-center rounded-3xl border border-white/10 bg-[var(--bg-elevated)] px-6 py-12 text-center">
           <h2 className="font-display text-2xl font-bold md:text-3xl">Not sure where to start?</h2>
           <p className="mt-3 max-w-xl text-[var(--muted)]">
-            Book a consultation and we&apos;ll map your goals to the right service mix — no pressure, no
-            fluff.
+            Book a consultation and we&apos;ll map your goals to the right service mix.
           </p>
           <div className="mt-6">
-            <Button href="/contact">Talk to our team ↗</Button>
+            <Button href="/contact">Talk to our team</Button>
           </div>
         </div>
       </section>
+      <LeadForm />
     </>
   );
 }

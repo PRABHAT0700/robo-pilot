@@ -23,25 +23,20 @@ export function Button({
   onClick,
 }: Props) {
   const styles = cn(
-    "group relative inline-flex flex-row items-center justify-center gap-2 whitespace-nowrap rounded-xl px-5 py-3 text-sm font-bold tracking-wide transition-transform duration-200",
+    "group relative inline-flex flex-row items-center justify-center gap-2 whitespace-nowrap rounded-full px-6 py-3 text-[13px] font-bold uppercase tracking-[0.12em] transition-transform duration-200",
     variant === "primary" &&
-      "bg-brand-gradient text-white shadow-[0_12px_40px_var(--brand-glow)] hover:-translate-y-0.5",
+      "bg-white !text-[#05060a] shadow-[0_10px_30px_rgba(255,255,255,0.12)] hover:-translate-y-0.5 hover:!text-[#05060a]",
     variant === "secondary" &&
-      "border border-white/80 bg-white !text-[#0a0a0a] hover:-translate-y-0.5 hover:bg-white",
+      "border border-white/25 bg-transparent text-white hover:border-white hover:bg-white/5",
     variant === "ghost" &&
       "border border-white/15 bg-white/5 text-white hover:bg-white/10",
     className,
   );
 
   const inner = (
-    <>
-      <span className="relative z-10 inline-flex flex-row items-center justify-center gap-2 whitespace-nowrap [&_svg]:shrink-0">
-        {children}
-      </span>
-      {variant === "primary" && (
-        <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
-      )}
-    </>
+    <span className="relative z-10 inline-flex flex-row items-center justify-center gap-2 whitespace-nowrap text-inherit [&_svg]:shrink-0">
+      {children}
+    </span>
   );
 
   if (href) {

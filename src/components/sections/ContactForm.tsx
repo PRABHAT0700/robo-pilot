@@ -3,7 +3,7 @@
 import { useState, FormEvent } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
-import { services } from "@/lib/content";
+import { serviceNav } from "@/lib/content";
 
 export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "ok" | "error">("idle");
@@ -60,7 +60,7 @@ export function ContactForm() {
             defaultValue=""
           >
             <option value="">Select a service</option>
-            {services.map((s) => (
+            {serviceNav.map((s) => (
               <option key={s.slug} value={s.title}>
                 {s.title}
               </option>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Sora, Figtree } from "next/font/google";
+import { Space_Grotesk, Figtree } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -7,10 +7,10 @@ import { FloatingActions } from "@/components/layout/FloatingActions";
 import { CustomCursor } from "@/components/effects/CustomCursor";
 import { site } from "@/lib/content";
 
-const sora = Sora({
-  variable: "--font-sora",
+const space = Space_Grotesk({
+  variable: "--font-space",
   subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
 });
 
 const figtree = Figtree({
@@ -21,16 +21,17 @@ const figtree = Figtree({
 
 export const metadata: Metadata = {
   title: {
-    default: `${site.name} | Build Smarter. Move Faster.`,
+    default: `${site.name} | Digital products that move businesses forward`,
     template: `%s | ${site.name}`,
   },
   description: site.description,
+  metadataBase: new URL("https://robopilot.ai"),
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${sora.variable} ${figtree.variable} h-full antialiased`}>
-      <body className="relative min-h-full flex flex-col font-sans">
+    <html lang="en" className={`${space.variable} ${figtree.variable} h-full antialiased`}>
+      <body className="relative flex min-h-full flex-col font-sans">
         <div className="noise" aria-hidden />
         <CustomCursor />
         <Navbar />

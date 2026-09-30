@@ -7,6 +7,8 @@ export async function POST(request: Request) {
     const name = String(body.name || "").trim();
     const email = String(body.email || "").trim();
     const service = String(body.service || "Not specified").trim();
+    const company = String(body.company || "").trim();
+    const phone = String(body.phone || "").trim();
     const message = String(body.message || "").trim();
 
     if (!name || !email || !message) {
@@ -19,11 +21,11 @@ export async function POST(request: Request) {
 
     // Production: forward to CRM / email provider.
     // For now we validate and acknowledge — optionally open mailto on the client.
-    console.info("[contact]", { name, email, service, message, to: site.email });
+    console.info("[contact]", { name, email, company, phone, service, message, to: site.email });
 
     return NextResponse.json({
       ok: true,
-      message: `Thanks ${name}! Your inquiry was received. We'll reply at ${email} soon.`,
+      message: "Thanks — your request has been received. Our team will get back to you shortly.",
     });
   } catch {
     return NextResponse.json({ error: "Invalid request." }, { status: 400 });

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import { CoverImage } from "@/components/ui/CoverImage";
 import { projects } from "@/lib/content";
 import { Reveal } from "@/components/effects/Reveal";
 import { Button } from "@/components/ui/Button";
@@ -39,12 +39,10 @@ export default function WorkPage() {
             <Reveal key={p.slug} delay={i * 0.05}>
               <article className="group overflow-hidden rounded-3xl border border-cyan-400/10 bg-[var(--bg-elevated)]">
                 <div className="relative h-52 overflow-hidden">
-                  <Image
+                  <CoverImage
                     src={p.image}
                     alt={p.title}
-                    fill
-                    className="object-cover transition duration-700 group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="h-full w-full transition duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0a101c] via-transparent to-transparent" />
                 </div>
