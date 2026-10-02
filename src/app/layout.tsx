@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Figtree } from "next/font/google";
+import { Plus_Jakarta_Sans, Figtree } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingActions } from "@/components/layout/FloatingActions";
 import { CustomCursor } from "@/components/effects/CustomCursor";
+import { SmoothScroll } from "@/components/effects/SmoothScroll";
 import { site } from "@/lib/content";
 
-const space = Space_Grotesk({
+const display = Plus_Jakarta_Sans({
   variable: "--font-space",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["500", "600", "700", "800"],
+  style: ["normal", "italic"],
 });
 
 const figtree = Figtree({
@@ -30,14 +32,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${space.variable} ${figtree.variable} h-full antialiased`}>
+    <html lang="en" className={`${display.variable} ${figtree.variable} h-full antialiased`}>
       <body className="relative flex min-h-full flex-col font-sans">
-        <div className="noise" aria-hidden />
-        <CustomCursor />
-        <Navbar />
-        <main className="relative z-[2] flex-1">{children}</main>
-        <Footer />
-        <FloatingActions />
+        <SmoothScroll>
+          <div className="noise" aria-hidden />
+          <CustomCursor />
+          <Navbar />
+          <main className="relative z-[2] flex-1">{children}</main>
+          <Footer />
+          <FloatingActions />
+        </SmoothScroll>
       </body>
     </html>
   );

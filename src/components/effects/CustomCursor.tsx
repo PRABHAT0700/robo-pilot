@@ -8,8 +8,8 @@ export function CustomCursor() {
   const [hovering, setHovering] = useState(false);
   const x = useMotionValue(-100);
   const y = useMotionValue(-100);
-  const ringX = useSpring(x, { stiffness: 220, damping: 28, mass: 0.4 });
-  const ringY = useSpring(y, { stiffness: 220, damping: 28, mass: 0.4 });
+  const ringX = useSpring(x, { stiffness: 280, damping: 26, mass: 0.35 });
+  const ringY = useSpring(y, { stiffness: 280, damping: 26, mass: 0.35 });
 
   useEffect(() => {
     const fine = window.matchMedia("(pointer: fine)").matches;
@@ -43,17 +43,16 @@ export function CustomCursor() {
   if (!enabled) return null;
 
   return (
-    <>
-      <motion.div
-        className="cursor-dot"
-        style={{ x, y }}
-        aria-hidden
-      />
-      <motion.div
-        className={`cursor-ring${hovering ? " hovering" : ""}`}
-        style={{ x: ringX, y: ringY }}
-        aria-hidden
-      />
-    </>
+    <motion.div
+      className="cursor-lens"
+      style={{ x: ringX, y: ringY, translateX: "-50%", translateY: "-50%" }}
+      animate={{
+        width: hovering ? 58 : 12,
+        height: hovering ? 58 : 12,
+        scale: hovering ? 1.08 : 1,
+      }}
+      transition={{ type: "spring", stiffness: 260, damping: 22 }}
+      aria-hidden
+    />
   );
 }

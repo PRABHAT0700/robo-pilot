@@ -7,9 +7,10 @@ type Props = {
   size?: number;
   withText?: boolean;
   href?: string;
+  inverted?: boolean;
 };
 
-export function BrandLogo({ className, size = 40, withText = true, href = "/" }: Props) {
+export function BrandLogo({ className, size = 40, withText = true, href = "/", inverted = false }: Props) {
   const mark = (
     <span className={cn("inline-flex items-center gap-3", className)}>
       <span
@@ -27,10 +28,20 @@ export function BrandLogo({ className, size = 40, withText = true, href = "/" }:
       </span>
       {withText && (
         <span className="flex flex-col leading-none">
-          <span className="font-display text-[1.05rem] font-bold tracking-[-0.04em] text-white sm:text-[1.2rem]">
+          <span
+            className={cn(
+              "font-display text-[1.05rem] font-bold tracking-[-0.04em] sm:text-[1.2rem]",
+              inverted ? "text-[#0b1020]" : "text-white",
+            )}
+          >
             Robo<span className="text-[var(--brand)]">Pilot</span>
           </span>
-          <span className="mt-1 text-[9px] font-semibold uppercase tracking-[0.28em] text-white/40">
+          <span
+            className={cn(
+              "mt-1 text-[9px] font-semibold uppercase tracking-[0.28em]",
+              inverted ? "text-[#0b1020]/45" : "text-white/40",
+            )}
+          >
             Intelligence
           </span>
         </span>

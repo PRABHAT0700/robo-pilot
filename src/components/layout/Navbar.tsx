@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, MapPin, Menu, X } from "lucide-react";
 import { industries, navLinks, serviceNav, site } from "@/lib/content";
@@ -12,43 +12,90 @@ import { BrandLogo } from "@/components/ui/BrandLogo";
 export function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const [onLight, setOnLight] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [industriesOpen, setIndustriesOpen] = useState(false);
   const [mobileServices, setMobileServices] = useState(false);
   const [mobileIndustries, setMobileIndustries] = useState(false);
+  const lastY = useRef(0);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll);
+    lastY.current = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      if (open) {
+        setHidden(false);
+        lastY.current = y;
+        return;
+      }
+      if (y < 16) {
+        setHidden(false);
+      } else if (y > lastY.current + 4) {
+        setHidden(true);
+        setServicesOpen(false);
+        setIndustriesOpen(false);
+      } else if (y < lastY.current - 1) {
+        setHidden(false);
+      }
+      lastY.current = y;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [open]);
+
+  useEffect(() => {
+    const targets = document.querySelectorAll("[data-nav-light]");
+    if (!targets.length) {
+      setOnLight(false);
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        setOnLight(entries.some((entry) => entry.isIntersecting));
+      },
+      { rootMargin: "-56px 0px -70% 0px", threshold: 0 },
+    );
+    targets.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, [pathname]);
 
   useEffect(() => {
     setOpen(false);
     setServicesOpen(false);
     setIndustriesOpen(false);
+    setHidden(false);
   }, [pathname]);
 
   const serviceActive = pathname.startsWith("/services");
   const industryActive = pathname.startsWith("/industries");
+  const inverted = onLight;
 
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-50 border-b border-white/[0.06] bg-[#07080d]/80 backdrop-blur-md transition-colors",
-        scrolled && "bg-[#07080d]/95",
-      )}
+    <>
+    <motion.header
+      initial={false}
+      animate={
+        hidden
+          ? { y: "-110%", opacity: 0 }
+          : { y: 0, opacity: 1 }
+      }
+      transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
+      className="fixed inset-x-0 top-0 z-50 origin-top bg-transparent"
     >
       <div className="container-x flex h-[76px] items-center justify-between gap-4">
-        <BrandLogo size={38} />
+        <BrandLogo size={38} inverted={inverted} />
 
         <nav
-          className="hidden items-center rounded-full border border-white/10 bg-black/30 px-2 py-1 lg:flex"
+          className={cn(
+            "hidden items-center rounded-full border px-2 py-1 backdrop-blur-2xl lg:flex",
+            inverted
+              ? "border-black/8 bg-white/55 text-[#0b1020] shadow-[0_8px_30px_rgba(15,23,42,0.06)]"
+              : "border-white/12 bg-white/8 text-white shadow-[0_8px_30px_rgba(0,0,0,0.18)]",
+          )}
           aria-label="Main"
         >
-          <NavItem href="/" label="Home" active={pathname === "/"} />
+          <NavItem href="/" label="Home" active={pathname === "/"} inverted={inverted} />
 
           <div
             className="relative"
@@ -57,16 +104,22 @@ export function Navbar() {
           >
             <button
               className={cn(
-                "relative inline-flex items-center gap-1 px-3 py-2 text-sm font-medium",
-                serviceActive ? "text-white" : "text-white/65 hover:text-white",
+                "nav-link",
+                inverted
+                  ? serviceActive
+                    ? "text-[#0b1020]"
+                    : "text-[#0b1020]/60 hover:text-[#0b1020]"
+                  : serviceActive
+                    ? "text-white"
+                    : "text-white/65 hover:text-white",
               )}
               aria-expanded={servicesOpen}
               data-cursor
             >
-              Services <ChevronDown size={14} />
-              {serviceActive && (
-                <span className="absolute bottom-0.5 left-3 right-3 h-px bg-white" />
-              )}
+              <span className="relative z-[1] inline-flex items-center gap-1">
+                Services <ChevronDown size={14} />
+              </span>
+              <span className={cn("nav-link__line", serviceActive && "is-active")} />
             </button>
             <AnimatePresence>
               {servicesOpen && (
@@ -105,16 +158,22 @@ export function Navbar() {
           >
             <button
               className={cn(
-                "relative inline-flex items-center gap-1 px-3 py-2 text-sm font-medium",
-                industryActive ? "text-white" : "text-white/65 hover:text-white",
+                "nav-link",
+                inverted
+                  ? industryActive
+                    ? "text-[#0b1020]"
+                    : "text-[#0b1020]/60 hover:text-[#0b1020]"
+                  : industryActive
+                    ? "text-white"
+                    : "text-white/65 hover:text-white",
               )}
               aria-expanded={industriesOpen}
               data-cursor
             >
-              Industries <ChevronDown size={14} />
-              {industryActive && (
-                <span className="absolute bottom-0.5 left-3 right-3 h-px bg-white" />
-              )}
+              <span className="relative z-[1] inline-flex items-center gap-1">
+                Industries <ChevronDown size={14} />
+              </span>
+              <span className={cn("nav-link__line", industryActive && "is-active")} />
             </button>
             <AnimatePresence>
               {industriesOpen && (
@@ -147,12 +206,18 @@ export function Navbar() {
                 href={link.href}
                 label={link.label}
                 active={pathname === link.href}
+                inverted={inverted}
               />
             ))}
 
           <Link
             href="/contact"
-            className="ml-1 inline-flex items-center gap-1.5 rounded-full border border-white/10 px-3 py-1.5 text-xs text-white/70"
+            className={cn(
+              "ml-1 inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs",
+              inverted
+                ? "border-black/10 text-[#0b1020]/70"
+                : "border-white/10 text-white/70",
+            )}
             data-cursor
           >
             <MapPin size={12} className="text-[var(--brand)]" />
@@ -162,17 +227,31 @@ export function Navbar() {
 
         <Link
           href="/contact"
-          className="hidden items-center gap-2 text-sm font-semibold text-white lg:inline-flex"
+          className={cn(
+            "nav-link hidden text-sm font-semibold lg:inline-flex",
+            inverted ? "text-[#0b1020]" : "text-white",
+          )}
           data-cursor
         >
-          <span className="grid h-7 w-7 place-items-center rounded-full border border-white/20 text-[10px]">
-            ✦
+          <span className="relative z-[1] inline-flex items-center gap-2">
+            <span
+              className={cn(
+                "grid h-7 w-7 place-items-center rounded-full border text-[10px]",
+                inverted ? "border-black/20" : "border-white/20",
+              )}
+            >
+              ✦
+            </span>
+            Let&apos;s Talk
           </span>
-          <span className="border-b border-white pb-0.5">Let&apos;s Talk</span>
+          <span className="nav-link__line is-active" />
         </Link>
 
         <button
-          className="grid h-10 w-10 place-items-center rounded-full border border-white/15 bg-white/5 lg:hidden"
+          className={cn(
+            "grid h-10 w-10 place-items-center rounded-full border lg:hidden",
+            inverted ? "border-black/15 bg-black/5 text-[#0b1020]" : "border-white/15 bg-white/5 text-white",
+          )}
           onClick={() => setOpen((v) => !v)}
           aria-label="Toggle navigation"
           aria-expanded={open}
@@ -187,7 +266,7 @@ export function Navbar() {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="overflow-hidden border-t border-white/10 bg-[#07080d] lg:hidden"
+            className="overflow-hidden border-t border-white/10 bg-[#07080d]/95 backdrop-blur-xl lg:hidden"
           >
             <div className="container-x flex flex-col gap-1 py-4">
               <Link href="/" className="rounded-lg px-3 py-3 text-sm font-semibold">
@@ -240,22 +319,40 @@ export function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </motion.header>
+    <div className="h-[76px]" aria-hidden />
+    </>
   );
 }
 
-function NavItem({ href, label, active }: { href: string; label: string; active: boolean }) {
+function NavItem({
+  href,
+  label,
+  active,
+  inverted,
+}: {
+  href: string;
+  label: string;
+  active: boolean;
+  inverted: boolean;
+}) {
   return (
     <Link
       href={href}
       className={cn(
-        "relative px-3 py-2 text-sm font-medium transition",
-        active ? "text-white" : "text-white/65 hover:text-white",
+        "nav-link",
+        inverted
+          ? active
+            ? "text-[#0b1020]"
+            : "text-[#0b1020]/60 hover:text-[#0b1020]"
+          : active
+            ? "text-white"
+            : "text-white/65 hover:text-white",
       )}
       data-cursor
     >
-      {label}
-      {active && <span className="absolute bottom-0.5 left-3 right-3 h-px bg-white" />}
+      <span className="relative z-[1]">{label}</span>
+      <span className={cn("nav-link__line", active && "is-active")} />
     </Link>
   );
 }
