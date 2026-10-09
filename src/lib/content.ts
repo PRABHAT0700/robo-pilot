@@ -9,16 +9,21 @@ export const site = {
   whatsappHref:
     "https://wa.me/919876543211?text=Hi%20RoboPilot%2C%20I%27d%20like%20to%20discuss%20a%20project.",
   location: "India",
+  address: "705, B-Block, Metro Tower, Vijay Nagar,\nIndore, Madhya Pradesh 452010, India",
   description:
     "RoboPilot builds intelligent digital products — AI agents, machine learning, mobile apps, and practical AI consulting for growing businesses.",
+  socials: {
+    linkedin: "https://www.linkedin.com/",
+    facebook: "https://www.facebook.com/",
+    twitter: "https://x.com/",
+    instagram: "https://www.instagram.com/",
+  },
 };
 
 export const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/work", label: "Work" },
   { href: "/about", label: "About Us" },
-  { href: "/process", label: "Process" },
-  { href: "/insights", label: "Insights" },
+  { href: "/work", label: "Work" },
   { href: "/contact", label: "Contact" },
 ] as const;
 

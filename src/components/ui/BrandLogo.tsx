@@ -2,6 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
+const LOGO_SRC = "/robopilot-logo.png";
+const LOGO_W = 898;
+const LOGO_H = 202;
+
 type Props = {
   className?: string;
   size?: number;
@@ -10,48 +14,26 @@ type Props = {
   inverted?: boolean;
 };
 
-export function BrandLogo({ className, size = 40, withText = true, href = "/", inverted = false }: Props) {
+export function BrandLogo({ className, size = 44, href = "/", inverted: _inverted = false }: Props) {
+  const width = Math.round(size * (LOGO_W / LOGO_H));
+
   const mark = (
-    <span className={cn("inline-flex items-center gap-3", className)}>
-      <span
-        className="relative shrink-0 overflow-hidden rounded-[10px] ring-1 ring-white/10"
-        style={{ width: size, height: size }}
-      >
-        <Image
-          src="/robopilot-logo.jpg"
-          alt="RoboPilot"
-          width={size}
-          height={size}
-          className="h-full w-full object-cover"
-          priority
-        />
-      </span>
-      {withText && (
-        <span className="flex flex-col leading-none">
-          <span
-            className={cn(
-              "font-display text-[1.05rem] font-bold tracking-[-0.04em] sm:text-[1.2rem]",
-              inverted ? "text-[#0b1020]" : "text-white",
-            )}
-          >
-            Robo<span className="text-[var(--brand)]">Pilot</span>
-          </span>
-          <span
-            className={cn(
-              "mt-1 text-[9px] font-semibold uppercase tracking-[0.28em]",
-              inverted ? "text-[#0b1020]/45" : "text-white/40",
-            )}
-          >
-            Intelligence
-          </span>
-        </span>
-      )}
+    <span className={cn("brand-logo inline-flex items-center bg-transparent", className)}>
+      <Image
+        src={LOGO_SRC}
+        alt="RoboPilot"
+        width={width}
+        height={size}
+        className="h-full w-auto bg-transparent object-contain"
+        style={{ height: size, width: "auto", background: "transparent" }}
+        priority
+      />
     </span>
   );
 
   if (!href) return mark;
   return (
-    <Link href={href} className="inline-flex items-center" data-cursor>
+    <Link href={href} className="inline-flex items-center" data-cursor aria-label="RoboPilot home">
       {mark}
     </Link>
   );

@@ -26,11 +26,11 @@ export function AboutTeaser() {
               <div className="relative z-10 overflow-hidden rounded-3xl p-1 shadow-[0_0_50px_rgba(0,210,255,0.4)]" style={{ background: "var(--gradient-brand)" }}>
                 <div className="rounded-[22px] bg-black p-3">
                   <Image
-                    src="/robopilot-logo.jpg"
-                    alt="Robopilot"
-                    width={96}
-                    height={96}
-                    className="h-24 w-24 object-cover"
+                    src="/robopilot-logo.png"
+                    alt="RoboPilot"
+                    width={280}
+                    height={63}
+                    className="h-auto w-[220px] bg-transparent object-contain sm:w-[260px]"
                   />
                 </div>
               </div>

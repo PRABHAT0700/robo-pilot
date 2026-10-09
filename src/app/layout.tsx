@@ -28,11 +28,24 @@ export const metadata: Metadata = {
   },
   description: site.description,
   metadataBase: new URL("https://robopilot.ai"),
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/robopilot-icon.png", type: "image/png", sizes: "192x192" },
+    ],
+    apple: [{ url: "/robopilot-icon.png", sizes: "180x180" }],
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${display.variable} ${figtree.variable} h-full antialiased`}>
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css"
+        />
+      </head>
       <body className="relative flex min-h-full flex-col font-sans">
         <SmoothScroll>
           <div className="noise" aria-hidden />

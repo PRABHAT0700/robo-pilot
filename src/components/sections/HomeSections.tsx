@@ -26,15 +26,10 @@ import { CoverImage } from "@/components/ui/CoverImage";
 import { Reveal } from "@/components/effects/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
-import { Marquee } from "@/components/ui/Marquee";
 import {
-  faqs,
   industries,
-  processSteps,
   projects,
   serviceNav,
-  whyChoose,
-  techRows,
 } from "@/lib/content";
 
 const craftCards = [
@@ -241,160 +236,145 @@ export function AboutCraft() {
 
 export function OutcomeStrip() {
   return (
-    <section className="border-y border-white/10 bg-[var(--bg-elevated)] py-14">
-      <div className="container-x grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {[
-          ["Business-first", "Every engagement"],
-          ["10+", "Industries served"],
-          ["Human-in-the-loop", "By design"],
-          ["Post-launch", "Support available"],
-        ].map(([n, l]) => (
-          <div key={l} className="text-center">
-            <div className="font-display text-3xl font-bold md:text-4xl">{n}</div>
-            <div className="mt-1 text-xs font-bold uppercase tracking-[0.16em] text-[var(--muted)]">
-              {l}
+    <section className="relative z-0 bg-[#070913]">
+      <div className="container-x">
+        <div className="services-stats-grid">
+          {[
+            ["200+", "Marquee clients"],
+            ["10+", "Industries served"],
+            ["97%", "Client retention"],
+            ["6+", "Years in business"],
+          ].map(([n, l]) => (
+            <div key={l} className="service-stat">
+              <h4>{n}</h4>
+              <span>{l}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="section-divider">
+        <div className="divider-line" />
+      </div>
+    </section>
+  );
+}
+
+export { ProcessPreview } from "@/components/sections/ProcessPreview";
+
+const stackRows = [
+  {
+    dir: "marquee-left" as const,
+    items: [
+      { name: "React Js", icon: "devicon-react-original colored" },
+      { name: "Next Js", icon: "devicon-nextjs-original colored" },
+      { name: "Node Js", icon: "devicon-nodejs-plain colored" },
+      { name: "Typescript", icon: "devicon-typescript-plain colored" },
+      { name: "Javascript", icon: "devicon-javascript-plain colored" },
+      { name: "Angular Js", icon: "devicon-angularjs-plain colored" },
+      { name: "Vue Js", icon: "devicon-vuejs-plain colored" },
+    ],
+  },
+  {
+    dir: "marquee-right" as const,
+    items: [
+      { name: "Laravel", icon: "devicon-laravel-plain colored" },
+      { name: "Tailwind", icon: "devicon-tailwindcss-plain colored" },
+      { name: "Java", icon: "devicon-java-plain colored" },
+      { name: "Springboot", icon: "devicon-spring-original colored" },
+      { name: "Django", icon: "devicon-django-plain colored" },
+      { name: "Python", icon: "devicon-python-plain colored" },
+      { name: "Dot Net", icon: "devicon-dot-net-plain colored" },
+      { name: "Mongo DB", icon: "devicon-mongodb-plain colored" },
+    ],
+  },
+  {
+    dir: "marquee-left" as const,
+    items: [
+      { name: "Flutter", icon: "devicon-flutter-plain colored" },
+      { name: "React Native", icon: "devicon-react-original colored" },
+      { name: "Swift", icon: "devicon-swift-plain colored" },
+      { name: "Kotlin", icon: "devicon-kotlin-plain colored" },
+      { name: "Wordpress", icon: "devicon-wordpress-plain colored" },
+      { name: "Web Flow", icon: "devicon-html5-plain colored" },
+      { name: "Figma", icon: "devicon-figma-plain colored" },
+      { name: "Android", icon: "devicon-android-plain colored" },
+    ],
+  },
+];
+
+export function TechMarquees() {
+  return (
+    <section className="stack-section">
+      <div className="container-x">
+        <Reveal>
+          <div className="stack-header">
+            <div className="badge badge-outline">OUR STACK</div>
+            <h2 className="section-title">
+              Technologies,{" "}
+              <i>
+                <span className="gradient-text-1">we master</span>
+              </i>
+            </h2>
+            <p className="section-subtitle">
+              Battle-tested tools, modern frameworks, scalable architectures —
+              <br />
+              chosen for your project&apos;s specific needs.
+            </p>
+          </div>
+        </Reveal>
+      </div>
+
+      <div className="marquees-wrapper">
+        <div className="marquee-fade marquee-fade-left" />
+        <div className="marquee-fade marquee-fade-right" />
+        {stackRows.map((row, rowIndex) => (
+          <div key={`${row.dir}-${rowIndex}`} className={`marquee ${row.dir}`}>
+            <div className="marquee-content">
+              {[0, 1].map((copy) =>
+                row.items.map((item) => (
+                  <div key={`${item.name}-${copy}`} className="tech-pill" data-cursor>
+                    <i className={item.icon} aria-hidden />
+                    {item.name}
+                  </div>
+                )),
+              )}
             </div>
           </div>
         ))}
       </div>
-    </section>
-  );
-}
 
-export function ProcessPreview() {
-  return (
-    <section className="py-20 md:py-28">
-      <div className="container-x">
-        <Reveal>
-          <SectionHeading
-            eyebrow="Our process"
-            title="From brief to delivery, without surprise"
-            description="A transparent, iterative process so you always know where the work stands."
-          />
-        </Reveal>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-          {processSteps.map((s, i) => (
-            <Reveal key={s.step} delay={i * 0.05}>
-              <article className="h-full rounded-2xl border border-white/10 bg-[var(--bg-elevated)] p-5">
-                <p className="text-xs font-bold uppercase tracking-[0.16em] text-[var(--brand)]">
-                  Step {s.step}
-                </p>
-                <h3 className="mt-3 font-display text-xl font-bold">{s.subtitle}</h3>
-                <p className="mt-2 text-sm text-[var(--muted)]">{s.description}</p>
-              </article>
-            </Reveal>
-          ))}
-        </div>
+      <div className="text-center" style={{ marginTop: 60, marginBottom: 60 }}>
+        <Link href="/services" className="btn btn-outline" data-cursor>
+          SEE ALL TECHNOLOGIES
+          <span className="icon-arrow">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden
+            >
+              <line x1="7" y1="17" x2="17" y2="7" />
+              <polyline points="7 7 17 7 17 17" />
+            </svg>
+          </span>
+        </Link>
+      </div>
+
+      <div className="section-divider">
+        <div className="divider-line" />
       </div>
     </section>
   );
 }
 
-export function TechMarquees() {
-  const chip = (item: { name: string; slug: string; color: string }) => (
-    <span
-      key={`${item.slug}-${item.name}`}
-      className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-[#11141c] px-4 py-2 text-sm font-semibold text-white/85"
-    >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={`https://cdn.simpleicons.org/${item.slug}/${item.color}`}
-        alt=""
-        width={18}
-        height={18}
-        className="h-[18px] w-[18px] object-contain"
-      />
-      {item.name}
-    </span>
-  );
-  return (
-    <section className="py-16">
-      <div className="container-x mb-10">
-        <Reveal>
-          <SectionHeading
-            eyebrow="Our stack"
-            title="Technologies, we master"
-            description="Battle-tested tools, modern frameworks, scalable architectures — chosen for your project's specific needs."
-          />
-        </Reveal>
-      </div>
-      <div className="relative space-y-4">
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-[#05060a] to-transparent md:w-40" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-[#05060a] to-transparent md:w-40" />
-        {techRows.map((row, i) => (
-          <Marquee key={i} reverse={i === 1} duration={28 + i * 4}>
-            {row.map(chip)}
-          </Marquee>
-        ))}
-      </div>
-      <div className="mt-10 flex justify-center">
-        <Button href="/services" variant="secondary">
-          See all technologies
-        </Button>
-      </div>
-    </section>
-  );
-}
+export { IndustriesPreview } from "@/components/sections/IndustriesPreview";
 
-export function IndustriesPreview() {
-  return (
-    <section className="py-20">
-      <div className="container-x">
-        <Reveal>
-          <SectionHeading
-            eyebrow="Industries we serve"
-            title="Ten verticals, one playbook"
-            description="Patterns and integration playbooks that adapt to different operating contexts."
-          />
-        </Reveal>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-          {industries.map((ind, i) => (
-            <Reveal key={ind.slug} delay={i * 0.03}>
-              <Link
-                href={`/industries/${ind.slug}`}
-                className="block h-full rounded-2xl border border-white/10 bg-[var(--bg-elevated)] p-4 transition hover:border-[var(--brand)]/40"
-                data-cursor
-              >
-                <div className="text-xs font-bold text-[var(--brand)]">
-                  {String(i + 1).padStart(2, "0")}
-                </div>
-                <h3 className="mt-2 font-display text-base font-bold">{ind.title}</h3>
-                <p className="mt-2 text-xs text-[var(--muted)]">{ind.description}</p>
-              </Link>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-export function WhyChoose() {
-  return (
-    <section className="py-20">
-      <div className="container-x">
-        <Reveal>
-          <SectionHeading
-            eyebrow="Why choose us"
-            title="The reasons teams keep coming back"
-            description="Clarity, delivery and systems that still make sense after launch."
-          />
-        </Reveal>
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {whyChoose.map((w, i) => (
-            <Reveal key={w.n} delay={i * 0.04}>
-              <article className="h-full rounded-2xl border border-white/10 p-6">
-                <div className="text-sm font-bold text-[var(--brand)]">{w.n}</div>
-                <h3 className="mt-2 font-display text-xl font-bold">{w.title}</h3>
-                <p className="mt-2 text-sm text-[var(--muted)]">{w.description}</p>
-              </article>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
+export { WhyChoose } from "@/components/sections/WhyChoose";
 
 export function WorkPreview() {
   return (
@@ -439,36 +419,7 @@ export function WorkPreview() {
   );
 }
 
-export function FaqSection() {
-  return (
-    <section className="py-20">
-      <div className="container-x">
-        <Reveal>
-          <SectionHeading
-            eyebrow="FAQ"
-            title="Frequently asked questions"
-            description="Everything you need to know before starting a project."
-          />
-        </Reveal>
-        <div className="mx-auto grid max-w-5xl gap-x-10 md:grid-cols-2">
-          {faqs.map((f, i) => (
-            <Reveal key={f.q} delay={i * 0.03}>
-              <details className="group border-b border-white/10 py-4">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold marker:content-none">
-                  {f.q}
-                  <span className="text-xl text-[var(--brand)] transition group-open:rotate-45">
-                    +
-                  </span>
-                </summary>
-                <p className="mt-3 text-sm text-[var(--muted)]">{f.a}</p>
-              </details>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
+export { FaqSection } from "@/components/sections/FaqSection";
 
 export function CtaBand() {
   return (

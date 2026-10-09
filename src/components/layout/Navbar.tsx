@@ -84,7 +84,7 @@ export function Navbar() {
       className="fixed inset-x-0 top-0 z-50 origin-top bg-transparent"
     >
       <div className="container-x flex h-[76px] items-center justify-between gap-4">
-        <BrandLogo size={38} inverted={inverted} />
+        <BrandLogo size={44} inverted={inverted} />
 
         <nav
           className={cn(

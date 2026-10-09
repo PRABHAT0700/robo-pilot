@@ -104,7 +104,8 @@ export const pillars = [
     title: "AI Agent Building",
     copy: "Production-ready agents that connect to your systems, follow guardrails and execute real workflows — not demo chat windows.",
     cta: "Explore AI Agent Building",
-    image: IMG.robot,
+    image:
+      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1600&q=80",
   },
   {
     slug: "ml-model-development",
@@ -112,7 +113,8 @@ export const pillars = [
     title: "ML & Data Analytics",
     copy: "Models, pipelines and dashboards that turn operational data into decisions you can inspect and improve.",
     cta: "Explore ML & Analytics",
-    image: IMG.analytics,
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80",
   },
   {
     slug: "mobile-app-development",
@@ -120,7 +122,8 @@ export const pillars = [
     title: "Mobile App Development",
     copy: "iOS, Android and cross-platform products with architecture that can grow from MVP to production scale.",
     cta: "Explore Mobile Apps",
-    image: IMG.mobile,
+    image:
+      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1600&q=80",
   },
   {
     slug: "ai-consulting",
@@ -128,6 +131,7 @@ export const pillars = [
     title: "AI Consulting",
     copy: "Find the highest-value opportunities, pick the architecture, and leave with a roadmap your team can actually execute.",
     cta: "Explore AI Consulting",
-    image: IMG.team,
+    image:
+      "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=1600&q=80",
   },
 ] as const;

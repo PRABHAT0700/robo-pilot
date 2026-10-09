@@ -17,6 +17,8 @@ const nextConfig: NextConfig = {
       { source: "/services/cloud-devops", destination: "/services/ml-model-development", permanent: true },
       { source: "/services/erp-integration", destination: "/services/ai-agent-building", permanent: true },
       { source: "/services/data-consulting", destination: "/services/ml-model-development", permanent: true },
+      { source: "/process", destination: "/", permanent: true },
+      { source: "/insights", destination: "/", permanent: true },
     ];
   },
 };

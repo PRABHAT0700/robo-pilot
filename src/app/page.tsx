@@ -8,11 +8,9 @@ import {
   TechMarquees,
   IndustriesPreview,
   WhyChoose,
-  WorkPreview,
   FaqSection,
-  CtaBand,
 } from "@/components/sections/HomeSections";
-import { LeadForm } from "@/components/sections/LeadForm";
+import { ContactSection } from "@/components/sections/ContactSection";
 
 export default function HomePage() {
   return (
@@ -25,11 +23,9 @@ export default function HomePage() {
       <ProcessPreview />
       <TechMarquees />
       <IndustriesPreview />
-      <WorkPreview />
       <WhyChoose />
       <FaqSection />
-      <LeadForm />
-      <CtaBand />
+      <ContactSection />
     </>
   );
 }
