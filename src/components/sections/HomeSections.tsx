@@ -21,6 +21,7 @@ import {
   UtensilsCrossed,
   Wallet,
 } from "lucide-react";
+import { type ReactNode } from "react";
 import { motion } from "framer-motion";
 import { CoverImage } from "@/components/ui/CoverImage";
 import { Reveal } from "@/components/effects/Reveal";
@@ -167,15 +168,32 @@ export function TrustedStrip() {
   );
 }
 
-export function AboutCraft() {
+type AboutCraftProps = {
+  overlap?: boolean;
+  heading?: ReactNode;
+  body?: string;
+  ctaHref?: string;
+  ctaLabel?: string;
+  ctaClassName?: string;
+};
+
+export function AboutCraft({
+  overlap = true,
+  heading,
+  body,
+  ctaHref = "/about",
+  ctaLabel = "Learn more about us",
+  ctaClassName,
+}: AboutCraftProps) {
   return (
     <section
-      className="relative z-[1] -mt-10 text-white"
+      id="who-we-are"
+      className={`relative z-[1] text-white${overlap ? " -mt-10" : ""}`}
       style={{
         background: "radial-gradient(circle at top left, #1a1c35, #070913)",
         padding: "120px 0",
-        borderTopLeftRadius: 48,
-        borderTopRightRadius: 48,
+        borderTopLeftRadius: overlap ? 48 : 0,
+        borderTopRightRadius: overlap ? 48 : 0,
       }}
     >
       <div className="container-x grid items-center gap-16 lg:grid-cols-2 lg:gap-8">
@@ -184,14 +202,17 @@ export function AboutCraft() {
             Who we are
           </p>
           <h2 className="max-w-[580px] font-display text-[36px] font-extrabold leading-[1.08] tracking-[-0.045em] md:text-[48px] lg:text-[54px]">
-            An AI Partner built on
-            <br />
-            Craft & <span className="italic-accent">Conviction</span>
+            {heading ?? (
+              <>
+                An AI Partner built on
+                <br />
+                Craft & <span className="italic-accent">Conviction</span>
+              </>
+            )}
           </h2>
           <p className="mt-6 max-w-[470px] text-[15px] leading-[1.8] text-[#9aa3b8]">
-            RoboPilot helps organizations modernize operations, build digital products and put AI
-            into workflows that people actually use. We combine business understanding with
-            practical engineering — not slideware.
+            {body ??
+              "RoboPilot helps organizations modernize operations, build digital products and put AI into workflows that people actually use. We combine business understanding with practical engineering — not slideware."}
           </p>
           <ul className="mt-8 space-y-3.5 text-[15px] font-medium">
             {["Purpose-Driven Delivery", "Velocity Without Compromise", "True Partnership Model"].map(
@@ -207,11 +228,14 @@ export function AboutCraft() {
           </ul>
           <div className="mt-10">
             <Link
-              href="/about"
+              href={ctaHref}
               data-cursor
-              className="inline-flex items-center gap-2 rounded-full border border-white/25 px-7 py-[13px] text-[12px] font-semibold uppercase tracking-[0.16em] text-white transition hover:border-white hover:bg-white/5"
+              className={
+                ctaClassName ??
+                "inline-flex items-center gap-2 rounded-full border border-white/25 px-7 py-[13px] text-[12px] font-semibold uppercase tracking-[0.16em] text-white transition hover:border-white hover:bg-white/5"
+              }
             >
-              Learn more about us <ArrowUpRight size={14} />
+              {ctaLabel} <ArrowUpRight size={14} />
             </Link>
           </div>
         </Reveal>

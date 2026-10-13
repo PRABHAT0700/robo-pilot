@@ -4,7 +4,11 @@ import { useState, type FormEvent } from "react";
 import { Reveal } from "@/components/effects/Reveal";
 import { site } from "@/lib/content";
 
-export function ContactSection() {
+type ContactSectionProps = {
+  showHeader?: boolean;
+};
+
+export function ContactSection({ showHeader = true }: ContactSectionProps) {
   const [status, setStatus] = useState<"idle" | "sending" | "ok" | "error">("idle");
   const [note, setNote] = useState("");
 
@@ -43,17 +47,19 @@ export function ContactSection() {
   }
 
   return (
-    <section className="contact-section" id="contact">
+    <section className={`contact-section${showHeader ? "" : " contact-section--page"}`} id="contact">
       <div className="container-x">
-        <div className="contact-header">
-          <Reveal>
-            <h2 className="contact-title">
-              Want to <span className="italic gradient-text-3">connect</span>
-              <br />
-              with us?
-            </h2>
-          </Reveal>
-        </div>
+        {showHeader ? (
+          <div className="contact-header">
+            <Reveal>
+              <h2 className="contact-title">
+                Want to <span className="italic gradient-text-3">connect</span>
+                <br />
+                with us?
+              </h2>
+            </Reveal>
+          </div>
+        ) : null}
 
         <div className="contact-grid">
           <div className="contact-form-box">

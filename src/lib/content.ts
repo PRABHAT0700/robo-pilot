@@ -22,8 +22,8 @@ export const site = {
 
 export const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About Us" },
   { href: "/work", label: "Work" },
+  { href: "/about", label: "About Us" },
   { href: "/contact", label: "Contact" },
 ] as const;
 
@@ -186,6 +186,87 @@ export const industries = [
     description:
       "People operations platforms covering payroll-adjacent workflows, attendance and delivery.",
     focus: ["HR workflows", "Internal tools", "Integrations", "Self-serve portals"],
+  },
+] as const;
+
+export const workCases = [
+  {
+    slug: "fintech",
+    title: "FinTech",
+    meta: "Wallets · Onboarding · Risk",
+    summary: "Product engineering for wallets, onboarding, risk signals and data-heavy financial journeys.",
+    tone: "linear-gradient(160deg, #163a5c 0%, #0b0d19 72%)",
+    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80",
+    stats: [
+      { value: "4.1", suffix: "x", label: "Faster onboarding" },
+      { value: "99", suffix: "%", label: "Uptime" },
+      { value: "10", suffix: "wk", label: "To launch" },
+    ],
+  },
+  {
+    slug: "ecommerce",
+    title: "E-commerce",
+    meta: "Storefronts · Checkout · Scale",
+    summary: "Headless storefronts, checkout and inventory systems that stay fast when traffic spikes.",
+    tone: "linear-gradient(160deg, #3b1d12 0%, #0b0d19 72%)",
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=80",
+    stats: [
+      { value: "38", suffix: "%", label: "Conversion lift" },
+      { value: "96", suffix: "%", label: "Uptime" },
+      { value: "9", suffix: "wk", label: "To launch" },
+    ],
+  },
+  {
+    slug: "healthcare",
+    title: "Pharma & Healthcare",
+    meta: "Portals · Workflows · Compliance",
+    summary: "Patient intake, ops workflows and secure data exchange for clinical and pharma teams.",
+    tone: "linear-gradient(160deg, #12352f 0%, #0b0d19 72%)",
+    image: "https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=1200&q=80",
+    stats: [
+      { value: "3.2", suffix: "x", label: "Faster intake" },
+      { value: "98", suffix: "%", label: "Uptime" },
+      { value: "12", suffix: "wk", label: "To launch" },
+    ],
+  },
+  {
+    slug: "logistics",
+    title: "Logistics",
+    meta: "Tracking · Dispatch · Visibility",
+    summary: "Tracking, dispatch and operations dashboards built around real-time movement of work.",
+    tone: "linear-gradient(160deg, #1b2a4a 0%, #0b0d19 72%)",
+    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80",
+    stats: [
+      { value: "2.4", suffix: "x", label: "Ops visibility" },
+      { value: "97", suffix: "%", label: "Uptime" },
+      { value: "11", suffix: "wk", label: "To launch" },
+    ],
+  },
+  {
+    slug: "edtech",
+    title: "EdTech",
+    meta: "Learning · Portals · Reporting",
+    summary: "Learning platforms, admin systems and content workflows that help teaching teams scale.",
+    tone: "linear-gradient(160deg, #2a1848 0%, #0b0d19 72%)",
+    image: "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1200&q=80",
+    stats: [
+      { value: "5.0", suffix: "x", label: "Course throughput" },
+      { value: "99", suffix: "%", label: "Uptime" },
+      { value: "8", suffix: "wk", label: "To launch" },
+    ],
+  },
+  {
+    slug: "manufacturing",
+    title: "Manufacturing",
+    meta: "Shop-floor · ERP · Quality",
+    summary: "Connected systems, production workflows and reporting for industrial operations teams.",
+    tone: "linear-gradient(160deg, #1f2430 0%, #0b0d19 72%)",
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80",
+    stats: [
+      { value: "31", suffix: "%", label: "Less downtime" },
+      { value: "98", suffix: "%", label: "Uptime" },
+      { value: "14", suffix: "wk", label: "To launch" },
+    ],
   },
 ] as const;
 

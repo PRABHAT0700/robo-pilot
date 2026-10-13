@@ -8,8 +8,8 @@ export function CustomCursor() {
   const [hovering, setHovering] = useState(false);
   const x = useMotionValue(-100);
   const y = useMotionValue(-100);
-  const ringX = useSpring(x, { stiffness: 280, damping: 26, mass: 0.35 });
-  const ringY = useSpring(y, { stiffness: 280, damping: 26, mass: 0.35 });
+  const ringX = useSpring(x, { stiffness: 420, damping: 32, mass: 0.26 });
+  const ringY = useSpring(y, { stiffness: 420, damping: 32, mass: 0.26 });
 
   useEffect(() => {
     const fine = window.matchMedia("(pointer: fine)").matches;
@@ -51,7 +51,7 @@ export function CustomCursor() {
         height: hovering ? 58 : 12,
         scale: hovering ? 1.08 : 1,
       }}
-      transition={{ type: "spring", stiffness: 260, damping: 22 }}
+      transition={{ type: "spring", stiffness: 380, damping: 28 }}
       aria-hidden
     />
   );
