@@ -3,8 +3,8 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 const LOGO_SRC = "/robopilot-logo.png";
-const LOGO_W = 898;
-const LOGO_H = 202;
+const LOGO_W = 913;
+const LOGO_H = 210;
 
 type Props = {
   className?: string;
@@ -21,7 +21,7 @@ export function BrandLogo({ className, size = 44, href = "/", inverted: _inverte
     <span className={cn("brand-logo inline-flex items-center bg-transparent", className)}>
       <Image
         src={LOGO_SRC}
-        alt="RoboPilot"
+        alt="RoboPylot"
         width={width}
         height={size}
         className="h-full w-auto bg-transparent object-contain"
@@ -33,7 +33,7 @@ export function BrandLogo({ className, size = 44, href = "/", inverted: _inverte
 
   if (!href) return mark;
   return (
-    <Link href={href} className="inline-flex items-center" data-cursor aria-label="RoboPilot home">
+    <Link href={href} className="inline-flex items-center" data-cursor aria-label="RoboPylot home">
       {mark}
     </Link>
   );

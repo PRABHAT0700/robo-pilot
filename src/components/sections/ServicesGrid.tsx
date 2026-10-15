@@ -10,27 +10,27 @@ const extras = [
   {
     icon: Bot,
     image: IMG.robot,
-    blurb: "Production agents that connect to your tools, follow guardrails and escalate when a human is needed.",
+    blurb: "Agents that use your CRM, helpdesk or data, follow rules you set, and pass the task to a person when they should.",
   },
   {
     icon: Sparkles,
     image: IMG.cyber,
-    blurb: "Try practical agents for support, sales, documents and reporting — then graduate to a custom build.",
+    blurb: "Ready-made agents for support, sales, documents and reporting. Try one before you pay for a custom build.",
   },
   {
     icon: LineChart,
     image: IMG.analytics,
-    blurb: "Models, pipelines and dashboards that turn operational data into decisions your team can run.",
+    blurb: "Forecasts, models and dashboards for a specific question — with the numbers still visible to your team.",
   },
   {
     icon: Smartphone,
     image: IMG.mobile,
-    blurb: "iOS, Android and cross-platform apps from MVP through production, with secure APIs behind them.",
+    blurb: "iOS, Android and cross-platform apps. A working first version first, then changes based on how people use it.",
   },
   {
     icon: Compass,
-    image: IMG.people,
-    blurb: "Find the highest-value AI bets, sequence the roadmap and implement with the same engineering team.",
+    image: IMG.consulting,
+    blurb: "A written, ranked plan for where AI saves time or money, with costs, so you know what to build first.",
   },
 ] as const;
 
@@ -44,12 +44,12 @@ export function ServicesGrid({ limit }: { limit?: number }) {
           <div className="all-works-header">
             <div className="badge badge-outline">WHAT WE DO</div>
             <h2 className="section-title">
-              Five service lines.{" "}
-              <span className="gradient-text-3 italic">One partner.</span>
+              What we actually{" "}
+              <span className="gradient-text-3 italic">build.</span>
             </h2>
             <p className="values-subtitle" style={{ marginTop: 8, textAlign: "left", marginLeft: 0 }}>
-              From AI agents and analytics to mobile products and consulting — designed as a
-              connected system.
+              Pick the line that matches the problem. The other four stay available if the project
+              needs them.
             </p>
           </div>
         </Reveal>

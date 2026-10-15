@@ -3,7 +3,7 @@
 import { useState, FormEvent } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
-import { serviceNav } from "@/lib/content";
+import { serviceNav, site } from "@/lib/content";
 
 export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "ok" | "error">("idle");
@@ -28,7 +28,7 @@ export function ContactForm() {
       form.reset();
     } catch {
       setStatus("error");
-      setNote("Something went wrong. Please email hello@robopilot.ai directly.");
+      setNote(`Something went wrong. Please email ${site.email} directly.`);
     }
   }
 

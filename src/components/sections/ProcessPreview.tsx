@@ -1,14 +1,15 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 import { useLenis } from "lenis/react";
 import { Reveal } from "@/components/effects/Reveal";
 
 const steps = [
   {
     label: "STEP 01",
-    title: "Discover",
-    desc: "Goals, constraints, and landscape — understood before code is written.",
+    title: "Understand",
+    desc: "How work runs today, where time and money go — agreed in writing before anything else.",
     icon: (
       <>
         <circle cx="12" cy="12" r="10" />
@@ -19,7 +20,7 @@ const steps = [
   {
     label: "STEP 02",
     title: "Design",
-    desc: "High-fidelity prototypes reviewed before a single line of code is written.",
+    desc: "Layout, flow and architecture you can change while changes are still cheap.",
     icon: (
       <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
     ),
@@ -27,7 +28,7 @@ const steps = [
   {
     label: "STEP 03",
     title: "Build",
-    desc: "Modern stack, tested code. You see progress every single week.",
+    desc: "Weekly cycles. Each week you get a working version to try and steer.",
     icon: (
       <>
         <path d="m15 12-8.5 8.5c-.83.83-2.17.83-3 0 0 0 0 0 0 0a2.12 2.12 0 0 1 0-3L12 9" />
@@ -39,7 +40,7 @@ const steps = [
   {
     label: "STEP 04",
     title: "Test",
-    desc: "QA, performance & accessibility sweeps.",
+    desc: "Functionality, performance, security and accessibility — fixed before you see the final version.",
     icon: (
       <>
         <path d="m8 2 1.88 1.88" />
@@ -58,8 +59,8 @@ const steps = [
   },
   {
     label: "STEP 05",
-    title: "Launch & Scale",
-    desc: "Ship, monitor, iterate. We don't disappear.",
+    title: "Launch and support",
+    desc: "Live product, handover documents and a support plan — we don’t leave you on your own.",
     icon: (
       <>
         <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
@@ -126,17 +127,17 @@ export function ProcessPreview() {
           <div className="process-header">
             <div className="badge badge-outline">OUR PROCESS</div>
             <h2 className="section-title">
-              From brief to delivery,
+              Five stages, and you know
               <br />
-              without{" "}
+              what happens at{" "}
               <i>
-                <span className="gradient-text-1">surprise</span>
+                <span className="gradient-text-1">each one</span>
               </i>
             </h2>
             <p className="section-subtitle">
-              A transparent, iterative process so you always know exactly where
+              Every project follows the same path. You see what we’re doing, what it costs
               <br />
-              your project stands.
+              and what you receive before we move to the next stage.
             </p>
           </div>
         </Reveal>
@@ -172,6 +173,29 @@ export function ProcessPreview() {
             ))}
           </div>
         </div>
+
+        <div className="text-center" style={{ marginTop: 60 }}>
+          <Link href="/contact" className="btn btn-outline" data-cursor>
+            START WITH A FREE CALL
+            <span className="icon-arrow">
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden
+              >
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="7 7 17 7 17 17" />
+              </svg>
+            </span>
+          </Link>
+        </div>
+
        <div className="pt-20">
         <div className="section-divider">
             <div className="divider-line" />

@@ -1,23 +1,20 @@
 export const site = {
-  name: "RoboPilot",
-  tagline: "Build. Scale. Grow. With the Right Technology Partner.",
-  email: "hello@robopilot.ai",
-  salesEmail: "sales@robopilot.ai",
-  phone: "+91 98765 43210",
-  phoneTel: "tel:+919876543210",
-  whatsapp: "+91 98765 43211",
+  name: "RoboPylot",
+  tagline: "Build. Scale. Grow. With a technology partner that starts with your problem.",
+  email: "info@robopylot.com",
+  salesEmail: "info@robopylot.com",
+  phone: "+91 75095 55916",
+  phoneTel: "tel:+917509555916",
+  phoneAlt: "+91 6265856938",
+  phoneAltTel: "tel:+916265856938",
+  whatsapp: "+91 75095 55916",
   whatsappHref:
-    "https://wa.me/919876543211?text=Hi%20RoboPilot%2C%20I%27d%20like%20to%20discuss%20a%20project.",
+    "https://wa.me/917509555916?text=Hi%20RoboPylot%2C%20I%27d%20like%20to%20discuss%20a%20project.",
   location: "India",
-  address: "705, B-Block, Metro Tower, Vijay Nagar,\nIndore, Madhya Pradesh 452010, India",
+  address:
+    "105, AB Rd, Sector C, Slice 5, Part II, Shalimar Township, Indore, Madhya Pradesh 452010",
   description:
-    "RoboPilot builds intelligent digital products — AI agents, machine learning, mobile apps, and practical AI consulting for growing businesses.",
-  socials: {
-    linkedin: "https://www.linkedin.com/",
-    facebook: "https://www.facebook.com/",
-    twitter: "https://x.com/",
-    instagram: "https://www.instagram.com/",
-  },
+    "RoboPylot builds AI agents, machine learning, mobile apps and AI consulting for growing businesses in India and the UK.",
 };
 
 export const navLinks = [
@@ -31,31 +28,41 @@ export const serviceNav = [
   {
     slug: "ai-agent-building",
     title: "AI Agent Building",
-    short: "Enterprise AI-agent engineering and workflow automation",
+    short: "Custom agents that handle real work in your existing tools",
+    homeBlurb:
+      "Custom AI agents that answer customers, handle routine requests and complete multi-step work in your existing tools. Each agent has clear rules and a log of every action.",
     cta: "Build Your AI Agent",
   },
   {
     slug: "free-ai-agents",
     title: "Free AI Agents",
-    short: "Free agent marketplace and discovery experience",
+    short: "Ready-made agents you can try before a custom build",
+    homeBlurb:
+      "Try ready-made AI agents for common tasks like lead follow-up and support triage. No cost to start. When you need something built for your business, we’ll help you move to a custom version.",
     cta: "Explore Free Agents",
   },
   {
     slug: "ml-model-development",
-    title: "ML Model Development & Data Analytics",
-    short: "ML engineering, analytics and BI solutions",
+    title: "ML Model Development and Data Analytics",
+    short: "Forecasts, dashboards and pipelines for specific questions",
+    homeBlurb:
+      "Forecasts, dashboards and data pipelines that answer specific questions: which customers may leave, what stock to order, which orders are losing money.",
     cta: "Discuss Your Data Challenge",
   },
   {
     slug: "mobile-app-development",
     title: "Mobile App Development",
-    short: "Native and cross-platform mobile product engineering",
+    short: "iOS, Android and cross-platform apps from a working first version",
+    homeBlurb:
+      "iOS, Android and cross-platform apps. We release a working first version quickly, then improve it based on how real users behave.",
     cta: "Start Your Mobile Project",
   },
   {
     slug: "ai-consulting",
     title: "AI Consulting",
-    short: "AI strategy, opportunity discovery and implementation roadmap",
+    short: "A ranked plan for where AI will save time or money",
+    homeBlurb:
+      "We review how your business runs, find where AI will save time or money, and give you a ranked plan with costs, so you know what to build first.",
     cta: "Book an AI Consultation",
   },
 ] as const;
@@ -63,14 +70,14 @@ export const serviceNav = [
 export const services = serviceNav;
 
 export const serviceMarquee = [
-  "AI Agent Building",
   "Free AI Agents",
-  "ML & Data Analytics",
+  "ML and Data Analytics",
   "Mobile App Development",
   "AI Consulting",
   "Workflow Automation",
   "RAG Systems",
   "Product Engineering",
+  "AI Agent Building",
 ];
 
 export const techRows = [
@@ -111,81 +118,151 @@ export const industries = [
     slug: "ecommerce",
     icon: "ShoppingBag",
     title: "E-commerce",
+    chip: "E-commerce",
+    hover: "Checkout, payments and inventory that hold up during sales.",
     description:
-      "Storefronts, checkout, inventory sync and commerce platforms that stay fast when traffic spikes.",
-    focus: ["Checkout & payments", "Inventory sync", "Personalization", "Mobile commerce"],
+      "We build storefronts, checkout, inventory sync and shopping apps so sales traffic does not break payments or stock.",
+    focus: [
+      { title: "Checkout and payments", copy: "Card, UPI and wallet flows that stay up during sales, with retries and clear failure states." },
+      { title: "Inventory sync", copy: "Warehouse, marketplace and store stock in one place so you do not oversell." },
+      { title: "Support agents", copy: "AI agents that answer order, shipping and return questions from your actual catalogue and policies." },
+      { title: "Mobile commerce", copy: "iOS and Android shopping apps that reuse the same catalogue, cart and payment APIs." },
+    ],
   },
   {
     slug: "finance",
     icon: "Landmark",
     title: "Finance",
+    chip: "Finance",
+    hover: "Internal finance systems with audit trails and controlled access.",
     description:
-      "Secure platforms, reporting systems and automation for regulated financial operations.",
-    focus: ["Process automation", "Reporting", "Secure integrations", "Audit trails"],
+      "For banks, NBFCs and finance teams: reporting, approvals and internal tools with access control and an audit log on every change.",
+    focus: [
+      { title: "Approvals and ops", copy: "Loan, payout and exception queues with a named owner and a recorded decision." },
+      { title: "Reporting", copy: "Dashboards and extracts your finance team can check against source systems before they act." },
+      { title: "Secure integrations", copy: "Connections to core banking, GST, payment gateways and ledgers without exposing extra data." },
+      { title: "Audit trails", copy: "Who changed what, when, and from which system — kept for review, not rebuilt after the fact." },
+    ],
   },
   {
     slug: "fintech",
     icon: "Wallet",
     title: "FinTech",
+    chip: "FinTech",
+    hover: "Wallets, payment flows and onboarding for product teams.",
     description:
-      "Product engineering for wallets, onboarding, risk signals and data-heavy financial journeys.",
-    focus: ["Onboarding flows", "Risk signals", "API platforms", "Analytics"],
+      "For fintech product teams: onboarding, wallets, payment APIs and risk signals that stay stable as volume grows.",
+    focus: [
+      { title: "Onboarding", copy: "KYC, account opening and first-transaction journeys with clear drop-off points you can fix." },
+      { title: "Risk signals", copy: "Rules and models that flag unusual activity and send the case to a person, with a reason attached." },
+      { title: "Payment APIs", copy: "Ledgers, webhooks and reconciliation so product, ops and finance see the same transaction state." },
+      { title: "Product analytics", copy: "Funnel, conversion and failure metrics wired into the same events your app already emits." },
+    ],
   },
   {
     slug: "healthcare",
     icon: "HeartPulse",
     title: "Healthcare",
+    chip: "Healthcare",
+    hover: "Scheduling, records and staff tools that cut admin time.",
     description:
-      "Digital workflows, data management and software that support clinical and operational teams.",
-    focus: ["Ops workflows", "Secure data exchange", "Automation", "Compliance-aware architecture"],
+      "Clinics and hospitals: scheduling, records and staff tools that cut admin time. Access is limited by role; we do not claim medical-device or HIPAA certification.",
+    focus: [
+      { title: "Scheduling and intake", copy: "Appointments, reminders and intake forms so front-desk staff are not retyping the same details." },
+      { title: "Staff tools", copy: "Internal apps for rostering, billing follow-up and case notes that sit next to the systems you already use." },
+      { title: "Automation", copy: "Agents for appointment FAQs, document sorting and reminder follow-ups — with a person in the loop for clinical decisions." },
+      { title: "Access control", copy: "Role-based access, audit logs and data minimisation. Clinical judgement stays with licensed staff." },
+    ],
   },
   {
     slug: "edtech",
     icon: "GraduationCap",
     title: "Education (EdTech)",
+    chip: "Education (EdTech)",
+    hover: "Learning platforms that stay stable at enrolment and exam time.",
     description:
-      "Learning platforms, portals and automation that help teaching and operations scale.",
-    focus: ["Learning portals", "Admin systems", "Content workflows", "Reporting"],
+      "Course platforms, student records and admin tools that stay usable when enrolment or exams spike.",
+    focus: [
+      { title: "Learner portals", copy: "Courses, assignments and progress in one place for students and teachers." },
+      { title: "Admin systems", copy: "Enrolment, fees, batches and staff access without a spreadsheet per campus." },
+      { title: "Content workflows", copy: "Upload, review and publish lessons with a record of who approved what." },
+      { title: "Progress reporting", copy: "Completion, attendance and assessment views that teachers can export." },
+    ],
   },
   {
     slug: "logistics",
     icon: "Truck",
-    title: "Logistics & Transportation",
+    title: "Logistics and Transportation",
+    chip: "Logistics and Transportation",
+    hover: "Live fleet tracking, route planning and dispatch.",
     description:
-      "Visibility, dispatch and operations software built around real-time movement of work.",
-    focus: ["Tracking", "Dispatch", "Integrations", "Ops dashboards"],
+      "Fleet tracking, dispatch and partner integrations so ops can see where a vehicle is and what it is carrying.",
+    focus: [
+      { title: "Live tracking", copy: "Vehicle and shipment status on a map, fed from GPS and partner APIs you already pay for." },
+      { title: "Dispatch", copy: "Assign trips, handle exceptions and keep a log of who changed a route and why." },
+      { title: "Partner integrations", copy: "Connect courier, warehouse and billing systems so status is not copied by hand." },
+      { title: "Ops dashboards", copy: "On-time rate, delays and open exceptions in one view for the shift lead." },
+    ],
   },
   {
     slug: "real-estate",
     icon: "Building2",
     title: "Real Estate",
+    chip: "Real Estate",
+    hover: "Listings, leads and follow-ups in one place.",
     description:
-      "Listing, CRM and operations tools that simplify buying, selling and managing property.",
-    focus: ["Portals", "CRM", "Listings", "Client apps"],
+      "Property portals, listing tools and CRM so leads, viewings and follow-ups are not split across chat apps.",
+    focus: [
+      { title: "Listing portals", copy: "Search, filters and enquiry forms that write straight into the CRM, not a mailbox." },
+      { title: "CRM and follow-up", copy: "Lead status, viewing slots and next actions. Agents can use an AI helper to draft follow-ups they still send themselves." },
+      { title: "Listing ops", copy: "Photos, availability and price updates with a history of changes." },
+      { title: "Client apps", copy: "Buyer or tenant apps for saved searches, documents and visit schedules." },
+    ],
   },
   {
     slug: "food",
     icon: "UtensilsCrossed",
-    title: "Food & Restaurant",
+    title: "Food and Restaurant",
+    chip: "Food and Restaurant",
+    hover: "Ordering, kitchen display and delivery tracking.",
     description:
-      "Ordering, kitchen and delivery workflows for restaurants, brands and cloud kitchens.",
-    focus: ["Ordering", "Kitchen ops", "Delivery tracking", "Loyalty"],
+      "Ordering, kitchen display and delivery tracking for restaurants and cloud kitchens that break down at peak hours.",
+    focus: [
+      { title: "Ordering", copy: "Dine-in, takeaway and aggregator orders into one ticket list, with stock deducted as you go." },
+      { title: "Kitchen display", copy: "Tickets routed by station so the pass is not a pile of printed slips." },
+      { title: "Delivery tracking", copy: "Rider assignment and customer status using the same order id as the kitchen." },
+      { title: "Loyalty", copy: "Simple stamps, offers and repeat-order prompts tied to the customer phone number you already collect." },
+    ],
   },
   {
     slug: "manufacturing",
     icon: "Factory",
     title: "Manufacturing",
+    chip: "Manufacturing",
+    hover: "Production and stock visibility on the shop floor.",
     description:
-      "Connected systems, production workflows and reporting for industrial teams.",
-    focus: ["Shop-floor visibility", "ERP connections", "Quality reporting", "Process improvement"],
+      "Production tracking, inventory and ERP connections so delays show up on the floor, not in last week’s report.",
+    focus: [
+      { title: "Shop-floor visibility", copy: "Work orders, machine status and bottlenecks on screens operators will actually use." },
+      { title: "ERP connections", copy: "Push completed quantities and stock moves into the ERP you already run, instead of a second ledger." },
+      { title: "Quality reporting", copy: "Checks, rejects and rework logged against the batch, not a clipboard." },
+      { title: "Process agents", copy: "Alerts and shift summaries from the same production data — not a separate ‘AI project’." },
+    ],
   },
   {
     slug: "hrms",
     icon: "Users",
-    title: "Human Resource Management",
+    title: "Human Resource Management (HRMS)",
+    chip: "HR Management",
+    hover: "Payroll, attendance, reviews and hiring in one system.",
     description:
-      "People operations platforms covering payroll-adjacent workflows, attendance and delivery.",
-    focus: ["HR workflows", "Internal tools", "Integrations", "Self-serve portals"],
+      "HR platforms that cover attendance, leave, payroll inputs, reviews and hiring so teams stop copying data between tools.",
+    focus: [
+      { title: "HR workflows", copy: "Leave, attendance, letters and approvals with a named owner at each step." },
+      { title: "Hiring", copy: "Requisitions, scorecards and interview notes. An agent can screen CVs; a person still decides." },
+      { title: "Payroll inputs", copy: "Attendance and salary-change files your payroll vendor can import without a retype." },
+      { title: "Self-serve portals", copy: "Employees update bank details, download letters and check leave without raising a ticket." },
+    ],
   },
 ] as const;
 
@@ -342,38 +419,38 @@ export const projects = [
 export const processSteps = [
   {
     step: "01",
-    title: "Discover",
+    title: "Understand",
     subtitle: "Understand",
     description:
-      "Goals, constraints, users and systems — understood before a line of production code is written.",
+      "We look at how your work runs today, which tools you use and where the time or money goes. You receive a short written summary of the problem and your priorities.",
   },
   {
     step: "02",
     title: "Design",
-    subtitle: "Plan & Design",
+    subtitle: "Design",
     description:
-      "Architecture, experience and milestones reviewed so the path is clear before the build accelerates.",
+      "We design the solution before writing code. You receive a clickable prototype or architecture document, and a fixed quote or clear rate.",
   },
   {
     step: "03",
     title: "Build",
-    subtitle: "Build & Integrate",
+    subtitle: "Build",
     description:
-      "Modern stack, tested code, and weekly demos so you see progress instead of waiting for a big reveal.",
+      "We build in weekly cycles. You receive a working build every week and a short progress note.",
   },
   {
     step: "04",
     title: "Test",
-    subtitle: "Test & Harden",
+    subtitle: "Test",
     description:
-      "Quality, security, performance and accessibility checks before anything goes live.",
+      "We check functionality, performance, security and accessibility before anything goes live. You receive a test summary and a list of anything that still needs your decision.",
   },
   {
     step: "05",
-    title: "Launch",
-    subtitle: "Launch & Scale",
+    title: "Launch and support",
+    subtitle: "Launch and support",
     description:
-      "Ship, monitor and iterate. Support continues after launch so the product can keep improving.",
+      "We release the product, watch how it performs and keep improving it. You receive a live product, handover documents and a support plan.",
   },
 ] as const;
 
@@ -399,62 +476,224 @@ export const benefits = [
 export const whyChoose = [
   {
     n: "01",
-    title: "Quality-first delivery",
+    title: "Tested before release",
     description:
-      "We do not ship fast and fix later. Work is reviewed, tested and ready for production use.",
+      "Every release is reviewed and tested before you see it. We don’t plan to fix quality later.",
   },
   {
     n: "02",
-    title: "Radical transparency",
+    title: "Clear pricing",
     description:
-      "No black-box development. You get visibility into process, progress and decisions at every stage.",
+      "You see the scope, timeline and cost in writing. If the plan changes, we explain the impact before anything moves.",
   },
   {
     n: "03",
-    title: "Senior-led projects",
+    title: "Experienced leads",
     description:
-      "Architecture and delivery are guided by people who have shipped similar systems before.",
+      "Senior engineers make the architecture and security decisions on your project.",
   },
   {
     n: "04",
-    title: "Flexible engagement",
+    title: "Realistic timelines",
     description:
-      "Discovery, a focused build, or a longer partnership — the shape of the work follows the problem.",
+      "We scope the work before we promise a date, so the date we give is one we can keep.",
   },
   {
     n: "05",
-    title: "Long-term optimization",
+    title: "Flexible engagement",
     description:
-      "After launch we can keep measuring, improving and expanding what actually works.",
+      "Hire a dedicated developer for your team, hand us a full project, or start with a fixed-scope build.",
   },
 ] as const;
 
 export const faqs = [
   {
-    q: "What services does RoboPilot provide?",
-    a: "AI agent building, a free-agent discovery experience, ML model development and data analytics, mobile app development, and AI consulting — from roadmap to production workflows.",
+    q: "What services does RoboPylot offer?",
+    a: "We build AI agents, machine learning and data analytics systems, mobile apps and AI consulting. We also offer a free library of AI agents for trying common tasks before you commit to a custom build.",
   },
   {
-    q: "Can you develop software based on our specific business requirements?",
-    a: "Yes. We start by understanding objectives, systems and users, then plan and build a solution suited to those workflows.",
+    q: "How much does it cost to build a website or mobile app in India?",
+    a: "It depends on features, integrations and platform. A custom business website typically starts at ₹60,000, a custom web app at ₹2,00,000, and a mobile app at ₹4,00,000. Your exact quote comes from a free discovery call. Prices exclude GST (18%).",
   },
   {
-    q: "Do you provide AI chatbot and automation solutions?",
-    a: "Yes. We design AI assistants, agents and workflow automation based on your use cases, data requirements and existing systems.",
+    q: "How long does it take to build a website or app?",
+    a: "A business website usually takes 4 to 8 weeks. A mobile app usually takes 3 to 6 months, depending on features. An AI agent pilot for one workflow is often 2 to 4 weeks.",
   },
   {
-    q: "Can you integrate with our existing applications?",
-    a: "We assess current systems and identify suitable integration approaches, subject to the capabilities and access those platforms provide.",
+    q: "Do you work with startups or only established businesses?",
+    a: "Both. Startups usually begin with a focused first version. Established companies often begin with one workflow, one system or a modernisation plan.",
   },
   {
-    q: "Do you offer support after project delivery?",
-    a: "Support and maintenance options can be agreed as part of the project scope, including services, duration and response arrangements.",
+    q: "What is staff augmentation and how is it different from outsourcing?",
+    a: "Staff augmentation means one of our developers works in your team, full-time or part-time, under your direction. Outsourcing means we take responsibility for the whole project, from planning to delivery.",
   },
   {
-    q: "How do we get started?",
-    a: "Share a brief description of the project. We can arrange an initial discussion to understand requirements and determine next steps.",
+    q: "How do I hire a dedicated developer from RoboPylot?",
+    a: "Book a free call and tell us your tech stack and requirements. We shortlist developers, you interview them, and once you choose one, they join your daily workflow.",
+  },
+  {
+    q: "Can RoboPylot help with my search visibility?",
+    a: "Every site we build follows the technical basics of search: clean code, fast loading, proper page titles and mobile-friendly design. We can’t guarantee specific Google rankings, because those depend on many factors. If you want ongoing SEO work, we can scope it separately.",
+  },
+  {
+    q: "Do you provide post-launch support and maintenance?",
+    a: "Yes. We offer maintenance plans that keep your product secure, updated and working as your business changes. Plans are priced monthly and agreed in writing.",
+  },
+  {
+    q: "Where is RoboPylot based and do you work outside India?",
+    a: "We are based in Indore, Madhya Pradesh, and work with clients in India, the UK and the US. We schedule calls to suit your time zone.",
+  },
+  {
+    q: "Which technologies does RoboPylot specialise in?",
+    a: "For web we use React, Next.js, Node.js, Python and Laravel. For mobile we use Flutter, React Native, Swift and Kotlin. For AI and data we work with Python, machine learning frameworks and LLM APIs. We choose the stack based on your project.",
   },
 ] as const;
+
+export type FaqItem = (typeof faqs)[number];
+
+const faqByQ = (questions: string[]) =>
+  questions
+    .map((q) => faqs.find((item) => item.q === q))
+    .filter((item): item is FaqItem => Boolean(item));
+
+export const serviceListingFaqs = faqByQ([
+  "What services does RoboPylot offer?",
+  "How much does it cost to build a website or mobile app in India?",
+  "How long does it take to build a website or app?",
+  "Do you work with startups or only established businesses?",
+  "Do you provide post-launch support and maintenance?",
+  "Where is RoboPylot based and do you work outside India?",
+  "Which technologies does RoboPylot specialise in?",
+]);
+
+export const industryListingFaqs = faqByQ([
+  "What services does RoboPylot offer?",
+  "How long does it take to build a website or app?",
+  "Do you work with startups or only established businesses?",
+  "Do you provide post-launch support and maintenance?",
+  "Where is RoboPylot based and do you work outside India?",
+]);
+
+export const agentFaqs = [
+  {
+    q: "Are these agents actually free?",
+    a: "Yes. You can try the listed agents at no cost. If you later need the same idea wired into your CRM, helpdesk or data, that custom work is quoted separately.",
+  },
+  {
+    q: "Will the agent send emails or change records on its own?",
+    a: "No. Drafts, scores and summaries wait for a person unless we agree a specific write-back in a custom build.",
+  },
+  {
+    q: "How do I try an agent?",
+    a: "Open the agent page and use the contact form. Tell us which agent and which tool you use (CRM, helpdesk, email). We reply on working days with the next step.",
+  },
+] as const;
+
+export const serviceDetailFaqs: Record<string, { q: string; a: string }[]> = {
+  "ai-agent-building": [
+    {
+      q: "What is an AI agent in this context?",
+      a: "Software that reads a request, uses your tools or documents, and completes a defined task — with a log of what it did. It is not an unrestricted chatbot.",
+    },
+    {
+      q: "How long does a first agent take?",
+      a: "A pilot for one workflow is often 2 to 4 weeks after we agree the tools, rules and success check.",
+    },
+    {
+      q: "Will it write to our CRM or send email on its own?",
+      a: "Only if we agree that write-back in the spec. The default is drafts and suggestions that a person approves.",
+    },
+    {
+      q: "What do you need from us to start?",
+      a: "Access to the workflow owner, the tools in use, and examples of good and bad outcomes. Discovery is free.",
+    },
+  ],
+  "free-ai-agents": [
+    {
+      q: "Are these agents actually free?",
+      a: "Yes, to try. Connecting the same idea to your live CRM, helpdesk or data is custom work and is quoted separately.",
+    },
+    {
+      q: "Can I white-label them?",
+      a: "The listed agents are for evaluation. A branded, integrated version is a custom project.",
+    },
+    {
+      q: "How do I start?",
+      a: "Open an agent and send the contact form with the tool you use. We reply on working days.",
+    },
+  ],
+  "ml-model-development": [
+    {
+      q: "Do we need a data warehouse first?",
+      a: "Not always. We start from the question and the data you already have. If the data cannot support the question, we say so before modelling.",
+    },
+    {
+      q: "Can you connect Power BI or Tableau?",
+      a: "Yes. Dashboards are part of this service when the metric definitions are agreed.",
+    },
+    {
+      q: "Do you train custom models or only use APIs?",
+      a: "Either. We use an API when it is enough, and a custom model when your data and the question need it.",
+    },
+    {
+      q: "How do we know a number is trustworthy?",
+      a: "You get the definition, the source and a way to spot-check a sample. We do not ship a score with no explanation.",
+    },
+  ],
+  "mobile-app-development": [
+    {
+      q: "iOS, Android or both?",
+      a: "Both, unless you only need one store. We recommend Flutter or React Native when one codebase is enough, and native Swift or Kotlin when the platform features require it.",
+    },
+    {
+      q: "How long does a first version take?",
+      a: "A focused first version is typically 3 to 6 months, depending on features and integrations. You see a working build every week.",
+    },
+    {
+      q: "How is pricing set?",
+      a: "A custom mobile app in India typically starts at ₹4,00,000 excluding GST (18%). Your quote follows a free discovery call.",
+    },
+    {
+      q: "Do you submit to the App Store and Play Store?",
+      a: "Yes. Store listing, review fixes and the first release are part of launch. Ongoing updates are a support plan.",
+    },
+  ],
+  "ai-consulting": [
+    {
+      q: "What do we leave the engagement with?",
+      a: "A written ranked list of AI uses, expected cost and effort, what data you need, and what to build first. You can implement with us or with your team.",
+    },
+    {
+      q: "Is this only a slide deck?",
+      a: "No. If a use case is worth proving, we can run a short technical check as part of the same engagement.",
+    },
+    {
+      q: "Who should be in the room?",
+      a: "Someone who owns the workflow and someone who owns the systems. We do not need a full steering committee to start.",
+    },
+  ],
+};
+
+export function industryPageFaqs(name: string) {
+  return [
+    {
+      q: `Do you already have a product for ${name}?`,
+      a: `No off-the-shelf suite. We build the piece you need — an agent, a dashboard, a mobile app or an integration — against the systems ${name} teams already run.`,
+    },
+    {
+      q: "How do you start a project in this industry?",
+      a: "A free discovery call covering the workflow, the tools in use and the outcome you want. You get a written summary and a quote before we write code.",
+    },
+    {
+      q: "How long does a first version take?",
+      a: "An AI agent for one workflow is often 2 to 4 weeks. A focused web or mobile first version is typically a few months, depending on integrations.",
+    },
+    {
+      q: "Do you support the product after launch?",
+      a: "Yes. Maintenance is a monthly plan agreed in writing — security updates, small changes and monitoring.",
+    },
+  ];
+}
 
 export const insights = [
   {
@@ -507,10 +746,6 @@ export const agentCategories = [
   "Content Creation",
   "Customer Support",
   "Data Extraction",
-  "Data Management",
-  "DevOps",
-  "E-commerce",
-  "Education",
   "Email",
 ] as const;
 
@@ -523,7 +758,12 @@ export const freeAgents = [
     tags: ["CRM", "Sales"],
     category: "AI",
     featured: true,
-    capabilities: ["Lead scoring", "CRM notes", "Handoff summaries", "Human review gates"],
+    capabilities: [
+      { title: "Lead scoring", copy: "Ranks inbound leads from the fields you already collect, with the reasons shown." },
+      { title: "CRM notes", copy: "Writes a short note back to the deal or contact — nothing is saved until you approve." },
+      { title: "Handoff summaries", copy: "Packages context for the salesperson so they do not re-read the whole thread." },
+      { title: "Human review gates", copy: "Qualified vs not-yet stays a person decision. The agent does not close or discard leads." },
+    ],
   },
   {
     slug: "customer-support-agent",
@@ -533,7 +773,12 @@ export const freeAgents = [
     tags: ["Support", "Knowledge"],
     category: "Customer Support",
     featured: true,
-    capabilities: ["Knowledge answers", "Ticket classification", "Escalation pack", "Tone controls"],
+    capabilities: [
+      { title: "Knowledge answers", copy: "Replies only from the help articles and FAQs you approve." },
+      { title: "Ticket classification", copy: "Tags the request (billing, bug, how-to) so it lands in the right queue." },
+      { title: "Escalation pack", copy: "When it cannot answer, it hands a person the question, sources tried and customer history." },
+      { title: "Tone controls", copy: "Stays within the voice you set. It does not invent policy or discounts." },
+    ],
   },
   {
     slug: "meeting-summary-agent",
@@ -543,7 +788,12 @@ export const freeAgents = [
     tags: ["Productivity"],
     category: "AI",
     featured: false,
-    capabilities: ["Action items", "Decision log", "Owner extraction", "Shareable recap"],
+    capabilities: [
+      { title: "Action items", copy: "Pulls tasks from notes or a transcript, with a suggested owner where the name is clear." },
+      { title: "Decision log", copy: "Lists what was agreed, not a full transcript dump." },
+      { title: "Owner extraction", copy: "Maps names already in the notes — it does not guess people who were not there." },
+      { title: "Shareable recap", copy: "A short recap you can paste into Slack, email or a tracker." },
+    ],
   },
   {
     slug: "document-extraction-agent",
@@ -553,7 +803,12 @@ export const freeAgents = [
     tags: ["OCR", "Ops"],
     category: "Data Extraction",
     featured: true,
-    capabilities: ["Field extraction", "Document classification", "Export JSON/CSV", "Review queue"],
+    capabilities: [
+      { title: "Field extraction", copy: "Reads invoices, forms and PDFs for the fields you map — amount, date, vendor, and similar." },
+      { title: "Document classification", copy: "Sorts files by type before extraction so the wrong template is not applied." },
+      { title: "Export JSON/CSV", copy: "Gives structured output your ops tools can import." },
+      { title: "Review queue", copy: "Low-confidence fields wait for a person before anything is committed." },
+    ],
   },
   {
     slug: "sales-research-agent",
@@ -563,7 +818,12 @@ export const freeAgents = [
     tags: ["Sales", "Research"],
     category: "AI",
     featured: false,
-    capabilities: ["Account briefs", "Talking points", "Source list", "CRM-ready notes"],
+    capabilities: [
+      { title: "Account briefs", copy: "One-page snapshot of the company from public sources, not a dump of search links." },
+      { title: "Talking points", copy: "Likely pains and questions for the call, labelled as suggestions." },
+      { title: "Source list", copy: "Every claim links back to the page it came from." },
+      { title: "CRM-ready notes", copy: "A short note you can paste after you have checked it." },
+    ],
   },
   {
     slug: "data-reporting-agent",
@@ -573,7 +833,12 @@ export const freeAgents = [
     tags: ["BI", "SQL"],
     category: "Business Intelligence",
     featured: false,
-    capabilities: ["Metric recap", "Trend notes", "Scheduled summaries", "Drill-down questions"],
+    capabilities: [
+      { title: "Metric recap", copy: "A plain-language snapshot of the metrics you define — the numbers stay visible." },
+      { title: "Trend notes", copy: "Flags week-on-week movement without inventing a cause." },
+      { title: "Scheduled summaries", copy: "Weekly or monthly recap to a mailbox you choose." },
+      { title: "Drill-down questions", copy: "You can ask a follow-up; it only answers from the connected metric set." },
+    ],
   },
   {
     slug: "content-brief-agent",
@@ -583,7 +848,12 @@ export const freeAgents = [
     tags: ["Content"],
     category: "Content Creation",
     featured: false,
-    capabilities: ["Brief outline", "Audience notes", "Proof points", "SEO questions"],
+    capabilities: [
+      { title: "Brief outline", copy: "Turns a topic into a sectioned brief a writer can start from." },
+      { title: "Audience notes", copy: "Who it is for and what they already know, from the inputs you give." },
+      { title: "Proof points", copy: "Lists claims that still need a source — it does not fabricate stats." },
+      { title: "SEO questions", copy: "Keyword and search-intent prompts for the writer, not auto-published copy." },
+    ],
   },
   {
     slug: "email-response-agent",
@@ -593,7 +863,12 @@ export const freeAgents = [
     tags: ["Email"],
     category: "Email",
     featured: false,
-    capabilities: ["Reply drafts", "Tone matching", "Approval required", "Snippet library"],
+    capabilities: [
+      { title: "Reply drafts", copy: "Suggests a reply for common inbound threads in your voice." },
+      { title: "Tone matching", copy: "Follows examples you provide. It does not send mail." },
+      { title: "Approval required", copy: "Nothing leaves the inbox until a person hits send." },
+      { title: "Snippet library", copy: "Reuses approved answers for shipping, billing and how-to questions." },
+    ],
   },
   {
     slug: "website-faq-agent",
@@ -603,7 +878,12 @@ export const freeAgents = [
     tags: ["Web", "Support"],
     category: "Customer Support",
     featured: false,
-    capabilities: ["FAQ answers", "Source links", "Fallback to contact", "Embed snippet"],
+    capabilities: [
+      { title: "FAQ answers", copy: "Answers only from published FAQs and help pages you list." },
+      { title: "Source links", copy: "Shows the page it used so visitors can read the original." },
+      { title: "Fallback to contact", copy: "If the answer is not on those pages, it points to your contact form." },
+      { title: "Embed snippet", copy: "A small script for your site. It does not crawl the open web." },
+    ],
   },
   {
     slug: "competitive-research-agent",
@@ -613,6 +893,11 @@ export const freeAgents = [
     tags: ["Research"],
     category: "AI",
     featured: false,
-    capabilities: ["Positioning notes", "Offer comparison", "Source capture", "Shareable memo"],
+    capabilities: [
+      { title: "Positioning notes", copy: "Public messaging and claims, grouped so a strategy meeting starts from one brief." },
+      { title: "Offer comparison", copy: "Features and prices as published — gaps are labelled as unknown, not guessed." },
+      { title: "Source capture", copy: "Each note keeps the URL it came from." },
+      { title: "Shareable memo", copy: "A short memo you can drop into a doc. It is research, not legal advice." },
+    ],
   },
 ] as const;

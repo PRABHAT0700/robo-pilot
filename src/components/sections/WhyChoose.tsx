@@ -1,35 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Reveal } from "@/components/effects/Reveal";
-
-const reasons = [
-  {
-    n: "01",
-    title: "Quality-First Development",
-    body: "We don't ship fast and fix later. Every deliverable is reviewed, tested, and production-ready.",
-  },
-  {
-    n: "02",
-    title: "Radical Transparency",
-    body: "No hidden fees or black-box development. You get full visibility into our process, progress, and pricing at every stage.",
-  },
-  {
-    n: "03",
-    title: "Senior-Led Every Project",
-    body: "Your project is guided by veterans, not passed off to juniors. Experience dictates our architectural choices.",
-  },
-  {
-    n: "04",
-    title: "On-time Every Time",
-    body: "We scope accurately and hit our deadlines. Predictive velocity means your launch dates stay rock solid.",
-  },
-  {
-    n: "05",
-    title: "Flexible Engagement",
-    body: "Whether you need staff augmentation, a dedicated team, or a fixed-scope build, we adapt to your business needs.",
-  },
-] as const;
+import { whyChoose } from "@/lib/content";
+import { IMG } from "@/lib/media";
 
 function CheckIcon() {
   return (
@@ -58,20 +33,20 @@ export function WhyChoose() {
         <div className="why-choose-grid">
           <div className="why-choose-content">
             <Reveal>
-              <div className="badge badge-outline">WHY CHOOSE US</div>
+              <div className="badge badge-outline">WHY ROBOPYLOT</div>
               <h2 className="section-title">
-                The reasons teams
+                Why teams choose us
                 <br />
-                <span className="gradient-text-1">Keep coming back</span>
+                <span className="gradient-text-1">and stay</span>
               </h2>
               <p className="section-subtitle why-subtitle">
-                Six years of craft, 120+ projects, and 97% client retention — here&apos;s what makes
-                us different.
+                We&apos;re a young team, so we&apos;re careful about what we promise. Here&apos;s
+                what you can expect from us on every project.
               </p>
             </Reveal>
 
             <div className="reasons-accordion">
-              {reasons.map((item, index) => {
+              {whyChoose.map((item, index) => {
                 const isActive = active === index;
                 return (
                   <div
@@ -92,11 +67,23 @@ export function WhyChoose() {
                       </div>
                     </div>
                     <div className="accordion-body">
-                      <p>{item.body}</p>
+                      <p>{item.description}</p>
                     </div>
                   </div>
                 );
               })}
+            </div>
+
+            <div style={{ marginTop: 28 }}>
+              <Link href="/contact" className="btn btn-outline" data-cursor>
+                BOOK A FREE CALL
+                <span className="icon-arrow">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                    <line x1="7" y1="17" x2="17" y2="7" />
+                    <polyline points="7 7 17 7 17 17" />
+                  </svg>
+                </span>
+              </Link>
             </div>
           </div>
 
@@ -105,31 +92,33 @@ export function WhyChoose() {
               <div className="glowing-card-inner">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="https://vvpsoftech.com/assets/images/why_choose_us.webp"
+                  src={IMG.partner}
                   alt="The kind of partner you'd keep on speed-dial"
                   loading="lazy"
                   decoding="async"
                   className="glow-card-image"
                 />
                 <h3 className="glow-card-title">
-                  The kind of partner
+                  A partner you&apos;d want
                   <br />
-                  you&apos;d <span className="gradient-text-1">keep on speed-dial.</span>
+                  on <span className="gradient-text-1">speed dial.</span>
                 </h3>
+                <p className="glow-card-body">
+                  Fast when it matters, careful when it counts, and honest about what we can and
+                  can&apos;t do.
+                </p>
                 <div className="glow-mini-stats">
                   <div className="mini-stat">
-                    <h4 className="mini-stat-val cyan-text">98%</h4>
-                    <p className="mini-stat-label">On-time</p>
+                    <h4 className="mini-stat-val cyan-text">5</h4>
+                    <p className="mini-stat-label">Service lines</p>
                   </div>
                   <div className="mini-stat">
-                    <h4 className="mini-stat-val cyan-text">
-                      4.9 <span className="purple-text">★</span>
-                    </h4>
-                    <p className="mini-stat-label">Average rating</p>
+                    <h4 className="mini-stat-val cyan-text">10+</h4>
+                    <p className="mini-stat-label">Industries</p>
                   </div>
                   <div className="mini-stat">
-                    <h4 className="mini-stat-val gradient-text-1">6 years</h4>
-                    <p className="mini-stat-label">Average client</p>
+                    <h4 className="mini-stat-val gradient-text-1">Free</h4>
+                    <p className="mini-stat-label">Discovery call</p>
                   </div>
                 </div>
               </div>

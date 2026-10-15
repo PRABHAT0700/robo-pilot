@@ -11,10 +11,10 @@ export function MissionVision() {
               </svg>
             </div>
             <div className="mv-subtitle vision-text">OUR VISION</div>
-            <h3 className="mv-title">Engineering the Future of Digital Innovation</h3>
+            <h3 className="mv-title">Software people will actually use</h3>
             <p className="mv-desc">
-              We envision a world where technology empowers every business to innovate faster, scale
-              smarter, and create meaningful digital experiences that drive lasting success.
+              We want growing businesses in India and the UK to have AI, data and mobile products
+              they can rely on — built by a small team that stays with the work.
             </p>
           </div>
 
@@ -27,11 +27,10 @@ export function MissionVision() {
               </svg>
             </div>
             <div className="mv-subtitle mission-text">OUR MISSION</div>
-            <h3 className="mv-title">Building Technology That Creates Real Business Value</h3>
+            <h3 className="mv-title">Understand the problem, then build the part that helps</h3>
             <p className="mv-desc">
-              We deliver scalable software, intelligent digital solutions, and trusted technology
-              partnerships that help businesses solve challenges, accelerate growth, and stay ahead
-              in a rapidly evolving world.
+              We look at how your business runs, agree the scope in writing, and ship working
+              software every week — with senior engineers on every project.
             </p>
           </div>
         </div>

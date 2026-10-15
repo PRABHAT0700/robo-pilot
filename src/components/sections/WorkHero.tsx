@@ -85,20 +85,20 @@ export function WorkStats() {
     <section className="services-stats-full">
       <div className="container-x services-stats-full-inner">
         <div className="stat-item">
-          <h3>200+</h3>
-          <p>MARQUEE CLIENTS</p>
+          <h3>5</h3>
+          <p>SERVICE LINES</p>
         </div>
         <div className="stat-item">
           <h3>10+</h3>
           <p>INDUSTRIES SERVED</p>
         </div>
         <div className="stat-item">
-          <h3>97%</h3>
-          <p>CLIENT RETENTION</p>
+          <h3>1</h3>
+          <p>TEAM FOR AI AND PRODUCT</p>
         </div>
         <div className="stat-item">
-          <h3>6+</h3>
-          <p>YEARS IN BUSINESS</p>
+          <h3>Free</h3>
+          <p>DISCOVERY CONSULTATION</p>
         </div>
       </div>
     </section>

@@ -1,14 +1,14 @@
 const topRow = [
   { letter: "R", value: "Reliability", tone: "cyan" as const },
+  { letter: "O", value: "Openness", tone: "cyan" as const },
+  { letter: "B", value: "Built to last", tone: "cyan" as const },
   { letter: "O", value: "Ownership", tone: "cyan" as const },
-  { letter: "B", value: "Boldness", tone: "cyan" as const },
-  { letter: "O", value: "Obsession", tone: "cyan" as const },
 ];
 
 const bottomRow = [
-  { letter: "P", value: "Partnership", tone: "purple" as const },
-  { letter: "I", value: "Integrity", tone: "purple" as const },
-  { letter: "L", value: "Leadership", tone: "purple" as const },
+  { letter: "P", value: "Precision", tone: "purple" as const },
+  { letter: "Y", value: "Yield", tone: "purple" as const },
+  { letter: "L", value: "Listening", tone: "purple" as const },
   { letter: "O", value: "Outcomes", tone: "purple" as const },
   { letter: "T", value: "Trust", tone: "purple" as const },
 ];
@@ -41,14 +41,13 @@ export function CoreValues() {
         <div className="values-header text-center">
           <div className="badge badge-outline">OUR CORE VALUES</div>
           <h2 className="section-title">
-            The principles that powers
+            The principles behind
             <br />
             <span className="gradient-text-cyan italic">Robo</span>
-            <span className="gradient-text-purple italic">Pilot</span>
+            <span className="gradient-text-purple italic">Pylot</span>
           </h2>
           <p className="values-subtitle">
-            Every letter in ROBOPILOT represents a value that defines how we think, collaborate, and
-            deliver exceptional digital solutions.
+            Each letter in RoboPylot stands for something we try to do on every project.
           </p>
         </div>
 

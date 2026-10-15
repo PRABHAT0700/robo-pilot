@@ -11,12 +11,12 @@ export const IMG = {
     "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=1400&q=80",
   code:
     "https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=1400&q=80",
-  analytics:
-    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80",
+  analytics: "/images/machine-learning.jpg",
+  consulting: "/images/ai-consulting.jpg",
+  partner: "/images/why-choose-partner.jpg",
   charts:
     "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=80",
-  mobile:
-    "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1400&q=80",
+  mobile: "/images/mobile-app.jpg",
   robot:
     "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1400&q=80",
   space:
@@ -47,53 +47,53 @@ export const industryDetails: Record<
 > = {
   ecommerce: {
     image: IMG.shop,
-    long: "We help commerce teams ship storefronts, checkout, inventory sync and customer apps that stay fast when traffic spikes — with room to add agents for support and merchandising later.",
-    outcomes: ["Seamless checkout", "Inventory visibility", "Mobile-ready catalog", "Support automation hooks"],
+    long: "We build storefronts, checkout, inventory sync and shopping apps so sales traffic does not break payments or stock. Support questions can go to an agent grounded in your catalogue and policies.",
+    outcomes: ["Checkout that holds during sales", "Stock that matches the warehouse", "Shopping apps on the same APIs", "Order-status answers from your own data"],
   },
   finance: {
     image: IMG.stocks,
-    long: "For finance operations we focus on secure reporting, process automation and integrations that leave an audit trail — without inventing unverified claims.",
-    outcomes: ["Secure integrations", "Operational reporting", "Approval workflows", "Clear data lineage"],
+    long: "For banks, NBFCs and finance operations teams we build reporting, approvals and internal tools with access control and an audit log. This is not a consumer wallet product — see FinTech for that.",
+    outcomes: ["Named approvals", "Reports tied to source systems", "Controlled integrations", "Change history you can show an auditor"],
   },
   fintech: {
     image: IMG.charts,
-    long: "FinTech products need careful onboarding, risk-aware flows and API platforms. We engineer the product layer so data, identity and operations stay connected.",
-    outcomes: ["Onboarding journeys", "API-first backends", "Risk-aware UX", "Analytics ready"],
+    long: "For fintech product teams we build onboarding, wallets, payment APIs and risk queues that stay stable as volume grows. Internal bank ops work lives on the Finance page.",
+    outcomes: ["Onboarding you can measure", "Payments with a single status", "Risk cases with a reason", "Product metrics from real events"],
   },
   healthcare: {
     image: IMG.health,
-    long: "Healthcare work is operationally dense. We design workflows, data exchange and automation that respect access control and keep humans in the loop.",
-    outcomes: ["Ops workflow software", "Secure data exchange", "Staff-facing apps", "Governed automation"],
+    long: "We build scheduling, records and staff tools for clinics and hospitals. Access is limited by role. We do not sell medical devices and we do not claim HIPAA or clinical certification.",
+    outcomes: ["Less retyping at the front desk", "Staff tools next to existing systems", "Admin automation with a human in the loop", "Role-based access and logs"],
   },
   edtech: {
     image: IMG.school,
-    long: "Learning products succeed when admin, content and learners share one system. We build portals and reporting that teaching teams can actually run.",
-    outcomes: ["Learner portals", "Admin tools", "Content workflows", "Progress reporting"],
+    long: "Course platforms, student records and admin tools that stay usable when enrolment or exams spike — for schools, coaching centres and learning products.",
+    outcomes: ["Courses and progress in one place", "Enrolment without a per-campus spreadsheet", "Lesson publish with an approval trail", "Reports teachers can export"],
   },
   logistics: {
     image: IMG.warehouse,
-    long: "Logistics software is about visibility. We connect tracking, dispatch and ops dashboards so movement of work is not trapped in spreadsheets.",
-    outcomes: ["Live tracking views", "Dispatch tools", "Partner integrations", "Ops dashboards"],
+    long: "Fleet tracking, dispatch and partner integrations so ops can see where a vehicle is and what it is carrying — without copying status between tools.",
+    outcomes: ["Live vehicle and shipment status", "Dispatch with a change log", "Courier and warehouse APIs", "Shift-lead exception view"],
   },
   "real-estate": {
     image: IMG.house,
-    long: "Property businesses need listing, CRM and client apps that stay coherent. We connect those surfaces so teams are not re-entering the same data.",
-    outcomes: ["Listing portals", "CRM connections", "Client apps", "Internal ops tools"],
+    long: "Property portals, listing tools and CRM so leads, viewings and follow-ups are not split across chat apps and spreadsheets.",
+    outcomes: ["Enquiries that land in the CRM", "Viewing follow-ups you can audit", "Listing changes with history", "Buyer or tenant app if you need one"],
   },
   food: {
     image: IMG.dining,
-    long: "Restaurants and cloud kitchens live in ordering, kitchen and delivery loops. We build the software that keeps those loops in sync.",
-    outcomes: ["Ordering flows", "Kitchen display logic", "Delivery tracking", "Loyalty hooks"],
+    long: "Ordering, kitchen display and delivery tracking for restaurants and cloud kitchens — one ticket list at peak, not three apps.",
+    outcomes: ["One ticket list for every channel", "Kitchen routing by station", "Rider status on the same order id", "Repeat-order prompts from real visits"],
   },
   manufacturing: {
     image: IMG.factory,
-    long: "Industrial teams need shop-floor visibility connected to ERP and quality reporting. We integrate those systems instead of adding another isolated dashboard.",
-    outcomes: ["Production visibility", "ERP connections", "Quality reporting", "Process automation"],
+    long: "Production tracking, inventory and ERP connections so delays show up on the floor, not in last week’s report.",
+    outcomes: ["Work orders on the floor", "Quantities posted to your ERP", "Quality checks on the batch", "Shift alerts from production data"],
   },
   hrms: {
     image: IMG.people,
-    long: "People operations work across attendance, internal tools and self-serve portals. We build internal products that employees will actually use.",
-    outcomes: ["HR workflows", "Self-serve portals", "Integrations", "Manager tools"],
+    long: "Attendance, leave, payroll inputs, reviews and hiring in one system so HR stops copying data between tools.",
+    outcomes: ["Leave and attendance with an owner", "Hiring notes in one place", "Payroll files your vendor can import", "Employee self-serve for letters and leave"],
   },
 };
 
@@ -102,36 +102,33 @@ export const pillars = [
     slug: "ai-agent-building",
     n: "01",
     title: "AI Agent Building",
-    copy: "Production-ready agents that connect to your systems, follow guardrails and execute real workflows — not demo chat windows.",
-    cta: "Explore AI Agent Building",
+    copy: "We build agents that connect to your systems and handle real work: answering customers, checking records, routing requests and completing steps that today need a person. Each agent runs within rules you define, and every action is logged.",
+    cta: "Explore AI agent building",
     image:
       "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1600&q=80",
   },
   {
     slug: "ml-model-development",
     n: "02",
-    title: "ML & Data Analytics",
-    copy: "Models, pipelines and dashboards that turn operational data into decisions you can inspect and improve.",
-    cta: "Explore ML & Analytics",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80",
+    title: "ML and Data Analytics",
+    copy: "We turn your operational data into forecasts, models and dashboards. Each one is built so your team can see how a number was produced and check it before acting on it.",
+    cta: "Explore ML and analytics",
+    image: "/images/machine-learning.jpg",
   },
   {
     slug: "mobile-app-development",
     n: "03",
     title: "Mobile App Development",
-    copy: "iOS, Android and cross-platform products with architecture that can grow from MVP to production scale.",
-    cta: "Explore Mobile Apps",
-    image:
-      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1600&q=80",
+    copy: "We build iOS, Android and cross-platform apps. We release a working first version early, then improve it based on how people use it, so the app can grow without a rebuild.",
+    cta: "Explore mobile apps",
+    image: "/images/mobile-app.jpg",
   },
   {
     slug: "ai-consulting",
     n: "04",
     title: "AI Consulting",
-    copy: "Find the highest-value opportunities, pick the architecture, and leave with a roadmap your team can actually execute.",
-    cta: "Explore AI Consulting",
-    image:
-      "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=1600&q=80",
+    copy: "We review how your business works, find the AI opportunities worth pursuing and rank them by expected return. You leave with a plan your team can carry out, with or without us.",
+    cta: "Explore AI consulting",
+    image: "/images/ai-consulting.jpg",
   },
 ] as const;

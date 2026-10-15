@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { freeAgents } from "@/lib/content";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { agentFaqs, freeAgents } from "@/lib/content";
+import { breadcrumbSchema, pageMetadata, softwareSchema, webPageSchema } from "@/lib/seo";
 import { IMG } from "@/lib/media";
 import { ServiceHero } from "@/components/services/ServiceBlocks";
 import { FaqSection } from "@/components/sections/FaqSection";
@@ -16,7 +18,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const agent = freeAgents.find((a) => a.slug === slug);
   if (!agent) return { title: "Agent" };
-  return { title: agent.name, description: agent.description };
+  return pageMetadata({
+    title: agent.name,
+    description: agent.description,
+    path: `/services/free-ai-agents/${slug}`,
+    keywords: [agent.name, "free AI agent", "RoboPylot", ...agent.tags],
+  });
 }
 
 export default async function AgentDetailPage({ params }: Props) {
@@ -26,6 +33,26 @@ export default async function AgentDetailPage({ params }: Props) {
 
   return (
     <>
+      <JsonLd
+        data={[
+          webPageSchema({
+            path: `/services/free-ai-agents/${agent.slug}`,
+            title: agent.name,
+            description: agent.description,
+          }),
+          softwareSchema({
+            slug: agent.slug,
+            name: agent.name,
+            description: agent.description,
+          }),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Services", path: "/services" },
+            { name: "Free AI Agents", path: "/services/free-ai-agents" },
+            { name: agent.name, path: `/services/free-ai-agents/${agent.slug}` },
+          ]),
+        ]}
+      />
       <ServiceHero
         eyebrow="FREE AI AGENT"
         title={
@@ -51,9 +78,9 @@ export default async function AgentDetailPage({ params }: Props) {
           </div>
           <div className="svc-cap-grid">
             {agent.capabilities.map((c) => (
-              <article key={c} className="mv-card mission-card svc-cap-card">
-                <h3 className="mv-title">{c}</h3>
-                <p className="mv-desc">Built into the agent so your team can adopt it without a custom build first.</p>
+              <article key={c.title} className="mv-card mission-card svc-cap-card">
+                <h3 className="mv-title">{c.title}</h3>
+                <p className="mv-desc">{c.copy}</p>
               </article>
             ))}
           </div>
@@ -67,7 +94,7 @@ export default async function AgentDetailPage({ params }: Props) {
         </div>
       </section>
 
-      <FaqSection />
+      <FaqSection items={agentFaqs} />
       <ContactSection />
     </>
   );

@@ -3,7 +3,7 @@
 import { useState, FormEvent } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
-import { serviceNav } from "@/lib/content";
+import { serviceNav, site } from "@/lib/content";
 
 type Props = {
   defaultService?: string;
@@ -43,7 +43,7 @@ export function LeadForm({ defaultService = "" }: Props) {
       form.reset();
     } catch {
       setStatus("error");
-      setNote("Something went wrong. Please email hello@robopilot.ai directly.");
+      setNote(`Something went wrong. Please email ${site.email} directly.`);
     }
   }
 
@@ -100,7 +100,7 @@ export function LeadForm({ defaultService = "" }: Props) {
             {errors.message && <span className="font-medium text-rose-600">{errors.message}</span>}
           </label>
           <Button type="submit" className="mt-5 w-full !rounded-xl">
-            {status === "sending" ? "Sending..." : "Talk to a RoboPilot Expert"}
+            {status === "sending" ? "Sending..." : "Talk to a RoboPylot Expert"}
           </Button>
           {note && (
             <p className={`mt-3 text-xs ${status === "ok" ? "text-emerald-600" : "text-rose-600"}`}>

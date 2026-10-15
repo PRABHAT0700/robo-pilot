@@ -39,11 +39,12 @@ export function IndustriesGrid() {
           <div className="all-works-header">
             <div className="badge badge-outline">SECTORS</div>
             <h2 className="section-title">
-              Where we create{" "}
-              <span className="gradient-text-3 italic">leverage.</span>
+              Where the work{" "}
+              <span className="gradient-text-3 italic">actually runs.</span>
             </h2>
             <p className="values-subtitle" style={{ marginTop: 8, textAlign: "left", marginLeft: 0 }}>
-              Deep patterns and integration playbooks tailored to each operating context.
+              Each page lists the workflows we build for that industry, tied to the five services we
+              offer.
             </p>
           </div>
         </Reveal>

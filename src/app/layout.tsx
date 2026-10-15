@@ -6,7 +6,9 @@ import { Footer } from "@/components/layout/Footer";
 import { FloatingActions } from "@/components/layout/FloatingActions";
 import { CustomCursor } from "@/components/effects/CustomCursor";
 import { SmoothScroll } from "@/components/effects/SmoothScroll";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { site } from "@/lib/content";
+import { defaultKeywords, OG_IMAGE, organizationSchema, SITE_URL, websiteSchema } from "@/lib/seo";
 
 const display = Plus_Jakarta_Sans({
   variable: "--font-space",
@@ -22,12 +24,38 @@ const figtree = Figtree({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: `${site.name} | Digital products that move businesses forward`,
+    default: `${site.name} | AI agents, ML, apps and consulting`,
     template: `%s | ${site.name}`,
   },
   description: site.description,
-  metadataBase: new URL("https://robopilot.ai"),
+  keywords: defaultKeywords,
+  applicationName: site.name,
+  authors: [{ name: site.name, url: SITE_URL }],
+  creator: site.name,
+  publisher: site.name,
+  category: "technology",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    url: SITE_URL,
+    siteName: site.name,
+    title: `${site.name} | AI agents, ML, apps and consulting`,
+    description: site.description,
+    images: [{ url: OG_IMAGE, width: 1024, height: 682, alt: site.name }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${site.name} | AI agents, ML, apps and consulting`,
+    description: site.description,
+    images: [OG_IMAGE],
+  },
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -35,6 +63,7 @@ export const metadata: Metadata = {
     ],
     apple: [{ url: "/robopilot-icon.png", sizes: "180x180" }],
   },
+  alternates: { canonical: "/" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -47,6 +76,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         />
       </head>
       <body className="relative flex min-h-full flex-col font-sans">
+        <JsonLd data={[organizationSchema(), websiteSchema()]} />
         <SmoothScroll>
           <div className="noise" aria-hidden />
           <CustomCursor />

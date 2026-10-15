@@ -58,7 +58,7 @@ export function AboutHero() {
           animate={{ opacity: 1, y: 0 }}
           className="mb-8 inline-flex items-center gap-2 rounded-full border border-[#6af3ff]/45 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#6af3ff]"
         >
-          About us
+          About RoboPylot
         </motion.div>
 
         <motion.h1
@@ -67,9 +67,9 @@ export function AboutHero() {
           transition={{ delay: 0.05, duration: 0.7 }}
           className="max-w-[820px] font-display text-[40px] font-extrabold leading-[1.05] tracking-[-0.04em] text-white sm:text-[52px] md:text-[68px] lg:text-[76px]"
         >
-          A small company,
+          A small team that takes
           <br />
-          big obsession with <span className="italic-accent">craft.</span>
+          the engineering <span className="italic-accent">seriously</span>
         </motion.h1>
 
         <motion.p
@@ -78,9 +78,9 @@ export function AboutHero() {
           transition={{ delay: 0.14 }}
           className="mt-7 max-w-xl text-[15px] leading-relaxed text-white/55 md:text-base"
         >
-          RoboPilot started in Indore in 2020 as three friends who wanted to build software the way
-          it deserved to be built. Today, we&apos;re a 50-person company shipping products for
-          ambitious teams across India.
+          RoboPylot was founded in 2026 in Indore, Madhya Pradesh. We build AI agents, data systems,
+          mobile apps and AI strategy for businesses that want software they can rely on. We keep
+          the team small on purpose, so the people you talk to are the people doing the work.
         </motion.p>
 
         <motion.div

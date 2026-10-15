@@ -27,7 +27,7 @@ export function AboutTeaser() {
                 <div className="rounded-[22px] bg-black p-3">
                   <Image
                     src="/robopilot-logo.png"
-                    alt="RoboPilot"
+                    alt="RoboPylot"
                     width={280}
                     height={63}
                     className="h-auto w-[220px] bg-transparent object-contain sm:w-[260px]"

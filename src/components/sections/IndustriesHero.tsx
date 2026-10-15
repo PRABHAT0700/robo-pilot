@@ -18,14 +18,14 @@ export function IndustriesHero() {
             <span className="dot-cyan" /> INDUSTRIES WE SERVE
           </div>
           <h1 className="hero-title">
-            Ten verticals,
+            Ten industries,
             <br />
-            <span className="gradient-text-faq italic">one</span>{" "}
-            <span className="gradient-text-3 italic">playbook.</span>
+            <span className="gradient-text-faq italic">the same</span>{" "}
+            <span className="gradient-text-3 italic">five services.</span>
           </h1>
           <p className="hero-subtitle">
-            Domain-aware technology for real operating contexts — commerce, health, logistics, learning
-            and more, without a generic template.
+            AI agents, data, mobile apps and consulting applied to commerce, finance, health, logistics,
+            learning, factories, restaurants, property and HR — not a copy-paste template.
           </p>
           <div className="hero-buttons">
             <Link href="/contact" className="btn btn-primary" data-cursor>

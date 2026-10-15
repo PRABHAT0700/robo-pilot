@@ -36,22 +36,31 @@ import {
 const craftCards = [
   {
     n: "1",
-    title: "Excellence",
-    description: "Fast delivery, production-ready code, zero shortcuts on quality.",
+    title: "Quality before speed",
+    description:
+      "We test each release before it reaches you. We would rather delay a launch by a day than fix a broken product afterwards.",
     cls: "about-card-top",
   },
   {
     n: "2",
-    title: "Integration",
-    description: "We embed with your team. Your success is our success, always.",
+    title: "Working alongside your team",
+    description:
+      "We can join your daily calls and work in the tools you already use. The knowledge stays with your team, not just with us.",
     cls: "about-card-middle",
   },
   {
     n: "3",
-    title: "Alignment",
-    description: "Every project aligned to your business goals, not just a checklist.",
+    title: "Tied to your goals",
+    description:
+      "Every feature connects to an outcome you agreed on at the start. If a request won't move that outcome, we tell you before we build it.",
     cls: "about-card-bottom",
   },
+] as const;
+
+const craftChecks = [
+  "Scope and price agreed in writing before work starts",
+  "Working builds every week, so you can see progress",
+  "Senior engineers on every project",
 ] as const;
 
 const serviceIcons = [Bot, Sparkles, LineChart, Smartphone, Compass];
@@ -83,14 +92,16 @@ export function TrustedStrip() {
         <Reveal>
           <div className="text-center">
             <p className="inline-flex items-center gap-2 rounded-full border border-[#4b8cff]/25 bg-white/70 px-3 py-1 text-[11px] font-extrabold uppercase tracking-[0.22em] text-[#4b8cff] backdrop-blur">
-              <Boxes size={12} /> How we ship
+              <Boxes size={12} /> Our services
             </p>
             <h2 className="mt-4 font-display text-3xl font-extrabold tracking-tight md:text-5xl">
-              Teams who have <span className="italic text-[#4b8cff]">shipped</span> with us
+              Five services,{" "}
+              <span className="italic text-[#4b8cff]">one team</span> that stays with the project
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-slate-600">
-              From product teams to operations groups — the services, industries and problem types we
-              actually build for.
+              Whether you need an AI agent for customer support, a dashboard for your numbers, or a
+              mobile app for your customers, we handle it end to end. Pick the service that matches
+              your problem.
             </p>
           </div>
         </Reveal>
@@ -111,7 +122,7 @@ export function TrustedStrip() {
                       <Icon size={20} />
                     </span>
                     <h3 className="font-display text-[15px] font-bold leading-snug">{s.title}</h3>
-                    <p className="mt-2 flex-1 text-xs leading-relaxed text-slate-500">{s.short}</p>
+                    <p className="mt-2 flex-1 text-xs leading-relaxed text-slate-500">{s.homeBlurb}</p>
                     <span className="mt-4 inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-[0.14em] text-[#4b8cff]">
                       Explore
                       <ArrowUpRight
@@ -126,7 +137,17 @@ export function TrustedStrip() {
           })}
         </div>
 
-        <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+        <div className="mt-14 text-center">
+          <h3 className="font-display text-2xl font-extrabold tracking-tight md:text-3xl">
+            Industries we work in
+          </h3>
+          <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-slate-600">
+            Each industry has its own rules and failure points, so we learn yours before we design
+            anything.
+          </p>
+        </div>
+
+        <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
           {industries.map((ind, i) => {
             const Icon = industryIcons[ind.slug as keyof typeof industryIcons] ?? Boxes;
             return (
@@ -140,7 +161,7 @@ export function TrustedStrip() {
                       <Icon size={16} />
                     </span>
                     <span className="text-left text-xs font-bold leading-snug text-[#0b1020] transition-colors duration-300 group-hover:text-white">
-                      {ind.title}
+                      {ind.chip}
                     </span>
                   </motion.article>
                 </Link>
@@ -156,7 +177,7 @@ export function TrustedStrip() {
             className="group inline-flex items-center gap-2 rounded-full bg-[#0b1020] px-6 py-3 text-xs font-bold uppercase tracking-[0.14em] text-white shadow-[0_12px_30px_rgba(11,16,32,0.25)] transition hover:bg-[#11182c]"
             data-cursor
           >
-            See selected work
+            See our work
             <ArrowUpRight
               size={14}
               className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
@@ -182,7 +203,7 @@ export function AboutCraft({
   heading,
   body,
   ctaHref = "/about",
-  ctaLabel = "Learn more about us",
+  ctaLabel = "About RoboPylot",
   ctaClassName,
 }: AboutCraftProps) {
   return (
@@ -204,27 +225,25 @@ export function AboutCraft({
           <h2 className="max-w-[580px] font-display text-[36px] font-extrabold leading-[1.08] tracking-[-0.045em] md:text-[48px] lg:text-[54px]">
             {heading ?? (
               <>
-                An AI Partner built on
+                A technology partner built on
                 <br />
-                Craft & <span className="italic-accent">Conviction</span>
+                careful <span className="italic-accent">engineering</span>
               </>
             )}
           </h2>
           <p className="mt-6 max-w-[470px] text-[15px] leading-[1.8] text-[#9aa3b8]">
             {body ??
-              "RoboPilot helps organizations modernize operations, build digital products and put AI into workflows that people actually use. We combine business understanding with practical engineering — not slideware."}
+              "We look at how your business runs before we suggest anything. Then we build the part that will actually help, and we explain every decision in plain language."}
           </p>
           <ul className="mt-8 space-y-3.5 text-[15px] font-medium">
-            {["Purpose-Driven Delivery", "Velocity Without Compromise", "True Partnership Model"].map(
-              (t) => (
-                <li key={t} className="flex items-center gap-3">
-                  <span className="grid h-[22px] w-[22px] shrink-0 place-items-center rounded-full bg-[#3ee6ff] text-[#070913]">
-                    <Check size={13} strokeWidth={3} />
-                  </span>
-                  <span className="text-white">{t}</span>
-                </li>
-              ),
-            )}
+            {craftChecks.map((t) => (
+              <li key={t} className="flex items-center gap-3">
+                <span className="grid h-[22px] w-[22px] shrink-0 place-items-center rounded-full bg-[#3ee6ff] text-[#070913]">
+                  <Check size={13} strokeWidth={3} />
+                </span>
+                <span className="text-white">{t}</span>
+              </li>
+            ))}
           </ul>
           <div className="mt-10">
             <Link
@@ -264,10 +283,10 @@ export function OutcomeStrip() {
       <div className="container-x">
         <div className="services-stats-grid">
           {[
-            ["200+", "Marquee clients"],
+            ["5", "Service lines"],
             ["10+", "Industries served"],
-            ["97%", "Client retention"],
-            ["6+", "Years in business"],
+            ["1", "Partner for AI and product"],
+            ["Free", "Discovery consultation"],
           ].map(([n, l]) => (
             <div key={l} className="service-stat">
               <h4>{n}</h4>
@@ -287,41 +306,55 @@ export { ProcessPreview } from "@/components/sections/ProcessPreview";
 
 const stackRows = [
   {
+    label: "Web and back end",
     dir: "marquee-left" as const,
     items: [
-      { name: "React Js", icon: "devicon-react-original colored" },
-      { name: "Next Js", icon: "devicon-nextjs-original colored" },
-      { name: "Node Js", icon: "devicon-nodejs-plain colored" },
-      { name: "Typescript", icon: "devicon-typescript-plain colored" },
-      { name: "Javascript", icon: "devicon-javascript-plain colored" },
-      { name: "Angular Js", icon: "devicon-angularjs-plain colored" },
-      { name: "Vue Js", icon: "devicon-vuejs-plain colored" },
-    ],
-  },
-  {
-    dir: "marquee-right" as const,
-    items: [
+      { name: "React", icon: "devicon-react-original colored" },
+      { name: "Next.js", icon: "devicon-nextjs-original colored" },
+      { name: "Node.js", icon: "devicon-nodejs-plain colored" },
+      { name: "TypeScript", icon: "devicon-typescript-plain colored" },
+      { name: "JavaScript", icon: "devicon-javascript-plain colored" },
+      { name: "Angular", icon: "devicon-angularjs-plain colored" },
+      { name: "Vue", icon: "devicon-vuejs-plain colored" },
       { name: "Laravel", icon: "devicon-laravel-plain colored" },
-      { name: "Tailwind", icon: "devicon-tailwindcss-plain colored" },
-      { name: "Java", icon: "devicon-java-plain colored" },
-      { name: "Springboot", icon: "devicon-spring-original colored" },
       { name: "Django", icon: "devicon-django-plain colored" },
       { name: "Python", icon: "devicon-python-plain colored" },
-      { name: "Dot Net", icon: "devicon-dot-net-plain colored" },
-      { name: "Mongo DB", icon: "devicon-mongodb-plain colored" },
+      { name: "Spring Boot", icon: "devicon-spring-original colored" },
+      { name: "Java", icon: "devicon-java-plain colored" },
+      { name: ".NET", icon: "devicon-dot-net-plain colored" },
+      { name: "MongoDB", icon: "devicon-mongodb-plain colored" },
+      { name: "Tailwind CSS", icon: "devicon-tailwindcss-plain colored" },
     ],
   },
   {
-    dir: "marquee-left" as const,
+    label: "Mobile",
+    dir: "marquee-right" as const,
     items: [
       { name: "Flutter", icon: "devicon-flutter-plain colored" },
       { name: "React Native", icon: "devicon-react-original colored" },
       { name: "Swift", icon: "devicon-swift-plain colored" },
       { name: "Kotlin", icon: "devicon-kotlin-plain colored" },
-      { name: "Wordpress", icon: "devicon-wordpress-plain colored" },
-      { name: "Web Flow", icon: "devicon-html5-plain colored" },
-      { name: "Figma", icon: "devicon-figma-plain colored" },
       { name: "Android", icon: "devicon-android-plain colored" },
+    ],
+  },
+  {
+    label: "AI and data",
+    dir: "marquee-left" as const,
+    items: [
+      { name: "Python", icon: "devicon-python-plain colored" },
+      { name: "Machine learning", icon: "devicon-tensorflow-original colored" },
+      { name: "OpenAI", icon: "devicon-python-plain colored" },
+      { name: "Anthropic", icon: "devicon-python-plain colored" },
+      { name: "RAG pipelines", icon: "devicon-postgresql-plain colored" },
+    ],
+  },
+  {
+    label: "Design and CMS",
+    dir: "marquee-right" as const,
+    items: [
+      { name: "Figma", icon: "devicon-figma-plain colored" },
+      { name: "WordPress", icon: "devicon-wordpress-plain colored" },
+      { name: "Webflow", icon: "devicon-html5-plain colored" },
     ],
   },
 ];
@@ -334,15 +367,15 @@ export function TechMarquees() {
           <div className="stack-header">
             <div className="badge badge-outline">OUR STACK</div>
             <h2 className="section-title">
-              Technologies,{" "}
+              Tools chosen for the job,{" "}
               <i>
-                <span className="gradient-text-1">we master</span>
+                <span className="gradient-text-1">not for the trend</span>
               </i>
             </h2>
             <p className="section-subtitle">
-              Battle-tested tools, modern frameworks, scalable architectures —
+              We pick the technology after we understand your problem. That keeps the product
               <br />
-              chosen for your project&apos;s specific needs.
+              easy to maintain and easy to hand over to your own team.
             </p>
           </div>
         </Reveal>
@@ -352,16 +385,19 @@ export function TechMarquees() {
         <div className="marquee-fade marquee-fade-left" />
         <div className="marquee-fade marquee-fade-right" />
         {stackRows.map((row, rowIndex) => (
-          <div key={`${row.dir}-${rowIndex}`} className={`marquee ${row.dir}`}>
-            <div className="marquee-content">
-              {[0, 1].map((copy) =>
-                row.items.map((item) => (
-                  <div key={`${item.name}-${copy}`} className="tech-pill" data-cursor>
-                    <i className={item.icon} aria-hidden />
-                    {item.name}
-                  </div>
-                )),
-              )}
+          <div key={row.label} className="stack-row">
+            <p className="stack-row-label">{row.label}</p>
+            <div className={`marquee ${row.dir}`}>
+              <div className="marquee-content">
+                {[0, 1, 2, 3].map((copy) =>
+                  row.items.map((item) => (
+                    <div key={`${item.name}-${copy}-${rowIndex}`} className="tech-pill" data-cursor>
+                      <i className={item.icon} aria-hidden />
+                      {item.name}
+                    </div>
+                  )),
+                )}
+              </div>
             </div>
           </div>
         ))}
@@ -451,16 +487,19 @@ export function CtaBand() {
       <div className="glow-orb right-[-80px] top-[-120px] h-[420px] w-[420px] bg-[var(--brand)] opacity-20" />
       <div className="container-x relative text-center">
         <h2 className="font-display text-4xl font-bold md:text-6xl">
-          Want to <span className="italic-accent">connect</span>
+          Not sure if we&apos;re the
           <br />
-          with us?
+          <span className="italic-accent">right fit?</span>
         </h2>
         <p className="mx-auto mt-4 max-w-lg text-[var(--muted)]">
-          Tell us what you want to automate, build or improve. We&apos;ll help turn the opportunity
-          into a practical technology plan.
+          Book a free 30-minute call. Tell us what&apos;s slowing your business down, and we&apos;ll
+          tell you honestly whether we can help.
         </p>
-        <div className="mt-8 flex justify-center">
-          <Button href="/contact">Let&apos;s Talk</Button>
+        <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <Button href="/contact">Book a free call</Button>
+          <Button href="/contact" variant="secondary">
+            Contact us
+          </Button>
         </div>
       </div>
     </section>

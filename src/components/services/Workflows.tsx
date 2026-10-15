@@ -17,8 +17,8 @@ export function AgentWorkflow() {
         <div className="values-header">
           <div className="badge badge-outline">HOW IT RUNS</div>
           <h2 className="section-title">
-            From request to action — an{" "}
-            <span className="gradient-text-3 italic">intelligent</span> workflow.
+            From request to action, with a{" "}
+            <span className="gradient-text-3 italic">person</span> in the loop.
           </h2>
         </div>
         <div className="letters-row" style={{ flexWrap: "wrap" }}>
@@ -41,7 +41,7 @@ export function MlLifecycle() {
         <div className="values-header">
           <div className="badge badge-outline">LIFECYCLE</div>
           <h2 className="section-title">
-            ML delivery <span className="gradient-text-3 italic">lifecycle</span>
+            How a model <span className="gradient-text-3 italic">gets into production</span>
           </h2>
         </div>
         <div className="letters-row" style={{ flexWrap: "wrap" }}>

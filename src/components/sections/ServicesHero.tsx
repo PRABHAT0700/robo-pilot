@@ -18,14 +18,14 @@ export function ServicesHero() {
             <span className="dot-cyan" /> OUR SERVICES
           </div>
           <h1 className="hero-title">
-            Five capabilities,
+            Five services,
             <br />
             <span className="gradient-text-faq italic">one</span>{" "}
-            <span className="gradient-text-3 italic">partner.</span>
+            <span className="gradient-text-3 italic">team.</span>
           </h1>
           <p className="hero-subtitle">
-            AI agents, machine learning, mobile products and consulting — assembled as a connected
-            system, not disconnected vendors.
+            Custom AI agents, a free agent library to try first, ML and analytics, mobile apps, and AI
+            consulting — scoped, built and supported by the same people.
           </p>
           <div className="hero-buttons">
             <Link href="/contact" className="btn btn-primary" data-cursor>

@@ -18,14 +18,14 @@ const industryCards: IndustryCard[] = [
   {
     slug: "ecommerce",
     title: "E-commerce",
-    desc: "Build high-performance storefronts and mobile apps with seamless checkout, secure payments, inventory sync, and architecture that scales with your traffic spikes.",
+    desc: "Online stores need checkout that works during sales, stock that matches the warehouse, and payments that don’t fail. We build storefronts and mobile apps for that reality.",
     image: "https://vvpsoftech.com/assets/images/industry_healthcare.webp",
     icon: <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />,
   },
   {
     slug: "finance",
     title: "Finance",
-    desc: "Develop secure fintech platforms, digital wallets, payment gateways, and lending software with enterprise-grade compliance and security.",
+    desc: "Financial teams need security, audit trails and compliance built in from the start. We build secure platforms for payments, lending and internal operations.",
     image: "https://vvpsoftech.com/assets/images/industry_finance.webp",
     icon: (
       <>
@@ -37,7 +37,7 @@ const industryCards: IndustryCard[] = [
   {
     slug: "fintech",
     title: "FinTech",
-    desc: "Create high-performance eCommerce websites and mobile apps with seamless shopping experiences, secure payments, inventory management, and scalable architecture.",
+    desc: "Fintech products handle money, so reliability and fraud protection matter more than anything. We build wallets, payment flows and onboarding that stay stable as you grow.",
     image: "https://vvpsoftech.com/assets/images/industry_ecommerce.webp",
     icon: (
       <>
@@ -50,7 +50,7 @@ const industryCards: IndustryCard[] = [
   {
     slug: "healthcare",
     title: "Healthcare",
-    desc: "Build HIPAA-ready patient portals, telemedicine platforms, and hospital management systems that improve care delivery and cut admin overhead.",
+    desc: "Clinics and hospitals lose time to scheduling, records and billing. We build patient portals, telemedicine tools and management systems that give staff more time with patients.",
     image: "https://vvpsoftech.com/assets/images/industry_education.webp",
     icon: (
       <>
@@ -62,7 +62,7 @@ const industryCards: IndustryCard[] = [
   {
     slug: "edtech",
     title: "Education (EdTech)",
-    desc: "Create e-learning platforms, virtual classrooms, and student information systems that make teaching and learning work at scale.",
+    desc: "Learning platforms must stay stable during exams and enrolment peaks. We build course platforms, virtual classrooms and student systems that teachers and learners find easy to use.",
     image: "https://vvpsoftech.com/assets/images/industry_realestate.webp",
     icon: (
       <>
@@ -73,8 +73,8 @@ const industryCards: IndustryCard[] = [
   },
   {
     slug: "logistics",
-    title: "Logistics & Transportation",
-    desc: "Develop fleet tracking, route optimization, and dispatch management systems built for real-time visibility.",
+    title: "Logistics and Transportation",
+    desc: "Dispatch teams need to know where every vehicle is and what it’s carrying. We build fleet tracking, route planning and dispatch tools that show live status.",
     image: "https://vvpsoftech.com/assets/images/industry_travel.webp",
     icon: (
       <>
@@ -86,7 +86,7 @@ const industryCards: IndustryCard[] = [
   {
     slug: "real-estate",
     title: "Real Estate",
-    desc: "Build property portals, CRM tools, and listing management apps that simplify buying, selling, and managing real estate.",
+    desc: "Agents lose leads when they’re spread across spreadsheets and chat apps. We build property portals, CRM tools and listing management that keep every lead and viewing in one place.",
     image: "https://vvpsoftech.com/assets/images/industry_social.webp",
     icon: (
       <>
@@ -98,8 +98,8 @@ const industryCards: IndustryCard[] = [
   },
   {
     slug: "food",
-    title: "Food & Restaurant",
-    desc: "Build ordering platforms, kitchen management systems, and delivery-tracking apps for restaurants and cloud kitchens.",
+    title: "Food and Restaurant",
+    desc: "Rush hours expose weak ordering and kitchen systems. We build ordering platforms, kitchen display tools and delivery tracking for restaurants and cloud kitchens.",
     image: "https://vvpsoftech.com/assets/images/industry_technology.webp",
     icon: (
       <>
@@ -112,7 +112,7 @@ const industryCards: IndustryCard[] = [
   {
     slug: "manufacturing",
     title: "Manufacturing",
-    desc: "Develop inventory, production-tracking, and ERP-style tools that bring visibility to shop-floor operations.",
+    desc: "Production managers often learn about delays after they happen. We build inventory, production tracking and ERP-style tools that bring the shop floor into one view.",
     image: "https://vvpsoftech.com/assets/images/industry_technology.webp",
     icon: (
       <>
@@ -125,7 +125,7 @@ const industryCards: IndustryCard[] = [
   {
     slug: "hrms",
     title: "Human Resource Management (HRMS)",
-    desc: "Build HR platforms covering payroll, attendance, performance reviews, and recruitment workflows in one system.",
+    desc: "HR teams often copy data between payroll, attendance and hiring tools. We build HR platforms that cover payroll, attendance, reviews and recruitment in one system.",
     image: "https://vvpsoftech.com/assets/images/industry_technology.webp",
     icon: (
       <>
@@ -151,17 +151,17 @@ export function IndustriesPreview() {
           <div className="industries-header">
             <div className="badge badge-outline">INDUSTRIES WE SERVE</div>
             <h2 className="section-title">
-              Ten verticals,{" "}
+              Ten industries, each one learned{" "}
               <i>
-                <span className="gradient-text-1">one playbook</span>
+                <span className="gradient-text-1">before we build</span>
               </i>
             </h2>
             <p className="section-subtitle">
-              RoboPilot is a trusted IT partner to 200+ clients across India who
+              Every industry has its own rules, risks and daily problems. Before we design anything,
               <br />
-              have transformed their businesses through technology. For over 6+ years,
+              we learn how your sector works. That&apos;s why our solutions fit the way your team
               <br />
-              we&apos;ve delivered expertise across diverse industry domains.
+              actually operates.
             </p>
           </div>
         </Reveal>

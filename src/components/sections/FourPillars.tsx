@@ -56,11 +56,11 @@ export function FourPillars() {
           What we do
         </p>
         <h2 className="font-display text-[36px] font-extrabold tracking-[-0.04em] text-white md:text-[56px]">
-          Four Pillars, <span className="italic-accent">one partner</span>
+          Four services, <span className="italic-accent">one team</span> that sees the full picture
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-[#9aa3b8]">
-          AI, data, mobile and consulting — handled by one team that understands your full product
-          loop.
+          AI, data, mobile and consulting work are handled by one group, so decisions in one area
+          don’t break another.
         </p>
       </div>
 

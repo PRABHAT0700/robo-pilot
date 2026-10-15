@@ -2,12 +2,19 @@ import type { Metadata } from "next";
 import { Reveal } from "@/components/effects/Reveal";
 import { CursorReactiveField } from "@/components/effects/CursorReactiveField";
 import { ContactSection } from "@/components/sections/ContactSection";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { site } from "@/lib/content";
+import { breadcrumbSchema, pageMetadata, webPageSchema } from "@/lib/seo";
 
-export const metadata: Metadata = {
+const contactDesc =
+  "Talk to RoboPylot about AI agents, machine learning, mobile apps or consulting. Email info@robopylot.com or call +91 75095 55916. We reply within 24 hours on working days.";
+
+export const metadata: Metadata = pageMetadata({
   title: "Contact",
-  description: "Start a conversation with RoboPilot about your next digital initiative.",
-};
+  description: contactDesc,
+  path: "/contact",
+  keywords: ["contact RoboPylot", "AI consulting Indore", "book a call RoboPylot"],
+});
 
 function ContactHeroOrbit() {
   return (
@@ -23,6 +30,15 @@ function ContactHeroOrbit() {
 export default function ContactPage() {
   return (
     <>
+      <JsonLd
+        data={[
+          webPageSchema({ path: "/contact", title: "Contact RoboPylot", description: contactDesc, type: "ContactPage" }),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Contact", path: "/contact" },
+          ]),
+        ]}
+      />
       <section className="relative overflow-hidden bg-[var(--bg-deep)] pt-10 pb-16 md:pt-14 md:pb-24">
         <CursorReactiveField />
         <ContactHeroOrbit />
@@ -30,7 +46,7 @@ export default function ContactPage() {
           <Reveal>
             <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-[#6af3ff]/45 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#6af3ff]">
               <span className="h-1.5 w-1.5 rounded-full bg-[#6af3ff]" />
-              Let&apos;s talk
+              Contact
             </div>
             <h1 className="font-display text-[40px] font-extrabold leading-[1.02] tracking-[-0.04em] text-white sm:text-[52px] md:text-[68px]">
               Want to <span className="italic-move">connect</span>
@@ -38,8 +54,8 @@ export default function ContactPage() {
               with us?
             </h1>
             <p className="mt-7 max-w-xl text-[15px] leading-relaxed text-white/55 md:text-base">
-              Tell us what you want to automate, build or improve. Email {site.email} or use the form
-              below.
+              Tell us what&apos;s slowing your business down. We reply within 24 hours on working
+              days. Email {site.email} or use the form below.
             </p>
           </Reveal>
         </div>
