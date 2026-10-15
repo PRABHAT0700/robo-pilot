@@ -1,36 +1,55 @@
-import { Button } from "@/components/ui/Button";
-import { Reveal } from "@/components/effects/Reveal";
+import Link from "next/link";
 import type { ReactNode } from "react";
+import { Reveal } from "@/components/effects/Reveal";
 
-type Props = {
+function ArrowIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="5" y1="12" x2="19" y2="12" />
+      <polyline points="12 5 19 12 12 19" />
+    </svg>
+  );
+}
+
+type HeroProps = {
   eyebrow: string;
-  title: string;
+  title: ReactNode;
   description: string;
   primary: { href: string; label: string };
   secondary?: { href: string; label: string };
   visual: ReactNode;
 };
 
-export function ServiceHero({ eyebrow, title, description, primary, secondary, visual }: Props) {
+export function ServiceHero({ eyebrow, title, description, primary, secondary, visual }: HeroProps) {
   return (
-    <section className="relative overflow-hidden py-16 md:py-24">
-      <div className="container-x relative z-10 grid items-center gap-12 lg:grid-cols-2">
-        <Reveal>
-          <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-[var(--brand)]">
-            {eyebrow}
-          </p>
-          <h1 className="mt-4 font-display text-4xl font-bold tracking-tight md:text-6xl">{title}</h1>
-          <p className="mt-5 max-w-xl text-lg text-[var(--muted)]">{description}</p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Button href={primary.href}>{primary.label}</Button>
-            {secondary && (
-              <Button href={secondary.href} variant="secondary">
-                {secondary.label}
-              </Button>
-            )}
-          </div>
-        </Reveal>
-        <Reveal delay={0.1}>{visual}</Reveal>
+    <section className="hero works-hero service-detail-hero">
+      <div className="container-x">
+        <div className="hero-content">
+          <Reveal>
+            <div className="badge badge-outline">
+              <span className="dot-cyan" /> {eyebrow}
+            </div>
+            <h1 className="hero-title">{title}</h1>
+            <p className="hero-subtitle">{description}</p>
+            <div className="hero-buttons">
+              <Link href={primary.href} className="btn btn-primary" data-cursor>
+                {primary.label}
+                <span className="icon-circle">
+                  <ArrowIcon />
+                </span>
+              </Link>
+              {secondary ? (
+                <Link href={secondary.href} className="btn btn-secondary" data-cursor>
+                  {secondary.label}
+                  <span className="icon-arrow">
+                    <ArrowIcon />
+                  </span>
+                </Link>
+              ) : null}
+            </div>
+          </Reveal>
+        </div>
+        <div className="service-hero-visual">{visual}</div>
       </div>
     </section>
   );
@@ -41,22 +60,21 @@ export function CapabilityGrid({
   items,
 }: {
   heading: string;
-  items: { title: string; copy: string }[];
+  items: { title: string; copy: string; icon?: ReactNode }[];
 }) {
   return (
-    <section className="py-16 md:py-20">
+    <section className="mission-vision-section">
       <div className="container-x">
-        <h2 className="mx-auto mb-10 max-w-3xl text-center font-display text-3xl font-bold md:text-4xl">
-          {heading}
-        </h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="values-header" style={{ textAlign: "left", marginBottom: 40 }}>
+          <div className="badge badge-outline">CAPABILITIES</div>
+          <h2 className="section-title">{heading}</h2>
+        </div>
+        <div className="svc-cap-grid">
           {items.map((item) => (
-            <article
-              key={item.title}
-              className="rounded-2xl border border-white/10 bg-[var(--bg-elevated)] p-6 transition hover:border-[var(--brand)]/35"
-            >
-              <h3 className="font-display text-lg font-bold">{item.title}</h3>
-              <p className="mt-2 text-sm text-[var(--muted)]">{item.copy}</p>
+            <article key={item.title} className="mv-card mission-card svc-cap-card">
+              {item.icon ? <div className="mv-icon-wrapper mission-icon">{item.icon}</div> : null}
+              <h3 className="mv-title">{item.title}</h3>
+              <p className="mv-desc">{item.copy}</p>
             </article>
           ))}
         </div>
@@ -65,17 +83,25 @@ export function CapabilityGrid({
   );
 }
 
-export function TechChips({ heading, items }: { heading: string; items: string[] }) {
+export function TechChips({
+  heading,
+  items,
+  eyebrow = "OUR STACK",
+}: {
+  heading: string;
+  items: string[];
+  eyebrow?: string;
+}) {
   return (
-    <section className="py-14">
+    <section className="core-values-section" style={{ padding: "80px 0" }}>
       <div className="container-x">
-        <h2 className="mb-8 text-center font-display text-3xl font-bold">{heading}</h2>
-        <div className="flex flex-wrap justify-center gap-2">
+        <div className="values-header">
+          <div className="badge badge-outline">{eyebrow}</div>
+          <h2 className="section-title">{heading}</h2>
+        </div>
+        <div className="letters-row" style={{ flexWrap: "wrap" }}>
           {items.map((item) => (
-            <span
-              key={item}
-              className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-white/80"
-            >
+            <span key={item} className="flip-card-front svc-chip">
               {item}
             </span>
           ))}
@@ -98,11 +124,20 @@ export function ConversionBand({
 }) {
   return (
     <section className="py-16">
-      <div className="container-x rounded-3xl border border-white/10 bg-[var(--bg-elevated)] px-6 py-12 text-center">
-        <h2 className="font-display text-3xl font-bold md:text-4xl">{heading}</h2>
-        <p className="mx-auto mt-3 max-w-2xl text-[var(--muted)]">{copy}</p>
-        <div className="mt-7 flex justify-center">
-          <Button href={href}>{cta}</Button>
+      <div className="container-x">
+        <div className="mv-card vision-card" style={{ textAlign: "center", padding: "60px 40px" }}>
+          <h2 className="section-title" style={{ marginBottom: 16 }}>
+            {heading}
+          </h2>
+          <p className="mv-desc" style={{ maxWidth: 640, margin: "0 auto 28px" }}>
+            {copy}
+          </p>
+          <Link href={href} className="btn btn-primary" data-cursor>
+            {cta}
+            <span className="icon-circle">
+              <ArrowIcon />
+            </span>
+          </Link>
         </div>
       </div>
     </section>

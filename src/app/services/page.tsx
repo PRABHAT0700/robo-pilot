@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import { ServicesHero } from "@/components/sections/ServicesHero";
+import { WorkStats } from "@/components/sections/WorkHero";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
-import { Reveal } from "@/components/effects/Reveal";
-import { Button } from "@/components/ui/Button";
-import { CursorReactiveField } from "@/components/effects/CursorReactiveField";
-import { LeadForm } from "@/components/sections/LeadForm";
+import { TechMarquees } from "@/components/sections/HomeSections";
+import { ProcessPreview } from "@/components/sections/ProcessPreview";
+import { FaqSection } from "@/components/sections/FaqSection";
+import { ContactSection } from "@/components/sections/ContactSection";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -14,37 +16,13 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <>
-      <section className="relative overflow-hidden py-20">
-        <CursorReactiveField />
-        <div className="container-x relative z-10 max-w-3xl">
-          <Reveal>
-            <p className="mb-4 text-[11px] font-extrabold uppercase tracking-[0.2em] text-[var(--brand)]">
-              Services
-            </p>
-            <h1 className="font-display text-4xl font-bold tracking-tight md:text-6xl">
-              Full-stack AI and product capability.{" "}
-              <span className="italic-accent">Outcome-first delivery.</span>
-            </h1>
-            <p className="mt-5 text-lg text-[var(--muted)]">
-              Whether you need an agent, a data platform or a mobile product — we assemble the right mix
-              of strategy and engineering.
-            </p>
-          </Reveal>
-        </div>
-      </section>
+      <ServicesHero />
+      <WorkStats />
       <ServicesGrid />
-      <section className="pb-10">
-        <div className="container-x flex flex-col items-center rounded-3xl border border-white/10 bg-[var(--bg-elevated)] px-6 py-12 text-center">
-          <h2 className="font-display text-2xl font-bold md:text-3xl">Not sure where to start?</h2>
-          <p className="mt-3 max-w-xl text-[var(--muted)]">
-            Book a consultation and we&apos;ll map your goals to the right service mix.
-          </p>
-          <div className="mt-6">
-            <Button href="/contact">Talk to our team</Button>
-          </div>
-        </div>
-      </section>
-      <LeadForm />
+      <TechMarquees />
+      <ProcessPreview />
+      <FaqSection />
+      <ContactSection />
     </>
   );
 }

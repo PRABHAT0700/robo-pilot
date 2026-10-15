@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import { agentCategories, freeAgents } from "@/lib/content";
-import { Button } from "@/components/ui/Button";
-import { CoverImage } from "@/components/ui/CoverImage";
 import { IMG } from "@/lib/media";
 import { useMemo, useState } from "react";
 import { Bot } from "lucide-react";
+
+const agentImages = [IMG.cyber, IMG.robot, IMG.work, IMG.analytics, IMG.laptopDash, IMG.code, IMG.charts, IMG.space];
 
 export function FreeAgentsMarket() {
   const [query, setQuery] = useState("");
@@ -31,9 +31,9 @@ export function FreeAgentsMarket() {
   const platforms = ["All Platforms", "CRM", "Sales", "Support", "OCR", "BI", "Email", "Web"];
 
   return (
-    <section className="pb-16">
+    <section className="all-works-section" style={{ paddingTop: 40 }}>
       <div className="container-x">
-        <div className="mb-6 flex flex-col gap-3 md:flex-row md:items-center">
+        <div className="mb-8 flex flex-col gap-3 md:flex-row md:items-center">
           <input
             value={query}
             onChange={(e) => {
@@ -41,7 +41,7 @@ export function FreeAgentsMarket() {
               setPage(1);
             }}
             placeholder="Search AI agents…"
-            className="flex-1 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm outline-none focus:border-[var(--brand)]"
+            className="flex-1 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm outline-none focus:border-[var(--accent-cyan)]"
           />
           <select
             value={platform}
@@ -55,11 +55,19 @@ export function FreeAgentsMarket() {
               <option key={p}>{p}</option>
             ))}
           </select>
-          <Button href="/contact">Request a Custom Agent</Button>
+          <Link href="/contact" className="btn btn-primary" data-cursor>
+            CUSTOM AGENT
+            <span className="icon-circle">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </span>
+          </Link>
         </div>
 
         <div className="grid gap-6 lg:grid-cols-[240px_1fr]">
-          <aside className="h-fit rounded-2xl border border-white/10 bg-[var(--bg-elevated)] p-3">
+          <aside className="h-fit rounded-[20px] border border-white/10 bg-[#1c1c24] p-3">
             {agentCategories.map((c) => (
               <button
                 key={c}
@@ -77,47 +85,39 @@ export function FreeAgentsMarket() {
           </aside>
 
           <div>
-            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-              {paged.map((agent) => (
-                <article
+            <div className="all-works-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))" }}>
+              {paged.map((agent, i) => (
+                <Link
                   key={agent.slug}
-                  className="flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[var(--bg-elevated)]"
+                  href={`/services/free-ai-agents/${agent.slug}`}
+                  className="aw-card agent-market-card"
+                  data-cursor
                 >
-                  <div className="relative h-28">
-                    <CoverImage src={IMG.cyber} alt={agent.name} className="h-full" />
-                    <div className="absolute left-3 top-3 grid h-9 w-9 place-items-center rounded-xl bg-black/50 text-[var(--brand)]">
+                  <div className="aw-card-image">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={agentImages[i % agentImages.length]} alt={agent.name} loading="lazy" />
+                    <div className="aw-pill">
+                      <span className="dot-cyan" /> {agent.featured ? "Featured" : agent.category}
+                    </div>
+                    <div className="svc-card-icon">
                       <Bot size={18} />
                     </div>
+                    <h3 className="aw-title" style={{ fontSize: "1.25rem" }}>
+                      {agent.name}
+                    </h3>
                   </div>
-                  <div className="flex flex-1 flex-col p-5">
-                    {agent.featured && (
-                      <span className="mb-3 w-fit rounded-full bg-[var(--brand)]/15 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[var(--brand)]">
-                        Featured
-                      </span>
-                    )}
-                    <h3 className="font-display text-lg font-bold">{agent.name}</h3>
-                    <p className="mt-2 flex-1 text-sm text-[var(--muted)]">{agent.description}</p>
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {agent.tags.map((t) => (
-                        <span key={t} className="rounded-full border border-white/10 px-2 py-0.5 text-[11px]">
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                    <Link href={`/services/free-ai-agents/${agent.slug}`} className="mt-5">
-                      <span className="inline-flex w-full items-center justify-center rounded-xl border border-white/15 py-2.5 text-[11px] font-bold uppercase tracking-wider">
-                        View Details
-                      </span>
-                    </Link>
+                  <div className="svc-card-body">
+                    <p>{agent.description}</p>
+                    <span className="svc-card-cta">View details →</span>
                   </div>
-                </article>
+                </Link>
               ))}
             </div>
             {paged.length < filtered.length && (
               <div className="mt-8 flex justify-center">
-                <Button variant="secondary" onClick={() => setPage((p) => p + 1)}>
-                  Load More
-                </Button>
+                <button type="button" className="btn btn-secondary" onClick={() => setPage((p) => p + 1)}>
+                  Load more
+                </button>
               </div>
             )}
             {filtered.length === 0 && (

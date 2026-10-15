@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { freeAgents } from "@/lib/content";
-import { Button } from "@/components/ui/Button";
-import { CoverImage } from "@/components/ui/CoverImage";
 import { IMG } from "@/lib/media";
-import { LeadForm } from "@/components/sections/LeadForm";
+import { ServiceHero } from "@/components/services/ServiceBlocks";
+import { FaqSection } from "@/components/sections/FaqSection";
+import { ContactSection } from "@/components/sections/ContactSection";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -26,43 +26,49 @@ export default async function AgentDetailPage({ params }: Props) {
 
   return (
     <>
-      <section className="container-x grid items-center gap-10 py-16 lg:grid-cols-2">
-        <div>
-          <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-[var(--brand)]">
-            Free AI Agent
-          </p>
-          <h1 className="mt-3 font-display text-4xl font-bold md:text-5xl">{agent.name}</h1>
-          <p className="mt-4 text-lg text-[var(--muted)]">{agent.long}</p>
-          <div className="mt-6 flex flex-wrap gap-2">
+      <ServiceHero
+        eyebrow="FREE AI AGENT"
+        title={
+          <>
+            {agent.name.split(" ").slice(0, -1).join(" ") || agent.name}{" "}
+            <span className="gradient-text-3 italic">{agent.name.split(" ").slice(-1)}</span>
+          </>
+        }
+        description={agent.long}
+        primary={{ href: "/contact", label: "Try this agent" }}
+        secondary={{ href: "/services/free-ai-agents", label: "Marketplace" }}
+        visual={
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={IMG.laptopDash} alt={agent.name} className="service-hero-img" />
+        }
+      />
+
+      <section className="mission-vision-section">
+        <div className="container-x">
+          <div className="values-header" style={{ textAlign: "left", marginBottom: 40 }}>
+            <div className="badge badge-outline">CAPABILITIES</div>
+            <h2 className="section-title">What it does</h2>
+          </div>
+          <div className="svc-cap-grid">
+            {agent.capabilities.map((c) => (
+              <article key={c} className="mv-card mission-card svc-cap-card">
+                <h3 className="mv-title">{c}</h3>
+                <p className="mv-desc">Built into the agent so your team can adopt it without a custom build first.</p>
+              </article>
+            ))}
+          </div>
+          <div className="mt-8 flex flex-wrap gap-2">
             {agent.tags.map((t) => (
-              <span key={t} className="rounded-full border border-white/10 px-3 py-1 text-xs font-bold">
+              <span key={t} className="flip-card-front svc-chip">
                 {t}
               </span>
             ))}
-            <span className="rounded-full bg-white/5 px-3 py-1 text-xs">{agent.category}</span>
-          </div>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Button href="/contact">Try this agent</Button>
-            <Button href="/services/free-ai-agents" variant="secondary">
-              Back to marketplace
-            </Button>
           </div>
         </div>
-        <div className="h-[320px] overflow-hidden rounded-[28px] border border-white/10">
-          <CoverImage src={IMG.laptopDash} alt={agent.name} className="h-full" />
-        </div>
       </section>
-      <section className="container-x pb-16">
-        <h2 className="font-display text-2xl font-bold">What it does</h2>
-        <div className="mt-6 grid gap-4 sm:grid-cols-2">
-          {agent.capabilities.map((c) => (
-            <div key={c} className="rounded-2xl border border-white/10 bg-[var(--bg-elevated)] p-5 font-semibold">
-              {c}
-            </div>
-          ))}
-        </div>
-      </section>
-      <LeadForm defaultService="Free AI Agents" />
+
+      <FaqSection />
+      <ContactSection />
     </>
   );
 }

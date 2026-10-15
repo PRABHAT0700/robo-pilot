@@ -1851,6 +1851,48 @@ textarea {
   justify-content: center;
 }
 
+.btn.btn-primary:not(.faq-btn) {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  background: #00e5ff;
+  color: #070719;
+  padding: 6px 8px 6px 22px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.btn.btn-primary:not(.faq-btn) .icon-circle,
+.works-hero .icon-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #070719;
+  color: #00e5ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #ffffff;
+  color: #070719;
+  padding: 14px 22px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
 .works-hero .btn-secondary {
   display: inline-flex;
   align-items: center;
@@ -1875,6 +1917,120 @@ textarea {
   transform: translateY(-50%);
   z-index: 1;
   pointer-events: none;
+}
+
+.service-hero-visual {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: min(460px, 42%);
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.service-hero-img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: block;
+}
+
+.svc-grid-section {
+  padding-top: 80px;
+}
+
+.svc-card-icon {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  color: #00e5ff;
+  background: rgba(0, 229, 255, 0.12);
+  border: 1px solid rgba(0, 229, 255, 0.3);
+}
+
+.svc-card-body {
+  padding: 24px;
+  background: #111116;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 140px;
+}
+
+.svc-card-body p {
+  margin: 0;
+  color: #a0a0ab;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.svc-card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #00e5ff;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.svc-cap-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.svc-cap-card {
+  padding: 36px 28px;
+}
+
+.svc-cap-card .mv-title {
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+}
+
+.svc-cap-card .mv-desc {
+  font-size: 0.95rem;
+  font-style: normal;
+}
+
+.svc-chip {
+  position: relative;
+  width: auto;
+  height: auto;
+  padding: 12px 18px;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+
+.agent-market-card .aw-card-image img {
+  height: 180px;
+}
+
+@media (max-width: 1023px) {
+  .service-hero-visual {
+    position: relative;
+    right: auto;
+    top: auto;
+    width: 100%;
+    transform: none;
+    margin-top: 36px;
+  }
+
+  .service-hero-img {
+    height: 240px;
+  }
+
+  .svc-cap-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .abstract-rings .ring,

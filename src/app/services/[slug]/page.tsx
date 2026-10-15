@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { serviceNav, projects } from "@/lib/content";
-import { LeadForm } from "@/components/sections/LeadForm";
+import { serviceNav } from "@/lib/content";
 import {
   CapabilityGrid,
   ConversionBand,
@@ -10,7 +9,10 @@ import {
 } from "@/components/services/ServiceBlocks";
 import { AgentWorkflow, MlLifecycle } from "@/components/services/Workflows";
 import { FreeAgentsMarket } from "@/components/services/FreeAgentsMarket";
-import { CoverImage } from "@/components/ui/CoverImage";
+import { WorkStats } from "@/components/sections/WorkHero";
+import { AllWorks } from "@/components/sections/WorkShowcase";
+import { FaqSection } from "@/components/sections/FaqSection";
+import { ContactSection } from "@/components/sections/ContactSection";
 import { IMG } from "@/lib/media";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -61,9 +63,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 function Visual({ src, alt }: { src: string; alt: string }) {
   return (
-    <div className="relative h-[320px] overflow-hidden rounded-[28px] border border-white/10 md:h-[400px]">
-      <CoverImage src={src} alt={alt} className="h-full w-full" fallbackLabel={alt} />
-    </div>
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src={src} alt={alt} className="service-hero-img" />
   );
 }
 
@@ -78,36 +79,9 @@ export default async function ServiceDetailPage({ params }: Props) {
       {slug === "ml-model-development" && <MlPage />}
       {slug === "mobile-app-development" && <MobilePage />}
       {slug === "ai-consulting" && <ConsultingPage />}
-      <LeadForm defaultService={serviceNav.find((s) => s.slug === slug)?.title} />
+      <FaqSection />
+      <ContactSection />
     </>
-  );
-}
-
-function CaseCards({ titles }: { titles: string[] }) {
-  return (
-    <section className="py-16">
-      <div className="container-x">
-        <h2 className="mb-8 text-center font-display text-3xl font-bold">Our work in action</h2>
-        <div className="grid gap-4 md:grid-cols-2">
-          {titles.map((title, i) => {
-            const p = projects[i];
-            return (
-              <article key={title} className="overflow-hidden rounded-2xl border border-white/10 bg-[var(--bg-elevated)]">
-                <div className="relative h-40">
-                  <CoverImage src={p.image} alt={title} className="h-full w-full" />
-                </div>
-                <div className="p-5">
-                  <h3 className="font-display text-lg font-bold">{title}</h3>
-                  <p className="mt-2 text-sm text-[var(--muted)]">Problem: teams lose time in manual, disconnected workflows.</p>
-                  <p className="mt-1 text-sm text-[var(--muted)]">Solution: a governed system that automates the repeatable steps.</p>
-                  <span className="mt-4 inline-block text-sm font-bold text-[var(--brand)]">View Case Study →</span>
-                </div>
-              </article>
-            );
-          })}
-        </div>
-      </div>
-    </section>
   );
 }
 
@@ -116,7 +90,12 @@ function AiAgentPage() {
     <>
       <ServiceHero
         eyebrow="AI AGENTS • AUTOMATION • INTELLIGENCE"
-        title="Build AI Agents That Actually Work."
+        title={
+          <>
+            Build AI agents that{" "}
+            <span className="gradient-text-3 italic">actually work.</span>
+          </>
+        }
         description="Design and deploy intelligent AI agents that understand your business, connect with your systems, and execute real workflows — from customer support and sales to operations and knowledge management."
         primary={{ href: "/contact", label: "Build Your AI Agent" }}
         secondary={{ href: "/services", label: "Explore AI Solutions" }}
@@ -124,6 +103,7 @@ function AiAgentPage() {
           <Visual src={IMG.robot} alt="AI agent workflow visualization" />
         }
       />
+      <WorkStats />
       <CapabilityGrid
         heading="AI agents built around your business, not generic prompts."
         items={[
@@ -166,12 +146,12 @@ function AiAgentPage() {
           { title: "Process Automation Agent", copy: "Coordinate multi-step operational tasks across tools, approvals and business systems." },
         ]}
       />
-      <CaseCards titles={["AI-Powered Customer Operations", "Intelligent Document & Knowledge Automation", "AI Sales & Lead Qualification", "AI-Driven Operations & Reporting"]} />
+      <AllWorks />
       <section className="py-10">
         <div className="container-x grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {["Faster Response", "Reduced Manual Work", "Higher Process Consistency", "Better Decision Visibility"].map((t) => (
-            <div key={t} className="rounded-2xl border border-white/10 p-5 text-center font-display font-bold">
-              {t}
+            <div key={t} className="mv-card mission-card" style={{ padding: 24, textAlign: "center" }}>
+              <h3 className="mv-title" style={{ margin: 0, fontSize: "1.1rem" }}>{t}</h3>
             </div>
           ))}
         </div>
@@ -191,13 +171,19 @@ function FreeAgentsPage() {
     <>
       <ServiceHero
         eyebrow="FREE AI AGENTS"
-        title="Try AI Agents. Start Free."
+        title={
+          <>
+            Try AI agents.{" "}
+            <span className="gradient-text-3 italic">Start free.</span>
+          </>
+        }
         description="Explore practical AI agents designed for everyday business tasks. Discover an agent, try it, and see how intelligent automation can fit into your workflow."
         primary={{ href: "#marketplace", label: "Explore Free Agents" }}
         visual={
           <Visual src={IMG.cyber} alt="Collection of AI assistants for everyday business tasks" />
         }
       />
+      <WorkStats />
       <div id="marketplace">
         <FreeAgentsMarket />
       </div>
@@ -216,7 +202,12 @@ function MlPage() {
     <>
       <ServiceHero
         eyebrow="MACHINE LEARNING • DATA • ANALYTICS"
-        title="Turn Data Into Decisions."
+        title={
+          <>
+            Turn data into{" "}
+            <span className="gradient-text-3 italic">decisions.</span>
+          </>
+        }
         description="Build reliable machine learning models, analytics solutions and decision-support systems that turn complex data into measurable business insight."
         primary={{ href: "/contact", label: "Discuss Your Data Challenge" }}
         secondary={{ href: "/services", label: "Explore Our Capabilities" }}
@@ -224,6 +215,7 @@ function MlPage() {
           <Visual src={IMG.analytics} alt="Analytics dashboards and machine learning visuals" />
         }
       />
+      <WorkStats />
       <CapabilityGrid
         heading="Core ML development services"
         items={[
@@ -276,18 +268,24 @@ function MobilePage() {
     <>
       <ServiceHero
         eyebrow="MOBILE • PRODUCT • ENGINEERING"
-        title="Apps People Love to Use."
+        title={
+          <>
+            Apps people{" "}
+            <span className="gradient-text-3 italic">love to use.</span>
+          </>
+        }
         description="Design and build fast, secure and scalable mobile experiences for customers, employees and partners — from MVP to enterprise-grade applications."
         primary={{ href: "/contact", label: "Start Your Mobile Project" }}
         visual={
           <Visual src={IMG.mobile} alt="Mobile product interface on a phone" />
         }
       />
+      <WorkStats />
       <section className="py-8">
         <div className="container-x grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {["Cross-Platform Delivery", "Production-Ready Architecture", "Secure Integrations", "Post-Launch Support"].map((t) => (
-            <div key={t} className="rounded-2xl border border-white/10 p-5 text-center text-sm font-bold">
-              {t}
+            <div key={t} className="mv-card mission-card" style={{ padding: 24, textAlign: "center" }}>
+              <h3 className="mv-title" style={{ margin: 0, fontSize: "1rem" }}>{t}</h3>
             </div>
           ))}
         </div>
@@ -313,7 +311,7 @@ function MobilePage() {
           { title: "User-Centric Design", copy: "Mobile experiences shaped around real user journeys and business goals." },
         ]}
       />
-      <CaseCards titles={["E-commerce Mobile App", "Healthcare / Patient Platform", "FinTech Application", "On-Demand / Operations App"]} />
+      <AllWorks />
       <ConversionBand
         heading="Ready to turn your idea into a mobile product?"
         copy="From MVP to scale, we’ll help you choose the right architecture, build the product and take it to production."
@@ -329,13 +327,19 @@ function ConsultingPage() {
     <>
       <ServiceHero
         eyebrow="AI STRATEGY • DISCOVERY • TRANSFORMATION"
-        title="Turn AI Ambition Into Action."
+        title={
+          <>
+            Turn AI ambition into{" "}
+            <span className="gradient-text-3 italic">action.</span>
+          </>
+        }
         description="Move from AI experimentation to a practical roadmap. RoboPilot helps identify high-value opportunities, define the right solution architecture and build a path to measurable adoption."
         primary={{ href: "/contact", label: "Book an AI Consultation" }}
         visual={
           <Visual src={IMG.people} alt="Strategy workshop for AI opportunity discovery" />
         }
       />
+      <WorkStats />
       <CapabilityGrid
         heading="Why RoboPilot consulting"
         items={[
@@ -358,16 +362,16 @@ function ConsultingPage() {
               ["04", "Implementation", "Move validated solutions into production workflows."],
               ["05", "Adoption & Optimization", "Measure outcomes, improve usage and expand what works."],
             ].map(([n, t, d]) => (
-              <article key={n} className="rounded-2xl border border-white/10 p-5">
-                <div className="text-xs font-bold text-[var(--brand)]">{n}</div>
-                <h3 className="mt-2 font-display font-bold">{t}</h3>
-                <p className="mt-2 text-sm text-[var(--muted)]">{d}</p>
+              <article key={n} className="mv-card mission-card" style={{ padding: 24 }}>
+                <div className="mv-subtitle mission-text">{n}</div>
+                <h3 className="mv-title" style={{ fontSize: "1.05rem", marginBottom: 8 }}>{t}</h3>
+                <p className="mv-desc" style={{ fontSize: "0.9rem", fontStyle: "normal" }}>{d}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
-      <CaseCards titles={["AI automation", "Intelligent operations", "Data transformation", "Document intelligence"]} />
+      <AllWorks />
       <section className="py-10">
         <div className="container-x flex flex-wrap justify-center gap-3">
           {["Business-first thinking", "Practical AI engineering", "Domain-aware solution design", "Transparent delivery", "Security and governance by design", "Long-term optimization"].map((t) => (
