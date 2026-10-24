@@ -13,7 +13,7 @@ export function MissionVision() {
             <div className="mv-subtitle vision-text">OUR VISION</div>
             <h3 className="mv-title">Software people will actually use</h3>
             <p className="mv-desc">
-              We want growing businesses in India and the UK to have AI, data and mobile products
+              We want growing businesses in India and the world to have AI, data and mobile products
               they can rely on — built by a small team that stays with the work.
             </p>
           </div>

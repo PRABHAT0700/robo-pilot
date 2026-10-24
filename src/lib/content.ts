@@ -3,18 +3,18 @@ export const site = {
   tagline: "Build. Scale. Grow. With a technology partner that starts with your problem.",
   email: "info@robopylot.com",
   salesEmail: "info@robopylot.com",
-  phone: "+91 75095 55916",
-  phoneTel: "tel:+917509555916",
+  phone: "+91 9307721854",
+  phoneTel: "tel:+919307721854",
   phoneAlt: "+91 6265856938",
   phoneAltTel: "tel:+916265856938",
-  whatsapp: "+91 75095 55916",
+  whatsapp: "+91 9307721854",
   whatsappHref:
-    "https://wa.me/917509555916?text=Hi%20RoboPylot%2C%20I%27d%20like%20to%20discuss%20a%20project.",
+    "https://wa.me/919307721854?text=Hi%20RoboPylot%2C%20I%27d%20like%20to%20discuss%20a%20project.",
   location: "India",
   address:
-    "105, AB Rd, Sector C, Slice 5, Part II, Shalimar Township, Indore, Madhya Pradesh 452010",
+    "105, AB Rd, Sector C, Slice 5, Part II, Skye Corporate Park, Indore, Madhya Pradesh 452010",
   description:
-    "RoboPylot builds AI agents, machine learning, mobile apps and AI consulting for growing businesses in India and the UK.",
+    "RoboPylot builds AI agents, machine learning, mobile apps and AI consulting Based in India, building for the world. We partner with businesses globally to deliver smart, scalable digital solutions across time zones",
 };
 
 export const navLinks = [
@@ -51,10 +51,10 @@ export const serviceNav = [
   },
   {
     slug: "mobile-app-development",
-    title: "Mobile App Development",
-    short: "iOS, Android and cross-platform apps from a working first version",
+    title: "Web & Mobile App Development",
+    short: "iOS, Android, Web and cross-platform apps from a working first version",
     homeBlurb:
-      "iOS, Android and cross-platform apps. We release a working first version quickly, then improve it based on how real users behave.",
+      "iOS, Android, Web and cross-platform apps. We release a working first version quickly, then improve it based on how real users behave.",
     cta: "Start Your Mobile Project",
   },
   {
@@ -509,12 +509,12 @@ export const whyChoose = [
 export const faqs = [
   {
     q: "What services does RoboPylot offer?",
-    a: "We build AI agents, machine learning and data analytics systems, mobile apps and AI consulting. We also offer a free library of AI agents for trying common tasks before you commit to a custom build.",
+    a: "We build AI agents, machine learning and data analytics systems, Web and mobile apps and AI consulting. We also offer a free library of AI agents for trying common tasks before you commit to a custom build.",
   },
-  {
-    q: "How much does it cost to build a website or mobile app in India?",
-    a: "It depends on features, integrations and platform. A custom business website typically starts at ₹60,000, a custom web app at ₹2,00,000, and a mobile app at ₹4,00,000. Your exact quote comes from a free discovery call. Prices exclude GST (18%).",
-  },
+  // {
+  //   q: "How much does it cost to build a website or mobile app in India?",
+  //   a: "It depends on features, integrations and platform. A custom business website typically starts at ₹60,000, a custom web app at ₹2,00,000, and a mobile app at ₹4,00,000. Your exact quote comes from a free discovery call. Prices exclude GST (18%).",
+  // },
   {
     q: "How long does it take to build a website or app?",
     a: "A business website usually takes 4 to 8 weeks. A mobile app usually takes 3 to 6 months, depending on features. An AI agent pilot for one workflow is often 2 to 4 weeks.",
@@ -541,7 +541,7 @@ export const faqs = [
   },
   {
     q: "Where is RoboPylot based and do you work outside India?",
-    a: "We are based in Indore, Madhya Pradesh, and work with clients in India, the UK and the US. We schedule calls to suit your time zone.",
+    a: "Based in India, building for the world. We partner with businesses globally to deliver smart, scalable digital solutions across time zones.",
   },
   {
     q: "Which technologies does RoboPylot specialise in?",
@@ -887,7 +887,7 @@ export const freeAgents = [
   },
   {
     slug: "competitive-research-agent",
-    name: "Competitive Research Agent",
+    name: "Research Agent",
     description: "Collect public positioning notes so strategy conversations start from a shared brief.",
     long: "Assemble a living brief of public positioning, offers and messaging themes so strategy meetings start aligned.",
     tags: ["Research"],

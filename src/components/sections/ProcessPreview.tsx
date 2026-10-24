@@ -8,8 +8,8 @@ import { Reveal } from "@/components/effects/Reveal";
 const steps = [
   {
     label: "STEP 01",
-    title: "Understand",
-    desc: "How work runs today, where time and money go — agreed in writing before anything else.",
+    title: "Discover",
+    desc: "Goals, constraints, and landscape — understood before code is written.",
     icon: (
       <>
         <circle cx="12" cy="12" r="10" />
@@ -20,7 +20,7 @@ const steps = [
   {
     label: "STEP 02",
     title: "Design",
-    desc: "Layout, flow and architecture you can change while changes are still cheap.",
+    desc: "Low and high fidelity prototypes reviewed and approved before a single line of code is written.",
     icon: (
       <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
     ),
@@ -28,7 +28,7 @@ const steps = [
   {
     label: "STEP 03",
     title: "Build",
-    desc: "Weekly cycles. Each week you get a working version to try and steer.",
+    desc: "Built with a modern tech stack, rigorously tested, and delivered with transparent weekly progress updates.",
     icon: (
       <>
         <path d="m15 12-8.5 8.5c-.83.83-2.17.83-3 0 0 0 0 0 0 0a2.12 2.12 0 0 1 0-3L12 9" />
@@ -136,7 +136,7 @@ export function ProcessPreview() {
             </h2>
             <p className="section-subtitle">
               Every project follows the same path. You see what we’re doing, what it costs
-              <br />
+              {/* <br /> */}
               and what you receive before we move to the next stage.
             </p>
           </div>

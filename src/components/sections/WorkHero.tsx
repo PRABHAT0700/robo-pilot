@@ -93,12 +93,12 @@ export function WorkStats() {
           <p>INDUSTRIES SERVED</p>
         </div>
         <div className="stat-item">
-          <h3>1</h3>
-          <p>TEAM FOR AI AND PRODUCT</p>
+          <h3>95%</h3>
+          <p>Retention Rate</p>
         </div>
         <div className="stat-item">
-          <h3>Free</h3>
-          <p>DISCOVERY CONSULTATION</p>
+          <h3>100%</h3>
+          <p>Ongoing Support</p>
         </div>
       </div>
     </section>

@@ -68,7 +68,7 @@ export function AboutHero() {
           className="max-w-[820px] font-display text-[40px] font-extrabold leading-[1.05] tracking-[-0.04em] text-white sm:text-[52px] md:text-[68px] lg:text-[76px]"
         >
           A small team that takes
-          <br />
+          {/* <br /> */}
           the engineering <span className="italic-accent">seriously</span>
         </motion.h1>
 

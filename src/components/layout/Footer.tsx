@@ -85,7 +85,7 @@ export function Footer() {
               <p>
                 105, AB Rd, Sector C, Slice 5, Part II,
                 <br />
-                Shalimar Township, Indore,
+                Skye Corporate Park, Indore,
                 <br />
                 Madhya Pradesh 452010
               </p>
@@ -106,9 +106,9 @@ export function Footer() {
             Reserved®
           </div>
           <div className="legal-links">
-            <a href="#privacy">Privacy</a>
-            <a href="#terms">Terms</a>
-            <a href="#cookies">Cookies</a>
+            <Link href="/privacy">Privacy</Link>
+            <Link href="/terms">Terms</Link>
+            <Link href="/privacy">Cookies</Link>
           </div>
         </div>
       </div>

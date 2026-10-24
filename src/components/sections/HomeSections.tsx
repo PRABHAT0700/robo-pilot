@@ -95,8 +95,8 @@ export function TrustedStrip() {
               <Boxes size={12} /> Our services
             </p>
             <h2 className="mt-4 font-display text-3xl font-extrabold tracking-tight md:text-5xl">
-              Five services,{" "}
-              <span className="italic text-[#4b8cff]">one team</span> that stays with the project
+            Five stages from busywork to{" "}
+              <span className="italic text-[#4b8cff]">AUTONOMY</span>
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-slate-600">
               Whether you need an AI agent for customer support, a dashboard for your numbers, or a
@@ -226,7 +226,7 @@ export function AboutCraft({
             {heading ?? (
               <>
                 A technology partner built on
-                <br />
+                {/* <br /> */}
                 careful <span className="italic-accent">engineering</span>
               </>
             )}
@@ -285,7 +285,7 @@ export function OutcomeStrip() {
           {[
             ["5", "Service lines"],
             ["10+", "Industries served"],
-            ["1", "Partner for AI and product"],
+            ["95%", "Client retention rate"],
             ["Free", "Discovery consultation"],
           ].map(([n, l]) => (
             <div key={l} className="service-stat">
@@ -347,16 +347,17 @@ const stackRows = [
       { name: "Anthropic", icon: "devicon-python-plain colored" },
       { name: "RAG pipelines", icon: "devicon-postgresql-plain colored" },
     ],
-  },
-  {
-    label: "Design and CMS",
-    dir: "marquee-right" as const,
-    items: [
-      { name: "Figma", icon: "devicon-figma-plain colored" },
-      { name: "WordPress", icon: "devicon-wordpress-plain colored" },
-      { name: "Webflow", icon: "devicon-html5-plain colored" },
-    ],
-  },
+  }
+  // ,
+  // {
+  //   label: "Design and CMS",
+  //   dir: "marquee-right" as const,
+  //   items: [
+  //     { name: "Figma", icon: "devicon-figma-plain colored" },
+  //     { name: "WordPress", icon: "devicon-wordpress-plain colored" },
+  //     { name: "Webflow", icon: "devicon-html5-plain colored" },
+  //   ],
+  // },
 ];
 
 export function TechMarquees() {
@@ -374,7 +375,7 @@ export function TechMarquees() {
             </h2>
             <p className="section-subtitle">
               We pick the technology after we understand your problem. That keeps the product
-              <br />
+              {/* <br /> */}
               easy to maintain and easy to hand over to your own team.
             </p>
           </div>

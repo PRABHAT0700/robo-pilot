@@ -105,7 +105,7 @@ export const pillars = [
     copy: "We build agents that connect to your systems and handle real work: answering customers, checking records, routing requests and completing steps that today need a person. Each agent runs within rules you define, and every action is logged.",
     cta: "Explore AI agent building",
     image:
-      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1600&q=80",
+      "/images/ai-agent-building.avif",
   },
   {
     slug: "ml-model-development",

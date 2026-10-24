@@ -158,9 +158,9 @@ export function IndustriesPreview() {
             </h2>
             <p className="section-subtitle">
               Every industry has its own rules, risks and daily problems. Before we design anything,
-              <br />
+              {/* <br /> */}
               we learn how your sector works. That&apos;s why our solutions fit the way your team
-              <br />
+              {/* <br /> */}
               actually operates.
             </p>
           </div>

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRef } from "react";
 import { Reveal } from "@/components/effects/Reveal";
 import { workCases } from "@/lib/content";
+import { industryDetails } from "@/lib/media";
 
 const CARD_STEP = 450;
 
@@ -38,6 +39,13 @@ export function WorkCarousel() {
             {workCases.map((item, index) => (
               <Link key={item.slug} href={`/industries/${item.slug}`} className="work-card" data-cursor>
                 <div className="work-card-top" style={{ background: item.tone }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={industryDetails[item.slug]?.image ?? item.image}
+                    alt={item.title}
+                    className="work-card-photo"
+                    loading="lazy"
+                  />
                   <span className="case-study-pill">
                     <span className="dot-small" /> Case study {String(index + 1).padStart(2, "0")}
                   </span>

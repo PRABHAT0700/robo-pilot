@@ -6,7 +6,7 @@ import { site } from "@/lib/content";
 
 export function FloatingActions() {
   return (
-    <div className="fixed bottom-5 right-4 z-[60] flex flex-col items-end gap-3 md:bottom-7 md:right-6">
+    <div className="fab-stack fixed right-4 bottom-[max(1.25rem,env(safe-area-inset-bottom))] z-[40] flex flex-col items-end gap-3 md:right-6 md:bottom-7">
       <motion.a
         href={site.phoneTel}
         initial={{ opacity: 0, x: 40 }}
@@ -18,7 +18,7 @@ export function FloatingActions() {
         data-cursor
         aria-label={`Call ${site.phone}`}
       >
-        <span className="text-sm font-bold">Book a Call</span>
+        <span className="fab-label text-sm font-bold">Book a Call</span>
         <span className="grid h-11 w-11 place-items-center rounded-full bg-white/20">
           <Phone size={18} />
         </span>
@@ -37,7 +37,7 @@ export function FloatingActions() {
         data-cursor
         aria-label={`WhatsApp ${site.whatsapp}`}
       >
-        <span className="text-sm font-bold">WhatsApp Us</span>
+        <span className="fab-label text-sm font-bold">WhatsApp Us</span>
         <span className="grid h-11 w-11 place-items-center rounded-full bg-white/20">
           <MessageCircle size={18} />
         </span>

@@ -35,9 +35,7 @@ export default function AboutPage() {
         overlap={false}
         heading={
           <>
-            An AI and software partner
-            <br />
-            built on careful <span className="italic-accent">work</span>
+            An AI and software partner built on careful <span className="italic-accent">work</span>
           </>
         }
         body="We look at how your business runs before we suggest anything. Then we build the part that will actually help, and we explain every decision in plain language."

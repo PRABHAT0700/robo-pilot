@@ -55,8 +55,9 @@ export function FourPillars() {
         <p className="mb-5 inline-flex rounded-full border border-[#6af3ff]/35 px-3.5 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-[#6af3ff]">
           What we do
         </p>
-        <h2 className="font-display text-[36px] font-extrabold tracking-[-0.04em] text-white md:text-[56px]">
-          Four services, <span className="italic-accent">one team</span> that sees the full picture
+        <h2 className="font-display text-[36px] font-extrabold tracking-[-0.02em] text-white md:text-[56px]">
+          Four services, <span className="italic-accent">one team</span> that{" "}
+          <br className="hidden md:block" /> sees the full picture
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-[#9aa3b8]">
           AI, data, mobile and consulting work are handled by one group, so decisions in one area

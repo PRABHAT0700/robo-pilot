@@ -29,7 +29,7 @@ export function FaqSection({ items = faqs }: { items?: readonly FaqEntry[] }) {
 
           <div className="faq-info-cards">
             <div className="faq-info-card">
-              <span className="faq-info-value">48h</span>
+              <span className="faq-info-value">24h</span>
               <span className="faq-info-label">TYPICAL RESPONSE TIME</span>
             </div>
             <div className="faq-info-card">

@@ -219,7 +219,7 @@ export function ContactSection({ showHeader = true }: ContactSectionProps) {
                   <br />
                   105, AB Rd, Sector C, Slice 5, Part II,
                   <br />
-                  Shalimar Township, Indore,
+                  Skye Corporate Park, Indore,
                   <br />
                   Madhya Pradesh 452010, India
                 </div>

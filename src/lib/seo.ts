@@ -77,7 +77,7 @@ export function organizationSchema() {
     foundingDate: "2026",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "105, AB Rd, Sector C, Slice 5, Part II, Shalimar Township",
+      streetAddress: "105, AB Rd, Sector C, Slice 5, Part II, Skye Corporate Park",
       addressLocality: "Indore",
       addressRegion: "Madhya Pradesh",
       postalCode: "452010",

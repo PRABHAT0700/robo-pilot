@@ -40,8 +40,7 @@ export function WhyChoose() {
                 <span className="gradient-text-1">and stay</span>
               </h2>
               <p className="section-subtitle why-subtitle">
-                We&apos;re a young team, so we&apos;re careful about what we promise. Here&apos;s
-                what you can expect from us on every project.
+              We combine thoughtful design, smart engineering, and dependable support to turn ideas into products built for the long run.
               </p>
             </Reveal>
 
@@ -103,22 +102,22 @@ export function WhyChoose() {
                   <br />
                   on <span className="gradient-text-1">speed dial.</span>
                 </h3>
-                <p className="glow-card-body">
+                {/* <p className="glow-card-body">
                   Fast when it matters, careful when it counts, and honest about what we can and
                   can&apos;t do.
-                </p>
+                </p> */}
                 <div className="glow-mini-stats">
                   <div className="mini-stat">
-                    <h4 className="mini-stat-val cyan-text">5</h4>
-                    <p className="mini-stat-label">Service lines</p>
+                    <h4 className="mini-stat-val cyan-text">100%</h4>
+                    <p className="mini-stat-label">Commitment</p>
                   </div>
                   <div className="mini-stat">
-                    <h4 className="mini-stat-val cyan-text">10+</h4>
-                    <p className="mini-stat-label">Industries</p>
+                    <h4 className="mini-stat-val cyan-text">Modern</h4>
+                    <p className="mini-stat-label">Tech Stack</p>
                   </div>
                   <div className="mini-stat">
-                    <h4 className="mini-stat-val gradient-text-1">Free</h4>
-                    <p className="mini-stat-label">Discovery call</p>
+                    <h4 className="mini-stat-val gradient-text-1">Ongoing</h4>
+                    <p className="mini-stat-label">Support</p>
                   </div>
                 </div>
               </div>

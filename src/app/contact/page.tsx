@@ -7,7 +7,7 @@ import { site } from "@/lib/content";
 import { breadcrumbSchema, pageMetadata, webPageSchema } from "@/lib/seo";
 
 const contactDesc =
-  "Talk to RoboPylot about AI agents, machine learning, mobile apps or consulting. Email info@robopylot.com or call +91 75095 55916. We reply within 24 hours on working days.";
+  "Talk to RoboPylot about AI agents, machine learning, mobile apps or consulting. Email info@robopylot.com or call +91 93077 21854. We reply within 24 hours on working days.";
 
 export const metadata: Metadata = pageMetadata({
   title: "Contact",
