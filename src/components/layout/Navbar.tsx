@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useLenis } from "lenis/react";
 import { ChevronDown, MapPin, Menu, X } from "lucide-react";
 import { industries, navLinks, serviceNav, site } from "@/lib/content";
 import { cn } from "@/lib/utils";
@@ -20,7 +19,6 @@ export function Navbar() {
   const [mobileServices, setMobileServices] = useState(false);
   const [mobileIndustries, setMobileIndustries] = useState(false);
   const lastY = useRef(0);
-  const lenis = useLenis();
 
   useEffect(() => {
     lastY.current = window.scrollY;
@@ -66,24 +64,8 @@ export function Navbar() {
     setOpen(false);
     setServicesOpen(false);
     setIndustriesOpen(false);
-    setMobileServices(false);
-    setMobileIndustries(false);
     setHidden(false);
   }, [pathname]);
-
-  useEffect(() => {
-    if (open) {
-      document.body.classList.add("nav-open");
-      lenis?.stop();
-    } else {
-      document.body.classList.remove("nav-open");
-      lenis?.start();
-    }
-    return () => {
-      document.body.classList.remove("nav-open");
-      lenis?.start();
-    };
-  }, [open, lenis]);
 
   const serviceActive = pathname.startsWith("/services");
   const industryActive = pathname.startsWith("/industries");
@@ -99,9 +81,9 @@ export function Navbar() {
           : { y: 0, opacity: 1 }
       }
       transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
-      className={cn("site-nav origin-top", inverted && "is-inverted")}
+      className="fixed inset-x-0 top-0 z-50 origin-top bg-transparent"
     >
-      <div className="container-x site-nav-inner">
+      <div className="container-x flex h-[76px] items-center justify-between gap-4">
         <BrandLogo size={44} inverted={inverted} />
 
         <nav
@@ -145,7 +127,7 @@ export function Navbar() {
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 8 }}
-                  className="absolute left-0 top-full z-50 w-[min(420px,calc(100vw-2rem))] rounded-2xl border border-white/10 bg-[#0b1020]/98 p-2 shadow-[0_20px_80px_rgba(0,0,0,0.45)]"
+                  className="absolute left-0 top-full z-50 w-[420px] rounded-2xl border border-white/10 bg-[#0b1020]/98 p-2 shadow-[0_20px_80px_rgba(0,0,0,0.45)]"
                 >
                   {serviceNav.map((s) => (
                     <Link
@@ -199,7 +181,7 @@ export function Navbar() {
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 8 }}
-                  className="absolute left-0 top-full z-50 grid w-[min(520px,calc(100vw-2rem))] grid-cols-2 gap-1 rounded-2xl border border-white/10 bg-[#0b1020]/98 p-2 shadow-[0_20px_80px_rgba(0,0,0,0.45)]"
+                  className="absolute left-0 top-full z-50 grid w-[520px] grid-cols-2 gap-1 rounded-2xl border border-white/10 bg-[#0b1020]/98 p-2 shadow-[0_20px_80px_rgba(0,0,0,0.45)]"
                 >
                   {industries.map((ind) => (
                     <Link
@@ -231,7 +213,7 @@ export function Navbar() {
           <Link
             href="/contact"
             className={cn(
-              "ml-1 hidden items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs xl:inline-flex",
+              "ml-1 inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs",
               inverted
                 ? "border-black/10 text-[#0b1020]/70"
                 : "border-white/10 text-white/70",
@@ -267,7 +249,7 @@ export function Navbar() {
 
         <button
           className={cn(
-            "grid h-11 w-11 shrink-0 place-items-center rounded-full border lg:hidden",
+            "grid h-10 w-10 place-items-center rounded-full border lg:hidden",
             inverted ? "border-black/15 bg-black/5 text-[#0b1020]" : "border-white/15 bg-white/5 text-white",
           )}
           onClick={() => setOpen((v) => !v)}
@@ -284,9 +266,9 @@ export function Navbar() {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="site-nav-drawer overflow-hidden border-t border-white/10 bg-[#07080d]/95 backdrop-blur-xl lg:hidden"
+            className="overflow-hidden border-t border-white/10 bg-[#07080d]/95 backdrop-blur-xl lg:hidden"
           >
-            <div className="container-x flex max-h-[min(78dvh,640px)] flex-col gap-1 overflow-y-auto overscroll-contain py-4">
+            <div className="container-x flex flex-col gap-1 py-4">
               <Link href="/" className="rounded-lg px-3 py-3 text-sm font-semibold">
                 Home
               </Link>
@@ -333,18 +315,12 @@ export function Navbar() {
                     {link.label}
                   </Link>
                 ))}
-              <Link
-                href="/contact"
-                className="mt-2 inline-flex items-center justify-center rounded-full bg-[#6af3ff] px-4 py-3 text-sm font-bold text-[#071018]"
-              >
-                Let&apos;s Talk
-              </Link>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
     </motion.header>
-    <div className="site-nav-spacer" aria-hidden />
+    <div className="h-[76px]" aria-hidden />
     </>
   );
 }

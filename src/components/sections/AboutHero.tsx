@@ -67,9 +67,7 @@ export function AboutHero() {
           transition={{ delay: 0.05, duration: 0.7 }}
           className="max-w-[820px] font-display text-[40px] font-extrabold leading-[1.05] tracking-[-0.04em] text-white sm:text-[52px] md:text-[68px] lg:text-[76px]"
         >
-          A small team that takes
-          {/* <br /> */}
-          the engineering <span className="italic-accent">seriously</span>
+          A small team that takes the engineering <span className="italic-accent">seriously</span>
         </motion.h1>
 
         <motion.p

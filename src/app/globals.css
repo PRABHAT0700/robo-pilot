@@ -3408,6 +3408,120 @@ textarea {
   }
 }
 
+
+/* Social links — scoped to the contact section only */
+.contact-socials {
+  width: 100%;
+  min-width: 0;
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+.contact-socials-title {
+  margin: 0 0 14px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.65;
+}
+
+.contact-socials-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-width: 0;
+}
+
+.contact-socials .contact-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 42px;
+  padding: 10px 14px;
+  border: 1px solid rgba(128, 128, 128, 0.22);
+  border-radius: 12px;
+  background: rgba(128, 128, 128, 0.05);
+  color: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.contact-socials .contact-social-link svg {
+  display: block;
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.contact-socials .contact-social-link:hover {
+  transform: translateY(-2px);
+}
+
+.contact-socials .contact-social-link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.contact-socials .contact-social-link.linkedin:hover {
+  color: #0a66c2;
+  border-color: rgba(10, 102, 194, 0.35);
+  background: rgba(10, 102, 194, 0.08);
+}
+
+.contact-socials .contact-social-link.instagram:hover {
+  color: #d94687;
+  border-color: rgba(217, 70, 135, 0.35);
+  background: rgba(217, 70, 135, 0.08);
+}
+
+.contact-socials .contact-social-link.whatsapp:hover {
+  color: #16a34a;
+  border-color: rgba(22, 163, 74, 0.35);
+  background: rgba(22, 163, 74, 0.08);
+}
+
+@media (max-width: 480px) {
+  .contact-socials {
+    margin-top: 22px;
+    padding-top: 18px;
+  }
+
+  .contact-socials-list {
+    gap: 8px;
+  }
+
+  .contact-socials .contact-social-link {
+    gap: 7px;
+    min-height: 40px;
+    padding: 9px 11px;
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-socials .contact-social-link {
+    transition: none;
+  }
+
+  .contact-socials .contact-social-link:hover {
+    transform: none;
+  }
+}
+
+
 @media (max-width: 640px) {
   .footer-top {
     grid-template-columns: 1fr;
