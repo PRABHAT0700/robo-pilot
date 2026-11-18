@@ -2,13 +2,22 @@
 
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Bot, Send, Sparkles, X } from "lucide-react";
+import { useLenis } from "lenis/react";
+import { Mail, MessageCircle, Phone, Send, Sparkles, X } from "lucide-react";
+import { site } from "@/lib/content";
+import { PylotMessage } from "@/components/chat/PylotMessage";
 
 type Role = "user" | "assistant";
 type ChatMessage = { id: string; role: Role; content: string };
 
 const WELCOME =
   "Hi, I’m Pylot. Ask about RoboPylot services, industries, timelines, or how to start a project.";
+
+const SUGGESTIONS = [
+  "What services does RoboPylot offer?",
+  "How do I start a project?",
+  "How can I contact the team?",
+] as const;
 
 function uid() {
   return `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
@@ -63,34 +72,56 @@ async function streamReply(
 export function AskPylot({ open, onOpenChange }: { open: boolean; onOpenChange: (open: boolean) => void }) {
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
+  const [streamingId, setStreamingId] = useState<string | null>(null);
   const [messages, setMessages] = useState<ChatMessage[]>([
     { id: "welcome", role: "assistant", content: WELCOME },
   ]);
   const scroller = useRef<HTMLDivElement>(null);
+  const endRef = useRef<HTMLDivElement>(null);
   const field = useRef<HTMLTextAreaElement>(null);
+  const lenis = useLenis();
+  const showSuggestions = messages.length === 1 && !busy;
+
+  function scrollToEnd(smooth = false) {
+    const root = scroller.current;
+    if (!root) return;
+    root.scrollTo({ top: root.scrollHeight, behavior: smooth ? "smooth" : "auto" });
+  }
 
   useEffect(() => {
-    scroller.current?.scrollTo({ top: scroller.current.scrollHeight, behavior: "smooth" });
-  }, [messages, open]);
+    scrollToEnd(!busy);
+  }, [messages, open, busy]);
+
+  useEffect(() => {
+    if (!lenis) return;
+    if (open) lenis.stop();
+    else lenis.start();
+    return () => {
+      lenis.start();
+    };
+  }, [open, lenis]);
 
   useEffect(() => {
     if (open) {
-      const t = window.setTimeout(() => field.current?.focus(), 220);
+      const t = window.setTimeout(() => {
+        field.current?.focus();
+        scrollToEnd();
+      }, 220);
       return () => window.clearTimeout(t);
     }
   }, [open]);
 
-  async function onSubmit(e: FormEvent) {
-    e.preventDefault();
-    const text = input.trim();
-    if (!text || busy) return;
+  async function sendText(text: string) {
+    const value = text.trim();
+    if (!value || busy) return;
 
-    const userMessage: ChatMessage = { id: uid(), role: "user", content: text };
+    const userMessage: ChatMessage = { id: uid(), role: "user", content: value };
     const assistantId = uid();
     const next = [...messages, userMessage];
     setMessages([...next, { id: assistantId, role: "assistant", content: "" }]);
     setInput("");
     setBusy(true);
+    setStreamingId(assistantId);
 
     try {
       const payload = next
@@ -105,13 +136,19 @@ export function AskPylot({ open, onOpenChange }: { open: boolean; onOpenChange: 
       const message =
         error instanceof Error
           ? error.message
-          : "Something went wrong. Email info@robopylot.com or try again.";
+          : `Something went wrong. Email ${site.email} or try again.`;
       setMessages((prev) =>
         prev.map((m) => (m.id === assistantId ? { ...m, content: message } : m)),
       );
     } finally {
       setBusy(false);
+      setStreamingId(null);
     }
+  }
+
+  function onSubmit(e: FormEvent) {
+    e.preventDefault();
+    void sendText(input);
   }
 
   return (
@@ -139,19 +176,24 @@ export function AskPylot({ open, onOpenChange }: { open: boolean; onOpenChange: 
         {open && (
           <motion.section
             className="pylot-panel"
+            data-lenis-prevent
+            data-lenis-prevent-wheel
+            data-lenis-prevent-touch
             initial={{ opacity: 0, y: 16, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 12, scale: 0.98 }}
             transition={{ duration: 0.22 }}
             aria-label="Ask Pylot chat"
+            onWheel={(e) => e.stopPropagation()}
+            onTouchMove={(e) => e.stopPropagation()}
           >
             <header className="pylot-panel__head">
-              <span className="pylot-panel__avatar">
-                <Bot size={18} />
-              </span>
+              <span className="pylot-panel__avatar">P</span>
               <div>
                 <p className="pylot-panel__title">Ask Pylot</p>
-                <p className="pylot-panel__sub">RoboPylot assistant</p>
+                <p className="pylot-panel__sub">
+                  <span className="pylot-live" /> Online · RoboPylot assistant
+                </p>
               </div>
               <button
                 type="button"
@@ -163,20 +205,52 @@ export function AskPylot({ open, onOpenChange }: { open: boolean; onOpenChange: 
               </button>
             </header>
 
-            <div className="pylot-panel__messages" ref={scroller}>
+            <div
+              className="pylot-panel__messages"
+              ref={scroller}
+              data-lenis-prevent
+              data-lenis-prevent-wheel
+              data-lenis-prevent-touch
+              onWheel={(e) => e.stopPropagation()}
+            >
               {messages.map((m) => (
-                <div key={m.id} className={`pylot-bubble pylot-bubble--${m.role}`}>
-                  {m.role === "assistant" && !m.content && busy ? (
-                    <span className="pylot-typing" aria-label="Pylot is typing">
-                      <i />
-                      <i />
-                      <i />
-                    </span>
-                  ) : (
-                    m.content
-                  )}
-                </div>
+                <PylotMessage
+                  key={m.id}
+                  role={m.role}
+                  content={m.content}
+                  streaming={m.id === streamingId}
+                />
               ))}
+              {showSuggestions ? (
+                <div className="pylot-suggestions">
+                  {SUGGESTIONS.map((prompt) => (
+                    <button
+                      key={prompt}
+                      type="button"
+                      className="pylot-suggestion"
+                      onClick={() => void sendText(prompt)}
+                    >
+                      {prompt}
+                    </button>
+                  ))}
+                </div>
+              ) : null}
+              <div ref={endRef} />
+            </div>
+
+            <div className="pylot-panel__contacts">
+              <a href={`mailto:${site.email}`} aria-label={`Email ${site.email}`}>
+                <Mail size={14} />
+                Email
+              </a>
+              <a href={site.whatsappHref} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp RoboPylot">
+                <MessageCircle size={14} />
+                WhatsApp
+              </a>
+              <a href={site.phoneTel} aria-label={`Call ${site.phone}`}>
+                <Phone size={14} />
+                Call
+              </a>
             </div>
 
             <form className="pylot-panel__composer" onSubmit={onSubmit}>
@@ -188,10 +262,10 @@ export function AskPylot({ open, onOpenChange }: { open: boolean; onOpenChange: 
                 onKeyDown={(e) => {
                   if (e.key === "Enter" && !e.shiftKey) {
                     e.preventDefault();
-                    e.currentTarget.form?.requestSubmit();
+                    void sendText(input);
                   }
                 }}
-                placeholder="Ask about agents, apps, pricing…"
+                placeholder="Message Pylot…"
                 maxLength={2000}
                 disabled={busy}
               />

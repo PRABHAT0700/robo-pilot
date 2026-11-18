@@ -49,6 +49,7 @@
 
 html {
   scroll-behavior: auto;
+  overflow-x: clip;
 }
 
 body {
@@ -58,7 +59,8 @@ body {
   color: var(--text);
   font-family: var(--font-body), system-ui, sans-serif;
   line-height: 1.65;
-  overflow-x: hidden;
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 body.nav-open {
@@ -1302,6 +1304,8 @@ a.nav-link.nav-cta-talk {
 .why-choose-us {
   position: relative;
   z-index: 0;
+  max-width: 100%;
+  overflow-x: clip;
   background-color: var(--bg-dark);
   padding-top: 100px;
 }
@@ -1312,10 +1316,24 @@ a.nav-link.nav-cta-talk {
   gap: 80px;
   align-items: center;
   padding-bottom: 100px;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.why-choose-content,
+.why-choose-showcase {
+  min-width: 0;
+  max-width: 100%;
 }
 
 .why-subtitle {
   margin-bottom: 36px;
+}
+
+.why-choose-content .section-title,
+.why-choose-content .section-subtitle {
+  overflow-wrap: break-word;
+  max-width: 100%;
 }
 
 .reasons-accordion {
@@ -1376,6 +1394,7 @@ a.nav-link.nav-cta-talk {
   font-size: 16px;
   font-weight: 700;
   color: #fff;
+  overflow-wrap: break-word;
 }
 
 .accordion-arrow {
@@ -1428,6 +1447,7 @@ a.nav-link.nav-cta-talk {
 .glowing-card-wrapper {
   position: relative;
   width: 100%;
+  max-width: 100%;
   padding: 2px;
   border-radius: 32px;
   background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
@@ -1492,6 +1512,8 @@ a.nav-link.nav-cta-talk {
 .glow-mini-stats {
   display: flex;
   gap: 16px;
+  min-width: 0;
+  width: 100%;
 }
 
 .mini-stat {
@@ -1499,7 +1521,8 @@ a.nav-link.nav-cta-talk {
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 20px;
   padding: 20px 16px;
-  flex: 1;
+  flex: 1 1 0;
+  min-width: 0;
   text-align: center;
   transition:
     transform 0.3s ease,
@@ -1546,13 +1569,42 @@ a.nav-link.nav-cta-talk {
     min-height: 0;
   }
 
+  .glowing-card-wrapper::before {
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    filter: blur(22px);
+  }
+
+  .glowing-card-inner {
+    padding: 18px 16px 24px;
+  }
+
   .glow-card-title {
-    font-size: 28px;
-    margin-top: 28px;
+    font-size: clamp(1.35rem, 6vw, 1.75rem);
+    margin-top: 22px;
   }
 
   .glow-card-image {
     height: 240px;
+  }
+
+  .glow-mini-stats {
+    gap: 8px;
+  }
+
+  .mini-stat {
+    padding: 14px 6px;
+    border-radius: 14px;
+  }
+
+  .mini-stat-val {
+    font-size: 15px;
+  }
+
+  .mini-stat-label {
+    font-size: 11px;
   }
 
   .accordion-body p {
@@ -3844,6 +3896,10 @@ a.nav-link.nav-cta-talk {
   position: relative;
 }
 
+.fab-stack:has(.pylot-panel) > a {
+  display: none;
+}
+
 .pylot-fab {
   display: flex;
   align-items: center;
@@ -3861,54 +3917,83 @@ a.nav-link.nav-cta-talk {
 .pylot-panel {
   position: fixed;
   right: 1rem;
-  bottom: calc(11.75rem + env(safe-area-inset-bottom));
+  bottom: calc(5.4rem + env(safe-area-inset-bottom));
   z-index: 60;
   display: flex;
   flex-direction: column;
-  width: min(380px, calc(100vw - 2rem));
-  height: min(540px, calc(100dvh - 14rem));
+  width: min(460px, calc(100vw - 1.25rem));
+  max-width: calc(100vw - 1.25rem);
+  height: min(760px, calc(100dvh - 7.25rem));
+  max-height: calc(100dvh - 6.5rem);
   overflow: hidden;
   border: 1px solid rgba(17, 207, 255, 0.22);
-  border-radius: 20px;
-  background: linear-gradient(180deg, #121a30 0%, #070913 100%);
+  border-radius: 24px;
+  background:
+    radial-gradient(1200px 240px at 80% -10%, rgba(17, 207, 255, 0.16), transparent 50%),
+    linear-gradient(180deg, #141c34 0%, #070913 42%);
   box-shadow: 0 28px 80px rgba(0, 0, 0, 0.55);
+  overscroll-behavior: contain;
+  touch-action: manipulation;
 }
 
 .pylot-panel__head {
   display: flex;
+  flex: 0 0 auto;
   align-items: center;
-  gap: 10px;
-  padding: 14px 14px 12px;
+  gap: 12px;
+  padding: 16px 16px 14px;
   border-bottom: 1px solid rgba(17, 207, 255, 0.12);
 }
 
-.pylot-panel__avatar {
+.pylot-panel__avatar,
+.pylot-row__avatar {
   display: grid;
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   place-items: center;
   border-radius: 999px;
   color: #041018;
+  font-size: 13px;
+  font-weight: 800;
   background: linear-gradient(135deg, #11cfff 0%, #4b8cff 100%);
+}
+
+.pylot-row__avatar {
+  width: 28px;
+  height: 28px;
+  font-size: 11px;
+  flex: 0 0 auto;
+  margin-top: 2px;
 }
 
 .pylot-panel__title {
   margin: 0;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
 }
 
 .pylot-panel__sub {
-  margin: 0;
-  font-size: 11px;
+  margin: 2px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
   color: var(--muted);
+}
+
+.pylot-live {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: #22c55e;
+  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.16);
 }
 
 .pylot-panel__close {
   margin-left: auto;
   display: grid;
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   place-items: center;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 999px;
@@ -3919,39 +4004,117 @@ a.nav-link.nav-cta-talk {
 
 .pylot-panel__messages {
   display: flex;
-  flex: 1;
+  flex: 1 1 auto;
   flex-direction: column;
-  gap: 10px;
+  gap: 14px;
+  min-height: 0;
+  overflow-x: hidden;
   overflow-y: auto;
-  padding: 14px;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+  padding: 16px 16px 8px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(17, 207, 255, 0.35) transparent;
+}
+
+.pylot-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .pylot-bubble {
   max-width: 88%;
-  padding: 10px 12px;
-  border-radius: 14px;
-  font-size: 13.5px;
-  line-height: 1.5;
-  white-space: pre-wrap;
+  padding: 11px 14px;
+  border-radius: 16px;
+  font-size: 14px;
+  line-height: 1.65;
 }
 
 .pylot-bubble--assistant {
-  align-self: flex-start;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(17, 207, 255, 0.12);
+  flex: 1 1 auto;
+  max-width: calc(100% - 38px);
+  padding: 2px 2px 2px 0;
+  background: transparent;
+  border: 0;
+  color: #e8eefc;
 }
 
 .pylot-bubble--user {
   align-self: flex-end;
+  max-width: 82%;
   color: #041018;
   background: linear-gradient(135deg, #11cfff 0%, #4b8cff 100%);
+  border-bottom-right-radius: 6px;
+  white-space: pre-wrap;
+}
+
+.pylot-md-p {
+  margin: 0 0 10px;
+}
+
+.pylot-md-p:last-child {
+  margin-bottom: 0;
+}
+
+.pylot-md-list {
+  margin: 0 0 10px;
+  padding-left: 1.15rem;
+}
+
+.pylot-md-list li {
+  margin: 0 0 6px;
+}
+
+.pylot-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 3px 4px 3px 0;
+  padding: 5px 9px;
+  border: 1px solid rgba(17, 207, 255, 0.22);
+  border-radius: 999px;
+  background: rgba(17, 207, 255, 0.08);
+  color: #b9f4ff;
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  vertical-align: middle;
+}
+
+.pylot-chip:hover {
+  background: rgba(17, 207, 255, 0.16);
+}
+
+.pylot-chip--whatsapp {
+  color: #86efac;
+  border-color: rgba(34, 197, 94, 0.3);
+  background: rgba(34, 197, 94, 0.1);
+}
+
+.pylot-caret {
+  display: inline-block;
+  width: 7px;
+  height: 1em;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  background: #11cfff;
+  animation: pylot-caret 0.9s steps(1) infinite;
+}
+
+@keyframes pylot-caret {
+  50% { opacity: 0; }
 }
 
 .pylot-typing {
   display: inline-flex;
-  gap: 4px;
+  gap: 5px;
   align-items: center;
-  height: 16px;
+  height: 18px;
 }
 
 .pylot-typing i {
@@ -3970,36 +4133,91 @@ a.nav-link.nav-cta-talk {
   40% { transform: translateY(-4px); opacity: 1; }
 }
 
+.pylot-suggestions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 4px 0 8px 38px;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.pylot-suggestion {
+  width: fit-content;
+  max-width: 100%;
+  padding: 9px 12px;
+  border: 1px solid rgba(17, 207, 255, 0.2);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  color: inherit;
+  font: inherit;
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.pylot-suggestion:hover {
+  border-color: rgba(17, 207, 255, 0.45);
+  background: rgba(17, 207, 255, 0.08);
+}
+
+.pylot-panel__contacts {
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px 16px 0;
+}
+
+.pylot-panel__contacts a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  color: #d7e0f2;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.pylot-panel__contacts a:hover {
+  border-color: rgba(17, 207, 255, 0.4);
+  color: #fff;
+}
+
 .pylot-panel__composer {
   display: flex;
+  flex: 0 0 auto;
   gap: 8px;
   align-items: flex-end;
-  padding: 12px;
-  border-top: 1px solid rgba(17, 207, 255, 0.12);
+  padding: 12px 16px 16px;
 }
 
 .pylot-panel__composer textarea {
   flex: 1;
-  min-height: 42px;
-  max-height: 96px;
+  min-height: 48px;
+  max-height: 110px;
   resize: none;
-  padding: 10px 12px;
-  border: 1px solid rgba(17, 207, 255, 0.18);
-  border-radius: 12px;
-  background: rgba(5, 6, 10, 0.6);
+  padding: 12px 14px;
+  border: 1px solid rgba(17, 207, 255, 0.2);
+  border-radius: 16px;
+  background: rgba(5, 6, 10, 0.55);
   color: inherit;
   font: inherit;
-  font-size: 13.5px;
+  font-size: 14px;
   outline: none;
 }
 
 .pylot-panel__composer button {
   display: grid;
-  width: 42px;
-  height: 42px;
+  width: 48px;
+  height: 48px;
   place-items: center;
   border: 0;
-  border-radius: 12px;
+  border-radius: 16px;
   color: #041018;
   background: linear-gradient(135deg, #11cfff 0%, #4b8cff 100%);
   cursor: pointer;
@@ -4013,7 +4231,9 @@ a.nav-link.nav-cta-talk {
 @media (min-width: 768px) {
   .pylot-panel {
     right: 1.5rem;
-    bottom: calc(12.25rem + env(safe-area-inset-bottom));
+    width: min(480px, calc(100vw - 3rem));
+    max-width: calc(100vw - 3rem);
+    height: min(780px, calc(100dvh - 7.5rem));
   }
 }
 
@@ -4023,9 +4243,29 @@ a.nav-link.nav-cta-talk {
   }
 
   .pylot-panel {
-    right: 1rem;
-    bottom: calc(9.25rem + env(safe-area-inset-bottom));
-    width: calc(100vw - 2rem);
-    height: min(62dvh, 520px);
+    right: max(0.7rem, env(safe-area-inset-right));
+    left: max(0.7rem, env(safe-area-inset-left));
+    width: auto;
+    max-width: none;
+    height: min(72dvh, calc(100dvh - 6.75rem - env(safe-area-inset-bottom)));
+    max-height: calc(100dvh - 6.25rem);
+    bottom: calc(5.15rem + env(safe-area-inset-bottom));
+  }
+
+  .pylot-suggestions {
+    margin-left: 0;
+  }
+
+  .pylot-panel__contacts {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .pylot-panel__composer {
+    padding: 10px 12px 12px;
+  }
+
+  .pylot-bubble--user {
+    max-width: 92%;
   }
 }
