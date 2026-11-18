@@ -4,6 +4,7 @@ import Link from "next/link";
 import { type FormEvent } from "react";
 import { site, serviceNav } from "@/lib/content";
 import { BrandLogo } from "@/components/ui/BrandLogo";
+import { SocialIcons } from "@/components/ui/SocialIcons";
 
 const companyLinks = [
   { href: "/", label: "Home" },
@@ -105,6 +106,7 @@ export function Footer() {
             Copyright © {year} {site.name}. <span className="divider-pipe">|</span> All Rights
             Reserved®
           </div>
+          <SocialIcons variant="footer" />
           <div className="legal-links">
             <Link href="/privacy">Privacy</Link>
             <Link href="/terms">Terms</Link>

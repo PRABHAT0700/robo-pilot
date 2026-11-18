@@ -10,6 +10,8 @@ export const site = {
   whatsapp: "+91 9307721854",
   whatsappHref:
     "https://wa.me/919307721854?text=Hi%20RoboPylot%2C%20I%27d%20like%20to%20discuss%20a%20project.",
+  linkedin: "https://www.linkedin.com/company/robopylot/",
+  instagram: "https://www.instagram.com/robopylot/",
   location: "India",
   address:
     "105, AB Rd, Sector C, Slice 5, Part II, Skye Corporate Park, Indore, Madhya Pradesh 452010",

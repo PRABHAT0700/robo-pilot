@@ -1,12 +1,18 @@
 "use client";
 
+import { useState } from "react";
 import { Phone, MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import { site } from "@/lib/content";
+import { AskPylot } from "@/components/chat/AskPylot";
 
 export function FloatingActions() {
+  const [chatOpen, setChatOpen] = useState(false);
+
   return (
-    <div className="fab-stack fixed right-4 bottom-[max(1.25rem,env(safe-area-inset-bottom))] z-[40] flex flex-col items-end gap-3 md:right-6 md:bottom-7">
+    <div className="fab-stack fixed right-4 bottom-[max(1.25rem,env(safe-area-inset-bottom))] z-[60] flex flex-col items-end gap-3 md:right-6 md:bottom-7">
+      <AskPylot open={chatOpen} onOpenChange={setChatOpen} />
+
       <motion.a
         href={site.phoneTel}
         initial={{ opacity: 0, x: 40 }}

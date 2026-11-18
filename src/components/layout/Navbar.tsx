@@ -228,7 +228,7 @@ export function Navbar() {
         <Link
           href="/contact"
           className={cn(
-            "nav-link hidden text-sm font-semibold lg:inline-flex",
+            "nav-link nav-cta-talk text-sm font-semibold",
             inverted ? "text-[#0b1020]" : "text-white",
           )}
           data-cursor
